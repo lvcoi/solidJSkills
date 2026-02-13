@@ -18,7 +18,7 @@ Provide a practical, reusable operating system for SolidJS engineering work:
 
 ## Prerequisites
 
-- **Node.js** (v18 or higher) - Required for the MCP server
+- **Node.js** (v18 or higher) - Required only if using the MCP server (Options 1 or 2 below)
 - **Gemini CLI** or compatible AI agent that supports MCP (Model Context Protocol)
 - Basic understanding of SolidJS (for developers using the skills)
 
@@ -32,14 +32,14 @@ Provide a practical, reusable operating system for SolidJS engineering work:
    cd solidJSkills
    ```
 
-2. **Install MCP server dependencies**:
+2. **Install MCP server dependencies** (from the repository root):
    ```bash
    cd mcp-server
    npm install
    cd ..
    ```
 
-3. **Install the Gemini extension**:
+3. **Install the Gemini extension** (from the repository root):
    ```bash
    gemini extension install ./gemini-extension.json
    ```
@@ -294,6 +294,8 @@ Want to add your own SolidJS skill? Follow this pattern:
 4. Update `tools/gemini-mcp-extension/skill-routing-map.md` if using Gemini
 
 See `guides/skill-creation-guide.md` for details.
+
+**Note**: File paths in this documentation use forward slashes for cross-platform compatibility.
 
 ### Integrating with CI/CD
 
