@@ -1,28 +1,40 @@
 # solidJSkills
 
-A practical repository for **AI skill design concepts**, **agentic workflow engineering**, and reusable templates for building robust `SKILL.md`-based skill systems.
+A SolidJS-first repository for **agent-ready skills, tools, guides, and standards** used to build, refactor, review, scaffold, and bootstrap SolidJS codebases.
 
-## What this repo contains
+## Mission
 
-- `guides/` — semantic guides for designing skills, tools, workflows, rules, and system prompts.
-- `skills/` — starter skills that show clear directory structure and instruction quality.
-- `tools/templates/` — reusable templates you can copy when authoring new skill components.
+Provide a practical, reusable operating system for SolidJS engineering work:
 
-## Design goals
+1. Build consistent, high-quality SolidJS components.
+2. Refactor safely with reactivity correctness and performance in mind.
+3. Review code against SolidJS-specific quality gates.
+4. Scaffold and bootstrap new SolidJS projects with predictable defaults.
+5. Keep an agent-facing workflow (`SKILL.md`) aligned with real SolidJS practices.
 
-1. Standardize how AI skills are scoped, named, and documented.
-2. Make workflows predictable and testable.
-3. Reduce prompt ambiguity by establishing explicit rules and failure modes.
-4. Provide templates that turn a user prompt into a production-ready skill package quickly.
+## v1 Repository Blueprint
 
-## Quick start
+- Core blueprint: `guides/solidjs-v1-blueprint.md`
+- Agent standards: `AGENTS.md`
+- Shared SolidJS reference pack: `references/solidjs/`
+- SolidJS skills:
+  - `skills/solid-component-builder/`
+  - `skills/solid-refactor-assistant/`
+  - `skills/solid-reviewer/`
+  - `skills/solid-scaffold-bootstrap/`
+  - `skills/solid-design-patterns/`
 
-1. Read `guides/skill-creation-guide.md` for end-to-end authoring flow.
-2. Pick a template from `tools/templates/`.
-3. Clone one of the starter skills from `skills/`.
-4. Fill in domain-specific details and validation checks.
+## Skill Map
 
-## Skill directory pattern
+| Skill | Primary Outcome | Use Cases |
+|---|---|---|
+| `solid-component-builder` | Generate production-ready components | New UI components, feature modules, stateful UI flows |
+| `solid-refactor-assistant` | Reduce risk during structural changes | Prop/API rewrites, signal/store migrations, decomposition |
+| `solid-reviewer` | Enforce SolidJS quality standards | PR reviews, architecture sanity checks, performance audits |
+| `solid-scaffold-bootstrap` | Start projects and feature slices consistently | New app setup, package conventions, baseline tooling |
+| `solid-design-patterns` | Choose architecture patterns intentionally | State/data layer decisions, rendering strategy, composition |
+
+## Directory Pattern
 
 ```text
 skills/<skill-name>/
@@ -32,4 +44,12 @@ skills/<skill-name>/
 └── assets/       (optional)
 ```
 
-Use this pattern to keep instructions concise in `SKILL.md`, while moving detailed references and deterministic automation into bundled resources.
+## Who this is for
+
+- SolidJS product teams shipping app features rapidly.
+- Design system maintainers building reusable component libraries.
+- Teams using agent-assisted workflows for implementation and review.
+
+## Note on legacy content
+
+Some legacy generic skill-authoring guides remain in `guides/` and older starter skills in `skills/`. They can be retained for meta-work, but SolidJS-first materials are the default direction for this repo.
