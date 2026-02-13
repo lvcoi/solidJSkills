@@ -53,3 +53,11 @@ skills/<skill-name>/
 ## Note on legacy content
 
 Some legacy generic skill-authoring guides remain in `guides/` and older starter skills in `skills/`. They can be retained for meta-work, but SolidJS-first materials are the default direction for this repo.
+
+## Gemini MCP / Extension Alignment
+
+A SolidJS-aligned Gemini MCP extension blueprint is available at:
+
+- `tools/gemini-mcp-extension/`
+
+Use it to keep intent routing, system instructions, and quality gates synchronized with the SolidJS skill set.
