@@ -10,7 +10,7 @@ The server makes SolidJS-focused documentation, agent skills, and reference mate
 
 - **@modelcontextprotocol/sdk** (^1.17.3) — Core MCP protocol implementation
 - **zod** (^3.23.8) — Schema validation for tool inputs
-- **Node.js** ≥ 18 — Required by the MCP SDK
+- **Node.js** ≥ 18 — Minimum required version by the MCP SDK. Tested with Node.js 18.x and 20.x. Newer versions should work but have not been extensively tested.
 
 ## Installation and Running
 

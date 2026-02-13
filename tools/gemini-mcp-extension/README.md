@@ -29,6 +29,8 @@ When you register the solidJSkills repository as a Gemini extension, these compo
 4. Gemini CLI loads `GEMINI.md` as extension context
 5. The blueprint and routing maps in this directory serve as **reference documentation** for understanding the intended routing model and design patterns (not runtime configuration)
 
+**Note:** While these routing maps are reference documentation, they should be kept in sync with the actual skill definitions and extension behavior to ensure documentation accurately reflects implementation.
+
 ## Setup and Integration Instructions
 
 ### Customizing Skill Routing
