@@ -1,0 +1,13 @@
+{
+  "name": "solidjskills",
+  "version": "1.1.0",
+  "description": "Browse solidJSkills docs from Gemini CLI via MCP tools.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "solidjskills-docs": {
+      "command": "node",
+      "args": ["${extensionPath}${/}mcp-server${/}src${/}index.js"],
+      "cwd": "${extensionPath}"
+    }
+  }
+}
