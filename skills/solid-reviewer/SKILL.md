@@ -25,9 +25,9 @@ description: Review SolidJS diffs/PRs for reactivity correctness, control-flow q
 
 | Severity | Category | Description | Location | Fix |
 |----------|----------|-------------|----------|-----|
-| 🔴 Critical | Reactivity | Signal accessed outside tracking context | `UserList.tsx:45` | Wrap in `createMemo` or move inside JSX |
-| 🟡 Warning | Performance | Unnecessary effect re-runs | `Header.tsx:12` | Replace `createEffect` with `createMemo` |
-| 🟢 Suggestion | Maintainability | Inline signal could be extracted | `Form.tsx:78` | Extract to named const for clarity |
+| Critical 🔴 | Reactivity | Signal accessed outside tracking context | `UserList.tsx:45` | Wrap in `createMemo` or move inside JSX |
+| Warning 🟡 | Performance | Unnecessary effect re-runs | `Header.tsx:12` | Replace `createEffect` with `createMemo` |
+| Suggestion 🟢 | Maintainability | Inline signal could be extracted | `Form.tsx:78` | Extract to named const for clarity |
 
 **Review Summary:**
 - **Correctness issues:** 1 critical (must fix before merge)

@@ -27,7 +27,7 @@ When you register the solidJSkills repository as a Gemini extension, these compo
 2. Gemini CLI launches `mcp-server/src/index.js` as a subprocess
 3. The MCP server exposes `list_docs`, `read_doc`, and `search_docs` tools
 4. Gemini CLI loads `GEMINI.md` as extension context
-5. Gemini uses the blueprint and routing maps in this directory to route user intents to appropriate skills
+5. The blueprint and routing maps in this directory serve as **reference documentation** for understanding the intended routing model and design patterns (not runtime configuration)
 
 ## Setup and Integration Instructions
 

@@ -46,8 +46,8 @@ description: Scaffold and bootstrap SolidJS projects or feature modules with con
    cd my-solid-app
    npm install @solidjs/router
    
-   # Step 3: Add store library (optional)
-   npm install solid-js
+   # Step 3: Install dependencies
+   npm install
    
    # Step 4: Start dev server
    npm run dev
