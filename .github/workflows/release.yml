@@ -1,0 +1,51 @@
+name: Release Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install MCP server dependencies
+        run: npm --prefix mcp-server install
+
+      - name: Validate extension
+        run: |
+          node tools/scripts/validate-skills.mjs
+          node tools/scripts/validate-output-contracts.mjs
+
+      - name: Get extension name
+        id: meta
+        run: |
+          NAME=$(node -e "console.log(require('./gemini-extension.json').name)")
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create release archive
+        run: |
+          ARCHIVE_NAME="${{ steps.meta.outputs.name }}.tar.gz"
+          tar czf "$ARCHIVE_NAME" \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            .
+          echo "archive=$ARCHIVE_NAME" >> "$GITHUB_ENV"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: ${{ env.archive }}
