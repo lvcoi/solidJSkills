@@ -15,32 +15,39 @@ validation_commands:
 # solid-meta-head-management
 
 ## Trigger
+
 Use for metadata strategy with `MetaProvider`, `Title`, `Meta`, `Link`, `Style`, and related head composition requirements.
 
 ## Required Inputs
+
 - Route/layout metadata ownership boundaries.
 - SSR and client update expectations.
 - SEO and social metadata requirements.
 
 ## Workflow
+
 1. Define metadata ownership hierarchy across app/layout/route boundaries.
 2. Choose solid-meta primitives for each metadata type.
 3. Document SSR-safe update expectations and collision handling.
 4. Provide handoff to macro skill with testable metadata assertions.
 
 ## Failure Modes
+
 - Multiple owners for same metadata field without precedence: resolve precedence first.
 - Missing SSR behavior note: output invalid.
 - Metadata changes without validation checks: add checks before completion.
 
 ## Output Contract
+
 Return `DomainGuidanceOutput` with metadata decisions, handoff steps, and citations that include normalized `doc_id`.
 
 ## Validation
+
 - `node tools/scripts/validate-skills.mjs --skill solid-meta-head-management`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
 ## References
+
 - `../../references/solidjs-normalized/docs/solid-meta/reference/meta/metaprovider.md`
 - `../../references/solidjs-normalized/docs/solid-meta/reference/meta/title.md`
 - `../../references/solidjs-normalized/docs/solid-meta/reference/meta/meta.md`

@@ -33,5 +33,18 @@ jobs:
       - name: Run smoke evaluations
         run: node tools/scripts/run-smoke-evals.mjs
 
+      - name: Install MCP server dependencies
+        run: npm --prefix mcp-server install
+
       - name: Syntax check MCP server
         run: npm --prefix mcp-server test
+
+      - name: Lint markdown
+        run: npx -y markdownlint-cli2 "guides/**/*.md" "skills/**/*.md" "references/solidjs/**/*.md" "README.md" "AGENTS.md"
+
+      - name: Check links in key docs
+        run: |
+          npx -y markdown-link-check README.md --quiet || true
+          for f in guides/*.md; do
+            npx -y markdown-link-check "$f" --quiet || true
+          done
