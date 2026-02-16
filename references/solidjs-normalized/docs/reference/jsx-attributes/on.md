@@ -9,7 +9,7 @@ This directly attaches an event handler (via [`addEventListener`](https://develo
 
 New in v1.9.0
 
-An aditional special syntax that allows full control of [`capture`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#capture), [`passive`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#passive), [`once`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#once) and [`signal`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#signal) is an intersection or combination of `EventListenerObject` & `AddEventListenerOptions`, as follows:
+An additional special syntax that allows full control of [`capture`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#capture), [`passive`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#passive), [`once`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#once) and [`signal`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#signal) is an intersection or combination of `EventListenerObject` & `AddEventListenerOptions`, as follows:
 
 ```
 const handler = {
@@ -34,4 +34,4 @@ const handler = {
 
 <div on:click={{passive:true, handleEvent(e) { console.log("Weeeee!")}}} />
 ```
-This new syntax replaces the now deprecated `oncapture:` and it's future proof for any posible new event listener options.
+This new syntax replaces the now deprecated `oncapture:` and it's future proof for any possible new event listener options.
