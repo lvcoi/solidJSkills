@@ -1,0 +1,32 @@
+[
+    {
+        "id": "resolve-createSignal",
+        "symbol": "createSignal",
+        "must_include_doc_id": "solid-core.reference.basic-reactivity.create-signal",
+        "note": "Core reactive primitive"
+    },
+    {
+        "id": "resolve-createEffect",
+        "symbol": "createEffect",
+        "must_include_doc_id": "solid-core.reference.basic-reactivity.create-effect",
+        "note": "Side-effect primitive"
+    },
+    {
+        "id": "resolve-useNavigate",
+        "symbol": "useNavigate",
+        "must_include_doc_id": "solid-router.solid-router.reference.primitives.use-navigate",
+        "note": "Router navigation hook"
+    },
+    {
+        "id": "resolve-MetaProvider",
+        "symbol": "MetaProvider",
+        "must_include_doc_id": "solid-meta.solid-meta.reference.meta.metaprovider",
+        "note": "Meta package provider component"
+    },
+    {
+        "id": "resolve-createStore",
+        "symbol": "createStore",
+        "must_include_doc_id": "solid-core.reference.store-utilities.create-store",
+        "note": "Store creation API"
+    }
+]

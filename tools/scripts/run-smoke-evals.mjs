@@ -169,6 +169,98 @@ async function checkMcpCorpusIntegration(errors) {
   }
 }
 
+// --- Corpus search and API resolution quality tests ---
+
+let _manifestCache = null;
+async function loadManifestForEvals() {
+  if (_manifestCache) return _manifestCache;
+  const manifestPath = path.join(repoRoot, 'references', 'solidjs-normalized', 'manifest.jsonl');
+  const lines = (await fs.readFile(manifestPath, 'utf8')).split('\n').filter(Boolean);
+  _manifestCache = lines.map((line) => JSON.parse(line));
+  return _manifestCache;
+}
+
+function scoreEntryForSearch(entry, queryLower) {
+  let score = 0;
+  if (entry.doc_id.toLowerCase().includes(queryLower)) score += 5;
+  if (entry.source_path.toLowerCase().includes(queryLower)) score += 4;
+  if ((entry.normalized_path || '').toLowerCase().includes(queryLower)) score += 3;
+  for (const heading of entry.headings || []) {
+    if (heading.toLowerCase().includes(queryLower)) score += 2;
+  }
+  for (const tag of entry.tags || []) {
+    if (String(tag).toLowerCase().includes(queryLower)) score += 1;
+  }
+  for (const symbol of entry.symbols || []) {
+    if (String(symbol).toLowerCase().includes(queryLower)) score += 2;
+  }
+  return score;
+}
+
+function scoreEntryForResolve(entry, queryLower) {
+  let score = 0;
+  if ((entry.symbols || []).some((s) => String(s).toLowerCase() === queryLower)) score += 7;
+  if ((entry.symbols || []).some((s) => String(s).toLowerCase().includes(queryLower))) score += 4;
+  if ((entry.headings || []).some((h) => String(h).toLowerCase().includes(queryLower))) score += 3;
+  if (entry.doc_id.toLowerCase().includes(queryLower)) score += 2;
+  if (entry.source_path.toLowerCase().includes(queryLower)) score += 1;
+  return score;
+}
+
+async function checkCorpusSearchQuality(errors) {
+  const fixturePath = path.join(repoRoot, 'tests', 'smoke', 'fixtures', 'corpus-search.json');
+  const fixtures = JSON.parse(await fs.readFile(fixturePath, 'utf8'));
+  const manifest = await loadManifestForEvals();
+
+  for (const fixture of fixtures) {
+    const queryLower = fixture.query.toLowerCase();
+    let entries = manifest;
+    if (fixture.package) {
+      entries = entries.filter((e) => e.package === fixture.package);
+    }
+
+    const ranked = entries
+      .map((entry) => ({ entry, score: scoreEntryForSearch(entry, queryLower) }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || a.entry.doc_id.localeCompare(b.entry.doc_id));
+
+    if (ranked.length === 0) {
+      errors.push(`Corpus search ${fixture.id}: no results for query "${fixture.query}"`);
+      continue;
+    }
+
+    const topDocIds = ranked.slice(0, 5).map((r) => r.entry.doc_id);
+    if (!topDocIds.includes(fixture.must_include_in_top5)) {
+      errors.push(
+        `Corpus search ${fixture.id}: expected "${fixture.must_include_in_top5}" in top 5, got [${topDocIds.join(', ')}]`
+      );
+    }
+  }
+}
+
+async function checkApiResolutionAccuracy(errors) {
+  const fixturePath = path.join(repoRoot, 'tests', 'smoke', 'fixtures', 'api-resolution.json');
+  const fixtures = JSON.parse(await fs.readFile(fixturePath, 'utf8'));
+  const manifest = await loadManifestForEvals();
+
+  for (const fixture of fixtures) {
+    const queryLower = fixture.symbol.toLowerCase();
+
+    const ranked = manifest
+      .map((entry) => ({ entry, score: scoreEntryForResolve(entry, queryLower) }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || a.entry.doc_id.localeCompare(b.entry.doc_id))
+      .slice(0, 10);
+
+    const docIds = ranked.map((r) => r.entry.doc_id);
+    if (!docIds.includes(fixture.must_include_doc_id)) {
+      errors.push(
+        `API resolution ${fixture.id}: expected "${fixture.must_include_doc_id}" in top 10, got [${docIds.slice(0, 5).join(', ')}...]`
+      );
+    }
+  }
+}
+
 async function run() {
   const errors = [];
 
@@ -176,6 +268,8 @@ async function run() {
   await checkOutputSchemaSnapshots(errors);
   await checkMacroSkillCitationRequirements(errors);
   await checkMcpCorpusIntegration(errors);
+  await checkCorpusSearchQuality(errors);
+  await checkApiResolutionAccuracy(errors);
 
   if (errors.length > 0) {
     console.error('run-smoke-evals failed:');

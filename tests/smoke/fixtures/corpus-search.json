@@ -1,0 +1,33 @@
+[
+    {
+        "id": "search-createSignal",
+        "query": "createSignal",
+        "must_include_in_top5": "solid-core.reference.basic-reactivity.create-signal",
+        "note": "Exact API name should appear in top results"
+    },
+    {
+        "id": "search-store",
+        "query": "createStore",
+        "must_include_in_top5": "solid-core.reference.store-utilities.create-store",
+        "note": "Store API should resolve to store-utilities reference"
+    },
+    {
+        "id": "search-suspense",
+        "query": "suspense",
+        "must_include_in_top5": "solid-core.reference.components.suspense",
+        "note": "Control-flow component should match its reference doc"
+    },
+    {
+        "id": "search-router-query",
+        "query": "query",
+        "package": "solid-router",
+        "must_include_in_top5": "solid-router.solid-router.reference.data-apis.query",
+        "note": "Package-scoped search for router data API"
+    },
+    {
+        "id": "search-useServer",
+        "query": "use server",
+        "must_include_in_top5": "solid-start.solid-start.reference.server.use-server",
+        "note": "SolidStart server function directive"
+    }
+]
