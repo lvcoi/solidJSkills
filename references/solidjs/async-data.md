@@ -3,7 +3,7 @@
 ## Core primitives
 
 | Primitive | Signature | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `createResource` | `createResource(source, fetcher, opts?)` → `[data, {mutate, refetch}]` | Async data tied to reactive source signal |
 | `<Suspense>` | `<Suspense fallback={<Loading/>}>` | Shows fallback while resources resolve |
 | `<SuspenseList>` | `<SuspenseList revealOrder="forwards">` | Coordinates reveal order of multiple Suspense boundaries |
