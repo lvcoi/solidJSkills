@@ -39,6 +39,9 @@ jobs:
       - name: Syntax check MCP server
         run: npm --prefix mcp-server test
 
+      - name: MCP server integration tests
+        run: node tests/integration/mcp-server.test.mjs
+
       - name: Lint markdown
         run: npx -y markdownlint-cli2 "guides/**/*.md" "skills/**/*.md" "references/solidjs/**/*.md" "README.md" "AGENTS.md"
 
