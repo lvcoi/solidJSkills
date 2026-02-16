@@ -3,7 +3,7 @@
 ## State scope decision table
 
 | Scope | Primitive | When to use |
-|---|---|---|
+| --- | --- | --- |
 | Component-local | `createSignal` | Simple, isolated values (toggles, counters, form fields) |
 | Structured local | `createStore` | Nested objects/arrays where you need path-level reactivity |
 | Subtree-shared | `createContext` + `useContext` | Cross-component data without prop drilling |
@@ -12,7 +12,7 @@
 ## Store APIs
 
 | API | Purpose |
-|---|---|
+| --- | --- |
 | `createStore(init)` → `[store, setStore]` | Immutable-style nested reactive state |
 | `produce(fn)` | Immer-like mutation syntax for store updates |
 | `reconcile(data)` | Replace store subtree while preserving identity for unchanged parts |

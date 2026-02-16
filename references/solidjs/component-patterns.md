@@ -13,7 +13,7 @@ Every SolidJS component should declare:
 ## Preferred patterns
 
 | Pattern | When to use |
-|---|---|
+| --- | --- |
 | Props spreading with `splitProps` | Forwarding subsets of props to children without breaking reactivity |
 | `mergeProps` for defaults | Setting default values while preserving prop reactivity |
 | Render props / `children` helper | Building composable wrapper components |
