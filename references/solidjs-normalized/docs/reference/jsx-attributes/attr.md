@@ -7,4 +7,4 @@ Forces the prop to be treated as an attribute instead of a property. Useful for 
 ```
 Strong-Typing Custom Attributes
 
-Type definitions are required when using TypeScript. See the[TypeScript](../../configuration/typescript.md#forcing-properties-and-custom-attributes) page for examples.
+Type definitions are required when using TypeScript. See the [TypeScript](../../configuration/typescript.md#forcing-properties-and-custom-attributes) page for examples.
