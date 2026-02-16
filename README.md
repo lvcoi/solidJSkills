@@ -1,6 +1,6 @@
 # solidJSkills
 
-![SolidJS Skills Logo](Logo.png)
+![SolidJS Skills Logo](logo.png)
 
 ## A SolidJS "Second Brain" for AI Agents
 
