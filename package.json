@@ -1,0 +1,19 @@
+{
+    "name": "solidjskills-root",
+    "version": "1.0.0",
+    "description": "Root package for SolidJSkills repository tooling",
+    "type": "module",
+    "scripts": {
+        "validate": "npm run validate:corpus && npm run validate:skills && npm run validate:contracts",
+        "validate:corpus": "node tools/scripts/validate-solid-corpus.mjs",
+        "validate:skills": "node tools/scripts/validate-skills.mjs",
+        "validate:contracts": "node tools/scripts/validate-output-contracts.mjs",
+        "normalize": "node tools/scripts/normalize-solid-docs.mjs",
+        "smoke": "node tools/scripts/run-smoke-evals.mjs",
+        "scaffold": "node tools/scripts/scaffold-skill.mjs"
+    },
+    "devDependencies": {},
+    "engines": {
+        "node": ">=18"
+    }
+}
