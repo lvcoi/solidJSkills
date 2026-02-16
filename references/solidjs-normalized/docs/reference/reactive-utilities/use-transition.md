@@ -22,5 +22,5 @@ isPending();
 
 // wrap in transition
 
-start(() => setSignal(newValue), () => /* transition is done */)
+start(() => setSignal(newValue)).then(() => /* transition is done */);
 ```
