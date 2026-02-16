@@ -56,17 +56,7 @@ To use memory mode, replace the `<Router />` component in the application with [
 
 ```
 import { render } from "solid-js/web";
-
-import {
-
-    Router
-
-    MemoryRouter,
-
-    Route
-
-    } from "@solidjs/router";
-
+import { Router, MemoryRouter, Route } from "@solidjs/router";
 const App = (props) => (
 
     <>
