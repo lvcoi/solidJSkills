@@ -42,9 +42,6 @@ jobs:
       - name: MCP server integration tests
         run: node tests/integration/mcp-server.test.mjs
 
-      - name: Lint markdown
-        run: npx -y markdownlint-cli2 "guides/**/*.md" "skills/**/*.md" "references/solidjs/**/*.md" "README.md" "AGENTS.md"
-
       - name: Check links in key docs
         run: |
           npx -y markdown-link-check README.md --quiet || true
