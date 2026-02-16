@@ -486,7 +486,9 @@ async function run() {
   const outputTaxonomyPath = path.join(outputRoot, 'taxonomy.json');
 
   if (!(await fileExists(sourceRoot))) {
-    throw new Error(`Source directory not found: ${sourceRoot}`);
+    console.warn(`Source directory not found: ${path.relative(repoRoot, sourceRoot)}`);
+    console.warn('Skipping normalization. Using existing references/solidjs-normalized as source of truth.');
+    return;
   }
 
   const sourceFiles = await listMarkdownFiles(sourceRoot);

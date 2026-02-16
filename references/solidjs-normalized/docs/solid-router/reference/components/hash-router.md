@@ -33,4 +33,11 @@ render(
 
 );
 ```
-proptypedescriptionchildren`JSX.Element`, `RouteDefinition`, or `RouteDefinition[]`The route definitionsrootComponentTop level layout componentbasestringBase url to use for matching routesactionBasestringRoot url for server actions, default: `/_server`preloadbooleanEnables/disables preloads globally, default: `true`explicitLinksbooleanDisables all anchors being intercepted and instead requires [`<A>`](a.md). default: `false`
+| prop           | type                                                     | description                                                                                       |
+| -------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `children`     | `JSX.Element`, `RouteDefinition`, or `RouteDefinition[]` | The route definitions                                                                             |
+| `root`         | `Component`                                              | Top level layout component                                                                        |
+| `base`         | `string`                                                 | Base url to use for matching routes                                                               |
+| `actionBase`   | `string`                                                 | Root url for server actions, default: `/_server`                                                  |
+| `preload`      | `boolean`                                                | Enables/disables preloads globally, default: `true`                                               |
+| `explicitLinks`| `boolean`                                                | Disables all anchors being intercepted and instead requires [`<A>`](a.md). default: `false`       |

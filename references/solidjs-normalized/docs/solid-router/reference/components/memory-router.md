@@ -1,6 +1,6 @@
 # MemoryRouter
 
-The `MemoryRouter` can be used to route while keeping the entire routing history within internal memory. Other routers keep history externally such as in the url like the [`<HashRouter>`](hash-router.md) or in the browser history like [`<Router>`](memory-router.md).
+The `MemoryRouter` can be used to route while keeping the entire routing history within internal memory. Other routers keep history externally such as in the url like the [`<HashRouter>`](hash-router.md) or in the browser history like [`<Router>`](router.md).
 
 Keeping the history in memory is useful when you want full control over the routing history. Since `MemoryRouter` can manipulate `MemoryHistory`, it is often used for testing purposes.
 

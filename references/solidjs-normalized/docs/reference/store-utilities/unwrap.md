@@ -7,5 +7,5 @@ import { unwrap } from "solid-js/store"
 
 import type { Store } from "solid-js/store"
 
-function unwrap(store: Store<T>): T
+function unwrap<T>(store: Store<T>): T
 ```

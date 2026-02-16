@@ -13,7 +13,8 @@ Create a robust skill from a user prompt with minimal back-and-forth and predict
 3. **Define success contract**
    - Specify expected outputs and acceptance checks.
 4. **Design structure**
-   - Create `SKILL.md` + only needed resource folders.
+   - Run `npm run scaffold` to generate the skill structure from a template.
+   - Alternatively, copy `tools/templates/SKILL.template.md` manually.
 5. **Implement deterministic pieces**
    - Add scripts for repetitive or fragile operations.
 6. **Validate**

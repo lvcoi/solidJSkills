@@ -66,7 +66,7 @@ function Project(props: { id: string }) {
 
       <button onClick={refetchTasks}>Refetch tasks for this project</button>
 
-      <For each={project.tasks}>{(task) => <div>{task.title}</div>}</For>
+      <For each={tasks()}>{(task) => <div>{task.title}</div>}</For>
 
     </div>
 
