@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with runtime decisions, handoff steps, validation 
 - `node tools/scripts/validate-skills.mjs --skill solid-start-server-runtime`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-start.solid-start.reference.server.use-server` — server function declarations
+- `solid-start.solid-start.reference.server.create-middleware` — middleware composition
+- `solid-start.solid-start.reference.server.create-handler` — custom server handlers
+- `solid-start.solid-start.advanced.request-events` — request event lifecycle
+- `solid-start.solid-start.advanced.middleware` — middleware patterns and ordering
+
 ## References
 
 - `../../references/solidjs-normalized/docs/solid-start/reference/server/create-handler.md`

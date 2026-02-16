@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with router API decisions, handoff steps, and cita
 - `node tools/scripts/validate-skills.mjs --skill solid-router-data-navigation`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-router.solid-router.reference.data-apis.query` — data loading with caching
+- `solid-router.solid-router.reference.data-apis.action` — server mutations
+- `solid-router.solid-router.reference.data-apis.revalidate` — cache invalidation
+- `solid-router.solid-router.reference.primitives.use-navigate` — programmatic navigation
+- `solid-router.solid-router.reference.primitives.use-params` — route parameter access
+
 ## References
 
 - `../../references/solidjs-normalized/docs/solid-router/reference/components/router.md`

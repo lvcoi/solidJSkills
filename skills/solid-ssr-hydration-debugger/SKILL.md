@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with root-cause decisions, remediation handoff, an
 - `node tools/scripts/validate-skills.mjs --skill solid-ssr-hydration-debugger`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-core.reference.rendering.hydrate` — client hydration attachment
+- `solid-core.reference.rendering.is-server` — SSR guard constant
+- `solid-core.reference.rendering.render-to-stream` — streaming SSR with Suspense
+- `solid-core.reference.rendering.hydration-script` — hydration bootstrapper
+- `solid-router.solid-router.rendering-modes.ssr` — router SSR rendering mode
+
 ## References
 
 - `../../references/solidjs/performance-ssr.md`

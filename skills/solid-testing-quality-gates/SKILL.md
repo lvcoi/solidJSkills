@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with quality-gate decisions, handoff actions, vali
 - `node tools/scripts/validate-skills.mjs --skill solid-testing-quality-gates`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-core.guides.testing` — SolidJS testing patterns and setup
+- `solid-core.reference.rendering.render-to-string` — SSR output for test assertions
+- `solid-router.solid-router.data-fetching.how-to.handle-error-and-loading-states` — error state testing
+- `solid-core.reference.rendering.render` — client render for component tests
+- `solid-core.reference.rendering.dev` — DEV mode for catching hydration warnings
+
 ## References
 
 - `../../references/solidjs/review-checklist.md`

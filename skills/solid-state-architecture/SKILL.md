@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with scope decisions, handoff actions, and citatio
 - `node tools/scripts/validate-skills.mjs --skill solid-state-architecture`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-core.reference.store-utilities.create-store` — nested reactive state
+- `solid-core.reference.store-utilities.produce` — immer-style store mutation
+- `solid-core.reference.store-utilities.reconcile` — diffed store replacement
+- `solid-core.reference.component-apis.create-context` — context creation
+- `solid-core.concepts.stores` — store concepts and patterns
+
 ## References
 
 - `../../references/solidjs/stores-context.md`
