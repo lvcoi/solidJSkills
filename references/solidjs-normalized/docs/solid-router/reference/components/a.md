@@ -1,6 +1,6 @@
 # A
 
-Solid Router exposes the `<A />` component as a wrapper around the [native anchor tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) . It relies on the routing context provided by the [`<Router>` component](router.md) and if used outside, will triggers a runtime error..
+Solid Router exposes the `<A />` component as a wrapper around the [native anchor tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). It relies on the routing context provided by the [`<Router>` component](router.md) and, if used outside, will trigger a runtime error.
 
 `<A />` supports relative and base paths. `<a />` doesn't. But `<a />` gets augmented when JS is present via a top-level listener to the DOM, so you get the soft-navigation experience nonetheless.
 
