@@ -20,7 +20,7 @@
 ## Key SSR APIs
 
 | API | Purpose |
-|---|---|
+| --- | --- |
 | `renderToString(fn)` | Synchronous SSR for simple pages |
 | `renderToStringAsync(fn)` | Waits for all resources before returning HTML |
 | `renderToStream(fn)` | Streaming SSR with Suspense-aware progressive rendering |

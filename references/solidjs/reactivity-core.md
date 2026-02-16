@@ -3,7 +3,7 @@
 ## Key primitives
 
 | Primitive | Signature | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `createSignal` | `createSignal(init, opts?)` → `[get, set]` | Local reactive state |
 | `createMemo` | `createMemo(fn, init?, opts?)` → `get` | Cached derivation, recomputes only when deps change |
 | `createEffect` | `createEffect(fn)` | Side effect that tracks deps automatically |
