@@ -1,0 +1,25 @@
+# A
+
+Solid Router exposes the `<A />` component as a wrapper around the [native anchor tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) . It relies on the routing context provided by the [`<Router>` component](router.md) and if used outside, will triggers a runtime error..
+
+`<A />` supports relative and base paths. `<a />` doesn't. But `<a />` gets augmented when JS is present via a top-level listener to the DOM, so you get the soft-navigation experience nonetheless.
+
+The `<A />` supports the [`<Router />`](router.md) base property (`<Router base="/subpath">`) and prepend it to the received `href` automatically and the `<a />`does not. The same happens with relative paths passed to `<A />`.
+
+The `<A>` tag has an `active` class if its href matches the current location, and `inactive` otherwise. By default matching includes locations that are descendants (e.g.: href `/users` matches locations `/users` and `/users/123`).
+
+Use the boolean `end` prop to prevent matching these. This is particularly useful for links to the root route `/` which would match everything.
+
+* * *
+
+## Soft Navigation
+
+When JavaScript is present at the runtime, both components behave in a very similar fashion. This is because Solid Router adds a listener at the top level of the DOM and will augment the native `<a />` tag to a more performant experience (with soft navigation).
+
+To prevent, both `<A />` and `<a />` tags from soft navigating when JavaScript is present, pass a `target="_self"` attribute.
+
+* * *
+
+## Props Reference
+
+proptypedescriptionhrefstringThe path of the route to navigate to. This will be resolved relative to the route that the link is in, but you can preface it with `/` to refer back to the root.noScrollbooleanIf true, turn off the default behavior of scrolling to the top of the new pagereplacebooleanIf true, don't add a new entry to the browser history. (By default, the new page will be added to the browser history, so pressing the back button will take you to the previous route.)stateunknown[Push this value](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) to the history stack when navigatinginactiveClassstringThe class to show when the link is inactive (when the current location doesn't match the link)activeClassstringThe class to show when the link is activeendbooleanIf `true`, only considers the link to be active when the current location matches the `href` exactly; if `false`, check if the current location *starts with* `href`

@@ -1,0 +1,171 @@
+# action
+
+The `action` function wraps an asynchronous function and returns an [action](../../concepts/actions.md).
+
+When an action is triggered, it creates a submission object that tracks its execution status. This state can be accessed with the [`useSubmission`](use-submission.md) and [`useSubmissions`](use-submissions.md) primitives.
+
+After an action completed successfully, all queries active in the same page are revalidated, unless revalidation is configured using [response helpers](../../concepts/actions.md#managing-navigation-and-revalidation).
+
+* * *
+
+## Import
+
+```
+import { action } from "@solidjs/router";
+```
+* * *
+
+## Type
+
+```
+function action<T extends Array<any>, U = void>(
+
+  fn: (...args: T) => Promise<U>,
+
+  name?: string
+
+): Action<T, U>;
+
+function action<T extends Array<any>, U = void>(
+
+  fn: (...args: T) => Promise<U>,
+
+  options?: { name?: string; onComplete?: (s: Submission<T, U>) => void }
+
+): Action<T, U>;
+
+function action<T extends Array<any>, U = void>(
+
+  fn: (...args: T) => Promise<U>,
+
+  options:
+
+    | string
+
+    | { name?: string; onComplete?: (s: Submission<T, U>) => void } = {}
+
+): Action<T, U>;
+```
+* * *
+
+## Parameters
+
+### `handler`
+
+- **Type:** `(...args: T) => Promise<U>`
+- **Required:** Yes
+
+An asynchronous function that performs the action's logic. When the action is used with a [`<form>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form), the function receives a [`FormData` object](https://developer.mozilla.org/en-US/docs/Web/API/FormData) as its first parameter.
+
+### `options`
+
+- **Type:** `string | { name?: string; onComplete?: (s: Submission<T, U>) => void }`
+- **Required**: No
+
+A unique string used to identify the action in Server-Side Rendering (SSR) environments. This is required when using the action with a `<form>` element.
+
+Alternatively, a configuration object can be passed with the following properties.
+
+#### `name`
+
+- **Type:** `string`
+- **Required:** No
+
+The unique string to identify the action in SSR environments. Required for `<form>` usage.
+
+#### `onComplete` (optional):
+
+- **Type:** `(s: Submission<T, U>) => void`
+- **Required:** No
+
+A function that runs after the action completes. It receives a submission object as its parameter.
+
+* * *
+
+## Return value
+
+`action` returns an action with the following properties.
+
+### `with`
+
+A method that wraps the original action and returns a new one. When this new action is triggered, the arguments passed to `with` are forwarded to the original action. If this new action is used with a `<form>`, the `FormData` object is passed as the last parameter, after any other forwarded parameters.
+
+* * *
+
+## Examples
+
+### Form submission
+
+```
+import { action } from "@solidjs/router";
+
+const addTodoAction = action(async (formData: FormData) => {
+
+  // Adds a new todo to the server.
+
+}, "addTodo");
+
+function TodoForm() {
+
+  return (
+
+    <form action={addTodoAction} method="post">
+
+      <input name="name" />
+
+      <button>Add todo</button>
+
+    </form>
+
+  );
+
+}
+```
+### Passing additional arguments
+
+```
+import { action } from "@solidjs/router";
+
+const addTodoAction = action(async (userId: number, formData: FormData) => {
+
+  // ... Adds a new todo for a specific user.
+
+}, "addTodo");
+
+function TodoForm() {
+
+  const userId = 1;
+
+  return (
+
+    <form action={addTodoAction.with(userId)} method="post">
+
+      <input name="name" />
+
+      <button>Add todo</button>
+
+    </form>
+
+  );
+
+}
+```
+### Triggering actions programmatically
+
+```
+import { action, useAction } from "@solidjs/router";
+
+const markDoneAction = action(async (id: string) => {
+
+  // ... Marks a todo as done on the server.
+
+});
+
+function NotificationItem(props: { id: string }) {
+
+  const markDone = useAction(markDoneAction);
+
+  return <button onClick={() => markDone(props.id)}>Mark as done</button>;
+
+}
+```

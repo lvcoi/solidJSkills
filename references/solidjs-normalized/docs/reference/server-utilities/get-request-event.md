@@ -1,0 +1,65 @@
+# getRequestEvent
+
+Solid uses Async Local Storage as a way of injecting the request context anywhere on the server. The server provides a utility function to access this context (called a `RequestEvent`).
+
+```
+import { getRequestEvent } from "solid-js/web"
+
+import type { RequestEvent } from "solid-js/web"
+
+function getRequestEvent(): RequestEvent | undefined
+```
+You can retrieve the request event by calling `getRequestEvent`:
+
+```
+import { getRequestEvent } from "solid-js/web"
+
+const event = getRequestEvent()
+```
+* * *
+
+## Request
+
+`.request` is the most important property of the `RequestEvent`. This is a Web [Request object](https://developer.mozilla.org/en-US/docs/Web/API/Request) that represents the current request to the server. You can access properties off of it such as `url` and `headers`. `body`, however, does not typically need to be handled directly for things such as server functions or rendering, which already handle mapping.
+
+```
+import { getRequestEvent } from "solid-js/web"
+
+const event = getRequestEvent();
+
+if (event) {
+
+  const auth = event.request.headers.get("Authorization");
+
+}
+```
+* * *
+
+## Response
+
+The `getRequestEvent` can also be used to stub out the Response - this extends the [options that can be passed to the `Response constructor`](https://developer.mozilla.org/en-US/docs/Web/API/Response/Response#options). This is kept up to date so it can be used to read and write headers and status for the current response.
+
+```
+import { getRequestEvent } from "solid-js/web"
+
+const event = getRequestEvent();
+
+if (event) {
+
+  event.response.headers.append("Set-Cookie", "foo=hello");
+
+  event.response.status = 201;
+
+}
+```
+### Change event.response or create a new Response
+
+The `getRequestEvent` event is considered global and lasts the life of the request. Therefore, if you are calling a server function on the server during SSR or an RPC call, setting values on `event.response` will reflect on that request.
+
+The returned response will only impact the response when it is an RPC call. This is important because some headers previously set may not be needed to be set for the whole page, but only for a specific request.
+
+**Note:** This is important to keep in mind when choosing where to set headers and responses.
+
+Usage with SolidStart
+
+See this guide on [Request Events](../../solid-start/advanced/request-events.md).

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidjskills.dev/contracts/domain-guidance-output.schema.json",
+  "title": "DomainGuidanceOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary",
+    "decisions",
+    "handoff",
+    "validation_commands",
+    "citations"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 20
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "handoff": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/citation"
+      }
+    }
+  },
+  "definitions": {
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doc_id",
+        "claim"
+      ],
+      "properties": {
+        "doc_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    }
+  }
+}

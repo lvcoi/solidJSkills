@@ -1,0 +1,22 @@
+# createReaction
+
+```
+import { createReaction } from "solid-js"
+
+function createReaction(onInvalidate: () => void): (fn: () => void) => void
+```
+Sometimes it is useful to separate tracking from re-execution. This primitive registers a side effect that is run the first time the expression wrapped by the returned tracking function is notified of a change.
+
+```
+const [s, set] = createSignal("start")
+
+const track = createReaction(() => console.log("something"))
+
+// run the reaction next time `s` changes.
+
+track(() => s())
+
+set("end") // "something"
+
+set("final") // no-op since the reaction only runs on the first update, need to call `track` again.
+```

@@ -1,0 +1,162 @@
+# useSubmission
+
+The `useSubmission` primitive returns the state of the *most recent* submission for a given [action](../../concepts/actions.md).
+
+* * *
+
+## Import
+
+```
+import { useSubmission } from "@solidjs/router";
+```
+* * *
+
+## Type
+
+```
+function useSubmission<T extends Array<any>, U, V>(
+
+  fn: Action<T, U, V>,
+
+  filter?: (input: V) => boolean
+
+): Submission<T, NarrowResponse<U>> | SubmissionStub;
+```
+* * *
+
+## Parameters
+
+### `action`
+
+- **Type:** `Action<T, U, V>`
+- **Required:** Yes
+
+The action to track.
+
+### `filter`
+
+- **Type:** `(input: V) => boolean`
+- **Required:** No
+
+A function that filters submissions. It is executed for each submission in the order of creation. It receives an array of the action's inputs as a parameter and must return `true` to select the submission or `false` otherwise. The first submission that passes the filter is returned by `useSubmission`.
+
+* * *
+
+## Return value
+
+`useSubmission` returns a reactive object with the following properties:
+
+### `input`
+
+A reactive value representing the input data of the action.
+
+### `result`
+
+A reactive value representing the successful return value of the action.
+
+### `error`
+
+A reactive value representing any error thrown by the action.
+
+### `pending`
+
+A reactive boolean indicating if the action is currently running.
+
+### `clear`
+
+A function to clear the submission's state.
+
+### `retry`
+
+A function to re-execute the submission with the same input.
+
+* * *
+
+## Examples
+
+### Basic usage
+
+```
+import { Show } from "solid-js";
+
+import { action, useSubmission } from "@solidjs/router";
+
+const addTodoAction = action(async (formData: FormData) => {
+
+  const name = formData.get("name")?.toString();
+
+  if (!name || name.length <= 2) {
+
+    return { ok: false, message: "Name must be larger than 2 characters." };
+
+  }
+
+  // ... Sends the todo data to the server.
+
+  return { ok: true };
+
+}, "addTodo");
+
+function AddTodoForm() {
+
+  const submission = useSubmission(addTodoAction);
+
+  return (
+
+    <form action={addTodoAction} method="post">
+
+      <input name="name" />
+
+      <button type="submit">{submission.pending ? "Adding..." : "Add"}</button>
+
+      <Show when={!submission.result?.ok}>
+
+        <div>
+
+          <p>{submission.result.message}</p>
+
+          <button onClick={() => submission.clear()}>Clear</button>
+
+          <button onClick={() => submission.retry()}>Retry</button>
+
+        </div>
+
+      </Show>
+
+    </form>
+
+  );
+
+}
+```
+### Filtering submissions
+
+```
+import { useSubmission } from "@solidjs/router";
+
+const addTodoAction = action(async (formData: FormData) => {
+
+  // ... Sends the todo data to the server.
+
+}, "addTodo");
+
+function LatestTodo() {
+
+  const latestValidSubmission = useSubmission(
+
+    addTodoAction,
+
+    ([formData]: [FormData]) => {
+
+      const name = formData.get("name")?.toString();
+
+      return name && name.length > 2;
+
+    }
+
+  );
+
+  return <p>Latest valid submission: {latestValidSubmission.result}</p>;
+
+}
+```

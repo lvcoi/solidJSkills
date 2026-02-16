@@ -15,3 +15,5 @@ All document reads are intentionally restricted to:
 - `skills/`
 - `guides/`
 - `tools/templates/`
+- `references/`
+- `solidJSdocs/`

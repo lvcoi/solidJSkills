@@ -1,0 +1,1971 @@
+{
+  "generated_at": "2026-02-16T10:44:53.790Z",
+  "package_topic_docs": {
+    "solid-core": {
+      "advanced-concepts": [
+        "solid-core.advanced-concepts.fine-grained-reactivity"
+      ],
+      "concepts": [
+        "solid-core.concepts.components.basics",
+        "solid-core.concepts.components.class-style",
+        "solid-core.concepts.components.event-handlers",
+        "solid-core.concepts.components.props",
+        "solid-core.concepts.context",
+        "solid-core.concepts.control-flow.conditional-rendering",
+        "solid-core.concepts.control-flow.dynamic",
+        "solid-core.concepts.control-flow.error-boundary",
+        "solid-core.concepts.control-flow.list-rendering",
+        "solid-core.concepts.control-flow.portal",
+        "solid-core.concepts.derived-values.derived-signals",
+        "solid-core.concepts.derived-values.memos",
+        "solid-core.concepts.effects",
+        "solid-core.concepts.intro-to-reactivity",
+        "solid-core.concepts.refs",
+        "solid-core.concepts.signals",
+        "solid-core.concepts.stores",
+        "solid-core.concepts.understanding-jsx"
+      ],
+      "configuration": [
+        "solid-core.configuration.environment-variables",
+        "solid-core.configuration.typescript"
+      ],
+      "guides": [
+        "solid-core.guides.complex-state-management",
+        "solid-core.guides.deploying-your-app",
+        "solid-core.guides.deployment-options.aws-via-flightcontrol",
+        "solid-core.guides.deployment-options.aws-via-sst",
+        "solid-core.guides.deployment-options.cloudflare",
+        "solid-core.guides.deployment-options.firebase",
+        "solid-core.guides.deployment-options.netlify",
+        "solid-core.guides.deployment-options.railway",
+        "solid-core.guides.deployment-options.stormkit",
+        "solid-core.guides.deployment-options.vercel",
+        "solid-core.guides.deployment-options.zerops",
+        "solid-core.guides.fetching-data",
+        "solid-core.guides.routing-and-navigation",
+        "solid-core.guides.state-management",
+        "solid-core.guides.styling-components.css-modules",
+        "solid-core.guides.styling-components.less",
+        "solid-core.guides.styling-components.macaron",
+        "solid-core.guides.styling-components.sass",
+        "solid-core.guides.styling-components.tailwind",
+        "solid-core.guides.styling-components.tailwind-v3",
+        "solid-core.guides.styling-components.uno",
+        "solid-core.guides.styling-your-components",
+        "solid-core.guides.testing"
+      ],
+      "index": [
+        "solid-core.index"
+      ],
+      "quick-start": [
+        "solid-core.quick-start"
+      ],
+      "reference/basic-reactivity": [
+        "solid-core.reference.basic-reactivity.create-effect",
+        "solid-core.reference.basic-reactivity.create-memo",
+        "solid-core.reference.basic-reactivity.create-resource",
+        "solid-core.reference.basic-reactivity.create-signal"
+      ],
+      "reference/component-apis": [
+        "solid-core.reference.component-apis.children",
+        "solid-core.reference.component-apis.create-context",
+        "solid-core.reference.component-apis.create-unique-id",
+        "solid-core.reference.component-apis.lazy",
+        "solid-core.reference.component-apis.use-context"
+      ],
+      "reference/components": [
+        "solid-core.reference.components.dynamic",
+        "solid-core.reference.components.error-boundary",
+        "solid-core.reference.components.for",
+        "solid-core.reference.components.index-component",
+        "solid-core.reference.components.no-hydration",
+        "solid-core.reference.components.portal",
+        "solid-core.reference.components.show",
+        "solid-core.reference.components.suspense",
+        "solid-core.reference.components.suspense-list",
+        "solid-core.reference.components.switch-and-match"
+      ],
+      "reference/jsx-attributes": [
+        "solid-core.reference.jsx-attributes.attr",
+        "solid-core.reference.jsx-attributes.bool",
+        "solid-core.reference.jsx-attributes.classlist",
+        "solid-core.reference.jsx-attributes.innerhtml",
+        "solid-core.reference.jsx-attributes.on",
+        "solid-core.reference.jsx-attributes.on-star",
+        "solid-core.reference.jsx-attributes.once",
+        "solid-core.reference.jsx-attributes.prop",
+        "solid-core.reference.jsx-attributes.ref",
+        "solid-core.reference.jsx-attributes.style",
+        "solid-core.reference.jsx-attributes.textcontent",
+        "solid-core.reference.jsx-attributes.use"
+      ],
+      "reference/lifecycle": [
+        "solid-core.reference.lifecycle.on-cleanup",
+        "solid-core.reference.lifecycle.on-mount"
+      ],
+      "reference/reactive-utilities": [
+        "solid-core.reference.reactive-utilities.batch",
+        "solid-core.reference.reactive-utilities.catch-error",
+        "solid-core.reference.reactive-utilities.create-root",
+        "solid-core.reference.reactive-utilities.from",
+        "solid-core.reference.reactive-utilities.get-owner",
+        "solid-core.reference.reactive-utilities.index-array",
+        "solid-core.reference.reactive-utilities.map-array",
+        "solid-core.reference.reactive-utilities.merge-props",
+        "solid-core.reference.reactive-utilities.observable",
+        "solid-core.reference.reactive-utilities.on-util",
+        "solid-core.reference.reactive-utilities.run-with-owner",
+        "solid-core.reference.reactive-utilities.split-props",
+        "solid-core.reference.reactive-utilities.start-transition",
+        "solid-core.reference.reactive-utilities.untrack",
+        "solid-core.reference.reactive-utilities.use-transition"
+      ],
+      "reference/rendering": [
+        "solid-core.reference.rendering.dev",
+        "solid-core.reference.rendering.hydrate",
+        "solid-core.reference.rendering.hydration-script",
+        "solid-core.reference.rendering.is-server",
+        "solid-core.reference.rendering.render",
+        "solid-core.reference.rendering.render-to-stream",
+        "solid-core.reference.rendering.render-to-string",
+        "solid-core.reference.rendering.render-to-string-async"
+      ],
+      "reference/secondary-primitives": [
+        "solid-core.reference.secondary-primitives.create-computed",
+        "solid-core.reference.secondary-primitives.create-deferred",
+        "solid-core.reference.secondary-primitives.create-reaction",
+        "solid-core.reference.secondary-primitives.create-render-effect",
+        "solid-core.reference.secondary-primitives.create-selector"
+      ],
+      "reference/server-utilities": [
+        "solid-core.reference.server-utilities.get-request-event"
+      ],
+      "reference/store-utilities": [
+        "solid-core.reference.store-utilities.create-mutable",
+        "solid-core.reference.store-utilities.create-store",
+        "solid-core.reference.store-utilities.modify-mutable",
+        "solid-core.reference.store-utilities.produce",
+        "solid-core.reference.store-utilities.reconcile",
+        "solid-core.reference.store-utilities.unwrap"
+      ]
+    },
+    "solid-meta": {
+      "getting-started": [
+        "solid-meta.solid-meta.getting-started.client-setup",
+        "solid-meta.solid-meta.getting-started.installation-and-setup",
+        "solid-meta.solid-meta.getting-started.server-setup"
+      ],
+      "index": [
+        "solid-meta.solid-meta.index"
+      ],
+      "reference": [
+        "solid-meta.solid-meta.reference.meta.base",
+        "solid-meta.solid-meta.reference.meta.link",
+        "solid-meta.solid-meta.reference.meta.meta",
+        "solid-meta.solid-meta.reference.meta.metaprovider",
+        "solid-meta.solid-meta.reference.meta.style",
+        "solid-meta.solid-meta.reference.meta.title",
+        "solid-meta.solid-meta.reference.meta.use-head"
+      ]
+    },
+    "solid-router": {
+      "advanced-concepts": [
+        "solid-router.solid-router.advanced-concepts.lazy-loading",
+        "solid-router.solid-router.advanced-concepts.preloading"
+      ],
+      "concepts": [
+        "solid-router.solid-router.concepts.actions",
+        "solid-router.solid-router.concepts.alternative-routers",
+        "solid-router.solid-router.concepts.catch-all",
+        "solid-router.solid-router.concepts.layouts",
+        "solid-router.solid-router.concepts.navigation",
+        "solid-router.solid-router.concepts.nesting",
+        "solid-router.solid-router.concepts.path-parameters",
+        "solid-router.solid-router.concepts.search-parameters"
+      ],
+      "data-fetching": [
+        "solid-router.solid-router.data-fetching.how-to.handle-error-and-loading-states",
+        "solid-router.solid-router.data-fetching.how-to.preload-data",
+        "solid-router.solid-router.data-fetching.queries",
+        "solid-router.solid-router.data-fetching.revalidation",
+        "solid-router.solid-router.data-fetching.streaming"
+      ],
+      "getting-started": [
+        "solid-router.solid-router.getting-started.component",
+        "solid-router.solid-router.getting-started.config",
+        "solid-router.solid-router.getting-started.installation-and-setup"
+      ],
+      "guides": [
+        "solid-router.solid-router.guides.migration"
+      ],
+      "index": [
+        "solid-router.solid-router.index"
+      ],
+      "reference": [
+        "solid-router.solid-router.reference.components.a",
+        "solid-router.solid-router.reference.components.hash-router",
+        "solid-router.solid-router.reference.components.memory-router",
+        "solid-router.solid-router.reference.components.navigate",
+        "solid-router.solid-router.reference.components.route",
+        "solid-router.solid-router.reference.components.router",
+        "solid-router.solid-router.reference.data-apis.action",
+        "solid-router.solid-router.reference.data-apis.cache",
+        "solid-router.solid-router.reference.data-apis.create-async",
+        "solid-router.solid-router.reference.data-apis.create-async-store",
+        "solid-router.solid-router.reference.data-apis.query",
+        "solid-router.solid-router.reference.data-apis.revalidate",
+        "solid-router.solid-router.reference.data-apis.use-action",
+        "solid-router.solid-router.reference.data-apis.use-submission",
+        "solid-router.solid-router.reference.data-apis.use-submissions",
+        "solid-router.solid-router.reference.preload-functions.preload",
+        "solid-router.solid-router.reference.primitives.use-before-leave",
+        "solid-router.solid-router.reference.primitives.use-current-matches",
+        "solid-router.solid-router.reference.primitives.use-is-routing",
+        "solid-router.solid-router.reference.primitives.use-location",
+        "solid-router.solid-router.reference.primitives.use-match",
+        "solid-router.solid-router.reference.primitives.use-navigate",
+        "solid-router.solid-router.reference.primitives.use-params",
+        "solid-router.solid-router.reference.primitives.use-preload-route",
+        "solid-router.solid-router.reference.primitives.use-search-params",
+        "solid-router.solid-router.reference.response-helpers.json",
+        "solid-router.solid-router.reference.response-helpers.redirect",
+        "solid-router.solid-router.reference.response-helpers.reload"
+      ],
+      "rendering-modes": [
+        "solid-router.solid-router.rendering-modes.spa",
+        "solid-router.solid-router.rendering-modes.ssr"
+      ]
+    },
+    "solid-start": {
+      "advanced": [
+        "solid-start.solid-start.advanced.auth",
+        "solid-start.solid-start.advanced.middleware",
+        "solid-start.solid-start.advanced.request-events",
+        "solid-start.solid-start.advanced.return-responses",
+        "solid-start.solid-start.advanced.session",
+        "solid-start.solid-start.advanced.websocket"
+      ],
+      "building-your-application": [
+        "solid-start.solid-start.building-your-application.api-routes",
+        "solid-start.solid-start.building-your-application.css-and-styling",
+        "solid-start.solid-start.building-your-application.data-fetching",
+        "solid-start.solid-start.building-your-application.data-mutation",
+        "solid-start.solid-start.building-your-application.head-and-metadata",
+        "solid-start.solid-start.building-your-application.route-prerendering",
+        "solid-start.solid-start.building-your-application.routing",
+        "solid-start.solid-start.building-your-application.static-assets"
+      ],
+      "getting-started": [
+        "solid-start.solid-start.getting-started"
+      ],
+      "guides": [
+        "solid-start.solid-start.guides.data-fetching",
+        "solid-start.solid-start.guides.data-mutation",
+        "solid-start.solid-start.guides.security",
+        "solid-start.solid-start.guides.service-workers"
+      ],
+      "index": [
+        "solid-start.solid-start.index"
+      ],
+      "reference": [
+        "solid-start.solid-start.reference.client.client-only",
+        "solid-start.solid-start.reference.client.mount",
+        "solid-start.solid-start.reference.client.start-client",
+        "solid-start.solid-start.reference.config.define-config",
+        "solid-start.solid-start.reference.entrypoints.app",
+        "solid-start.solid-start.reference.entrypoints.app-config",
+        "solid-start.solid-start.reference.entrypoints.entry-client",
+        "solid-start.solid-start.reference.entrypoints.entry-server",
+        "solid-start.solid-start.reference.routing.file-routes",
+        "solid-start.solid-start.reference.server.create-handler",
+        "solid-start.solid-start.reference.server.create-middleware",
+        "solid-start.solid-start.reference.server.get",
+        "solid-start.solid-start.reference.server.get-server-function-meta",
+        "solid-start.solid-start.reference.server.http-header",
+        "solid-start.solid-start.reference.server.http-status-code",
+        "solid-start.solid-start.reference.server.start-server",
+        "solid-start.solid-start.reference.server.use-server"
+      ]
+    }
+  },
+  "api_symbol_docs": {
+    "and": [
+      "solid-core.advanced-concepts.fine-grained-reactivity",
+      "solid-core.concepts.components.class-style",
+      "solid-core.concepts.components.event-handlers",
+      "solid-core.concepts.context",
+      "solid-core.concepts.control-flow.conditional-rendering",
+      "solid-core.concepts.control-flow.dynamic",
+      "solid-core.concepts.control-flow.list-rendering",
+      "solid-core.concepts.signals",
+      "solid-core.concepts.stores",
+      "solid-core.concepts.understanding-jsx",
+      "solid-core.configuration.typescript",
+      "solid-core.guides.complex-state-management",
+      "solid-core.guides.deployment-options.firebase",
+      "solid-core.guides.routing-and-navigation",
+      "solid-core.guides.state-management",
+      "solid-core.guides.styling-components.tailwind-v3",
+      "solid-core.guides.testing",
+      "solid-core.reference.components.suspense",
+      "solid-core.reference.jsx-attributes.classlist",
+      "solid-core.reference.jsx-attributes.on-star",
+      "solid-core.reference.jsx-attributes.use",
+      "solid-core.reference.reactive-utilities.on-util",
+      "solid-core.reference.server-utilities.get-request-event",
+      "solid-core.reference.store-utilities.reconcile",
+      "solid-meta.solid-meta.reference.meta.use-head",
+      "solid-router.solid-router.concepts.navigation",
+      "solid-router.solid-router.concepts.path-parameters",
+      "solid-router.solid-router.data-fetching.streaming",
+      "solid-router.solid-router.reference.components.memory-router",
+      "solid-router.solid-router.reference.data-apis.cache",
+      "solid-router.solid-router.reference.primitives.use-search-params",
+      "solid-start.solid-start.advanced.middleware",
+      "solid-start.solid-start.advanced.return-responses",
+      "solid-start.solid-start.building-your-application.css-and-styling",
+      "solid-start.solid-start.building-your-application.routing",
+      "solid-start.solid-start.guides.data-mutation",
+      "solid-start.solid-start.guides.security",
+      "solid-start.solid-start.reference.server.http-header"
+    ],
+    "createSignal": [
+      "solid-core.advanced-concepts.fine-grained-reactivity",
+      "solid-core.concepts.signals",
+      "solid-core.reference.basic-reactivity.create-signal"
+    ],
+    "fine-grained-reactivity": [
+      "solid-core.advanced-concepts.fine-grained-reactivity"
+    ],
+    "fineGrainedReactivity": [
+      "solid-core.advanced-concepts.fine-grained-reactivity"
+    ],
+    "The": [
+      "solid-core.advanced-concepts.fine-grained-reactivity",
+      "solid-core.concepts.context",
+      "solid-core.reference.components.for",
+      "solid-start.solid-start.advanced.auth",
+      "solid-start.solid-start.advanced.middleware",
+      "solid-start.solid-start.building-your-application.routing",
+      "solid-start.solid-start.reference.config.define-config"
+    ],
+    "basics": [
+      "solid-core.concepts.components.basics"
+    ],
+    "class": [
+      "solid-core.concepts.components.class-style",
+      "solid-core.guides.styling-your-components",
+      "solid-core.reference.jsx-attributes.classlist"
+    ],
+    "class-style": [
+      "solid-core.concepts.components.class-style"
+    ],
+    "classStyle": [
+      "solid-core.concepts.components.class-style"
+    ],
+    "style": [
+      "solid-core.concepts.components.class-style",
+      "solid-core.guides.styling-your-components",
+      "solid-core.reference.jsx-attributes.style",
+      "solid-meta.solid-meta.reference.meta.style"
+    ],
+    "document": [
+      "solid-core.concepts.components.event-handlers",
+      "solid-start.solid-start.building-your-application.head-and-metadata",
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "element": [
+      "solid-core.concepts.components.event-handlers",
+      "solid-router.solid-router.guides.migration"
+    ],
+    "event-handlers": [
+      "solid-core.concepts.components.event-handlers"
+    ],
+    "eventHandlers": [
+      "solid-core.concepts.components.event-handlers"
+    ],
+    "on": [
+      "solid-core.concepts.components.event-handlers",
+      "solid-core.reference.jsx-attributes.on"
+    ],
+    "on__": [
+      "solid-core.concepts.components.event-handlers"
+    ],
+    "on:": [
+      "solid-core.concepts.components.event-handlers"
+    ],
+    "on:__": [
+      "solid-core.concepts.components.event-handlers"
+    ],
+    "object:": [
+      "solid-core.concepts.components.props",
+      "solid-core.configuration.typescript"
+    ],
+    "props": [
+      "solid-core.concepts.components.props",
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "context": [
+      "solid-core.concepts.context"
+    ],
+    "createContext": [
+      "solid-core.concepts.context",
+      "solid-core.reference.component-apis.create-context",
+      "solid-core.reference.component-apis.use-context"
+    ],
+    "or": [
+      "solid-core.concepts.context",
+      "solid-core.guides.routing-and-navigation",
+      "solid-core.guides.styling-components.sass",
+      "solid-core.guides.styling-components.tailwind",
+      "solid-core.guides.styling-components.tailwind-v3",
+      "solid-core.guides.styling-components.uno",
+      "solid-core.reference.reactive-utilities.get-owner",
+      "solid-core.reference.reactive-utilities.untrack",
+      "solid-meta.solid-meta.reference.meta.use-head",
+      "solid-router.solid-router.concepts.actions",
+      "solid-router.solid-router.concepts.catch-all",
+      "solid-router.solid-router.reference.preload-functions.preload",
+      "solid-start.solid-start.building-your-application.routing",
+      "solid-start.solid-start.reference.config.define-config",
+      "solid-start.solid-start.reference.server.use-server"
+    ],
+    "prop:": [
+      "solid-core.concepts.context"
+    ],
+    "Provider": [
+      "solid-core.concepts.context"
+    ],
+    "utility:": [
+      "solid-core.concepts.context"
+    ],
+    "conditional-rendering": [
+      "solid-core.concepts.control-flow.conditional-rendering"
+    ],
+    "conditionalRendering": [
+      "solid-core.concepts.control-flow.conditional-rendering"
+    ],
+    "when": [
+      "solid-core.concepts.control-flow.conditional-rendering",
+      "solid-core.reference.components.show",
+      "solid-core.reference.components.switch-and-match"
+    ],
+    "component": [
+      "solid-core.concepts.control-flow.dynamic",
+      "solid-router.solid-router.getting-started.component"
+    ],
+    "dynamic": [
+      "solid-core.concepts.control-flow.dynamic",
+      "solid-core.reference.components.dynamic"
+    ],
+    "error-boundary": [
+      "solid-core.concepts.control-flow.error-boundary",
+      "solid-core.reference.components.error-boundary"
+    ],
+    "errorBoundary": [
+      "solid-core.concepts.control-flow.error-boundary",
+      "solid-core.reference.components.error-boundary"
+    ],
+    "fallback": [
+      "solid-core.concepts.control-flow.error-boundary",
+      "solid-core.reference.components.error-boundary",
+      "solid-core.reference.components.for",
+      "solid-core.reference.components.show",
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "reset": [
+      "solid-core.concepts.control-flow.error-boundary",
+      "solid-core.reference.components.error-boundary"
+    ],
+    "setTimeout": [
+      "solid-core.concepts.control-flow.error-boundary",
+      "solid-core.reference.components.error-boundary"
+    ],
+    "each": [
+      "solid-core.concepts.control-flow.list-rendering"
+    ],
+    "list-rendering": [
+      "solid-core.concepts.control-flow.list-rendering"
+    ],
+    "listRendering": [
+      "solid-core.concepts.control-flow.list-rendering"
+    ],
+    "vs": [
+      "solid-core.concepts.control-flow.list-rendering"
+    ],
+    "portal": [
+      "solid-core.concepts.control-flow.portal",
+      "solid-core.reference.components.portal"
+    ],
+    "Using": [
+      "solid-core.concepts.control-flow.portal"
+    ],
+    "derived-signals": [
+      "solid-core.concepts.derived-values.derived-signals"
+    ],
+    "derivedSignals": [
+      "solid-core.concepts.derived-values.derived-signals"
+    ],
+    "createMemo": [
+      "solid-core.concepts.derived-values.memos",
+      "solid-core.reference.basic-reactivity.create-memo",
+      "solid-core.reference.components.error-boundary",
+      "solid-core.reference.lifecycle.on-cleanup"
+    ],
+    "memos": [
+      "solid-core.concepts.derived-values.memos"
+    ],
+    "createEffect": [
+      "solid-core.concepts.effects",
+      "solid-core.reference.basic-reactivity.create-effect",
+      "solid-core.reference.components.error-boundary",
+      "solid-core.reference.lifecycle.on-cleanup"
+    ],
+    "effects": [
+      "solid-core.concepts.effects"
+    ],
+    "While": [
+      "solid-core.concepts.effects"
+    ],
+    "intro-to-reactivity": [
+      "solid-core.concepts.intro-to-reactivity"
+    ],
+    "introToReactivity": [
+      "solid-core.concepts.intro-to-reactivity"
+    ],
+    "This": [
+      "solid-core.concepts.intro-to-reactivity"
+    ],
+    "attribute:": [
+      "solid-core.concepts.refs",
+      "solid-core.configuration.typescript"
+    ],
+    "onMount": [
+      "solid-core.concepts.refs",
+      "solid-core.reference.lifecycle.on-mount"
+    ],
+    "refs": [
+      "solid-core.concepts.refs"
+    ],
+    "signals": [
+      "solid-core.concepts.signals"
+    ],
+    "solid-js": [
+      "solid-core.concepts.signals"
+    ],
+    "stores": [
+      "solid-core.concepts.stores"
+    ],
+    "understanding-jsx": [
+      "solid-core.concepts.understanding-jsx"
+    ],
+    "understandingJsx": [
+      "solid-core.concepts.understanding-jsx"
+    ],
+    "environment-variables": [
+      "solid-core.configuration.environment-variables"
+    ],
+    "environmentVariables": [
+      "solid-core.configuration.environment-variables"
+    ],
+    "VITE_": [
+      "solid-core.configuration.environment-variables"
+    ],
+    "Each": [
+      "solid-core.configuration.typescript"
+    ],
+    "from": [
+      "solid-core.configuration.typescript",
+      "solid-core.guides.styling-components.macaron",
+      "solid-core.reference.reactive-utilities.from",
+      "solid-meta.solid-meta.getting-started.installation-and-setup"
+    ],
+    "in": [
+      "solid-core.configuration.typescript",
+      "solid-start.solid-start.building-your-application.head-and-metadata"
+    ],
+    "is": [
+      "solid-core.configuration.typescript",
+      "solid-core.reference.jsx-attributes.bool",
+      "solid-router.solid-router.concepts.actions"
+    ],
+    "to": [
+      "solid-core.configuration.typescript",
+      "solid-core.guides.styling-components.sass",
+      "solid-core.guides.testing",
+      "solid-core.reference.secondary-primitives.create-selector",
+      "solid-router.solid-router.reference.components.route"
+    ],
+    "typescript": [
+      "solid-core.configuration.typescript"
+    ],
+    "complex-state-management": [
+      "solid-core.guides.complex-state-management"
+    ],
+    "complexStateManagement": [
+      "solid-core.guides.complex-state-management"
+    ],
+    "function:": [
+      "solid-core.guides.complex-state-management"
+    ],
+    "Through": [
+      "solid-core.guides.complex-state-management"
+    ],
+    "deploying-your-app": [
+      "solid-core.guides.deploying-your-app"
+    ],
+    "deployingYourApp": [
+      "solid-core.guides.deploying-your-app"
+    ],
+    "aws-via-flightcontrol": [
+      "solid-core.guides.deployment-options.aws-via-flightcontrol"
+    ],
+    "awsViaFlightcontrol": [
+      "solid-core.guides.deployment-options.aws-via-flightcontrol"
+    ],
+    "dist": [
+      "solid-core.guides.deployment-options.aws-via-flightcontrol",
+      "solid-core.guides.deployment-options.cloudflare",
+      "solid-core.guides.deployment-options.netlify",
+      "solid-core.guides.deployment-options.railway"
+    ],
+    "aws-via-sst": [
+      "solid-core.guides.deployment-options.aws-via-sst"
+    ],
+    "awsViaSst": [
+      "solid-core.guides.deployment-options.aws-via-sst"
+    ],
+    "cloudflare": [
+      "solid-core.guides.deployment-options.cloudflare"
+    ],
+    "NODE_VERSION": [
+      "solid-core.guides.deployment-options.cloudflare"
+    ],
+    "firebase": [
+      "solid-core.guides.deployment-options.firebase"
+    ],
+    "netlify": [
+      "solid-core.guides.deployment-options.netlify"
+    ],
+    "dev": [
+      "solid-core.guides.deployment-options.railway",
+      "solid-core.reference.rendering.dev"
+    ],
+    "railway": [
+      "solid-core.guides.deployment-options.railway"
+    ],
+    "vite": [
+      "solid-core.guides.deployment-options.railway",
+      "solid-start.solid-start.reference.config.define-config"
+    ],
+    "stormkit": [
+      "solid-core.guides.deployment-options.stormkit"
+    ],
+    "vercel": [
+      "solid-core.guides.deployment-options.vercel"
+    ],
+    "Npm": [
+      "solid-core.guides.deployment-options.zerops"
+    ],
+    "Windows": [
+      "solid-core.guides.deployment-options.zerops"
+    ],
+    "zerops": [
+      "solid-core.guides.deployment-options.zerops"
+    ],
+    "boolean": [
+      "solid-core.guides.fetching-data",
+      "solid-core.reference.components.portal",
+      "solid-core.reference.components.show"
+    ],
+    "createResource": [
+      "solid-core.guides.fetching-data",
+      "solid-core.reference.basic-reactivity.create-resource",
+      "solid-core.reference.components.error-boundary",
+      "solid-router.solid-router.reference.data-apis.cache",
+      "solid-router.solid-router.reference.data-apis.create-async",
+      "solid-start.solid-start.building-your-application.data-fetching"
+    ],
+    "error": [
+      "solid-core.guides.fetching-data"
+    ],
+    "errored": [
+      "solid-core.guides.fetching-data",
+      "solid-core.reference.basic-reactivity.create-resource"
+    ],
+    "fetching-data": [
+      "solid-core.guides.fetching-data"
+    ],
+    "fetchingData": [
+      "solid-core.guides.fetching-data"
+    ],
+    "latest": [
+      "solid-core.guides.fetching-data"
+    ],
+    "loading": [
+      "solid-core.guides.fetching-data"
+    ],
+    "pending": [
+      "solid-core.guides.fetching-data",
+      "solid-core.reference.basic-reactivity.create-resource"
+    ],
+    "ready": [
+      "solid-core.guides.fetching-data",
+      "solid-core.reference.basic-reactivity.create-resource"
+    ],
+    "refreshing": [
+      "solid-core.guides.fetching-data",
+      "solid-core.reference.basic-reactivity.create-resource"
+    ],
+    "state": [
+      "solid-core.guides.fetching-data"
+    ],
+    "unresolved": [
+      "solid-core.guides.fetching-data"
+    ],
+    "definition:": [
+      "solid-core.guides.routing-and-navigation"
+    ],
+    "routing-and-navigation": [
+      "solid-core.guides.routing-and-navigation"
+    ],
+    "routingAndNavigation": [
+      "solid-core.guides.routing-and-navigation"
+    ],
+    "state-management": [
+      "solid-core.guides.state-management"
+    ],
+    "stateManagement": [
+      "solid-core.guides.state-management"
+    ],
+    "css-modules": [
+      "solid-core.guides.styling-components.css-modules"
+    ],
+    "cssModules": [
+      "solid-core.guides.styling-components.css-modules"
+    ],
+    "directory:": [
+      "solid-core.guides.styling-components.less"
+    ],
+    "file:": [
+      "solid-core.guides.styling-components.less",
+      "solid-core.guides.styling-components.tailwind",
+      "solid-core.guides.styling-components.tailwind-v3",
+      "solid-core.guides.testing",
+      "solid-start.solid-start.building-your-application.css-and-styling"
+    ],
+    "less": [
+      "solid-core.guides.styling-components.less"
+    ],
+    "key:": [
+      "solid-core.guides.styling-components.macaron"
+    ],
+    "macaron": [
+      "solid-core.guides.styling-components.macaron"
+    ],
+    "sass": [
+      "solid-core.guides.styling-components.sass"
+    ],
+    "tailwind": [
+      "solid-core.guides.styling-components.tailwind"
+    ],
+    "tailwind-v3": [
+      "solid-core.guides.styling-components.tailwind-v3"
+    ],
+    "tailwindV3": [
+      "solid-core.guides.styling-components.tailwind-v3"
+    ],
+    "uno": [
+      "solid-core.guides.styling-components.uno"
+    ],
+    "styling-your-components": [
+      "solid-core.guides.styling-your-components"
+    ],
+    "stylingYourComponents": [
+      "solid-core.guides.styling-your-components"
+    ],
+    "In": [
+      "solid-core.guides.testing"
+    ],
+    "jsdom": [
+      "solid-core.guides.testing"
+    ],
+    "option:": [
+      "solid-core.guides.testing"
+    ],
+    "Running": [
+      "solid-core.guides.testing"
+    ],
+    "testing": [
+      "solid-core.guides.testing"
+    ],
+    "vitest": [
+      "solid-core.guides.testing"
+    ],
+    "index": [
+      "solid-core.index",
+      "solid-meta.solid-meta.index",
+      "solid-router.solid-router.index",
+      "solid-start.solid-start.index"
+    ],
+    "quick-start": [
+      "solid-core.quick-start"
+    ],
+    "quickStart": [
+      "solid-core.quick-start"
+    ],
+    "children": [
+      "solid-core.reference.basic-reactivity.create-effect",
+      "solid-core.reference.component-apis.children",
+      "solid-core.reference.components.dynamic",
+      "solid-core.reference.components.for",
+      "solid-core.reference.components.switch-and-match"
+    ],
+    "create-effect": [
+      "solid-core.reference.basic-reactivity.create-effect"
+    ],
+    "create-memo": [
+      "solid-core.reference.basic-reactivity.create-memo"
+    ],
+    "equals": [
+      "solid-core.reference.basic-reactivity.create-memo"
+    ],
+    "any": [
+      "solid-core.reference.basic-reactivity.create-resource",
+      "solid-core.reference.components.dynamic"
+    ],
+    "create-resource": [
+      "solid-core.reference.basic-reactivity.create-resource"
+    ],
+    "false": [
+      "solid-core.reference.basic-reactivity.create-resource",
+      "solid-router.solid-router.reference.components.a",
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "ResourceActions": [
+      "solid-core.reference.basic-reactivity.create-resource"
+    ],
+    "true": [
+      "solid-core.reference.basic-reactivity.create-resource",
+      "solid-router.solid-router.reference.components.a",
+      "solid-router.solid-router.reference.components.memory-router",
+      "solid-router.solid-router.reference.primitives.use-before-leave"
+    ],
+    "undefined": [
+      "solid-core.reference.basic-reactivity.create-resource",
+      "solid-core.reference.components.suspense-list",
+      "solid-core.reference.components.switch-and-match"
+    ],
+    "create-signal": [
+      "solid-core.reference.basic-reactivity.create-signal"
+    ],
+    "example": [
+      "solid-core.reference.component-apis.children"
+    ],
+    "create-context": [
+      "solid-core.reference.component-apis.create-context"
+    ],
+    "useContext": [
+      "solid-core.reference.component-apis.create-context",
+      "solid-core.reference.component-apis.use-context"
+    ],
+    "create-unique-id": [
+      "solid-core.reference.component-apis.create-unique-id"
+    ],
+    "createUniqueId": [
+      "solid-core.reference.component-apis.create-unique-id"
+    ],
+    "for": [
+      "solid-core.reference.component-apis.create-unique-id",
+      "solid-core.reference.components.for"
+    ],
+    "id": [
+      "solid-core.reference.component-apis.create-unique-id",
+      "solid-start.solid-start.reference.server.get-server-function-meta"
+    ],
+    "isServer": [
+      "solid-core.reference.component-apis.create-unique-id",
+      "solid-core.reference.rendering.is-server"
+    ],
+    "lazy": [
+      "solid-core.reference.component-apis.lazy",
+      "solid-router.solid-router.advanced-concepts.lazy-loading"
+    ],
+    "use-context": [
+      "solid-core.reference.component-apis.use-context"
+    ],
+    "string": [
+      "solid-core.reference.components.dynamic",
+      "solid-core.reference.rendering.render-to-string",
+      "solid-core.reference.rendering.render-to-string-async"
+    ],
+    "err": [
+      "solid-core.reference.components.error-boundary"
+    ],
+    "index-component": [
+      "solid-core.reference.components.index-component"
+    ],
+    "indexComponent": [
+      "solid-core.reference.components.index-component"
+    ],
+    "no-hydration": [
+      "solid-core.reference.components.no-hydration"
+    ],
+    "noHydration": [
+      "solid-core.reference.components.no-hydration"
+    ],
+    "isSVG": [
+      "solid-core.reference.components.portal"
+    ],
+    "Node": [
+      "solid-core.reference.components.portal"
+    ],
+    "useShadow": [
+      "solid-core.reference.components.portal"
+    ],
+    "keyed": [
+      "solid-core.reference.components.show"
+    ],
+    "show": [
+      "solid-core.reference.components.show"
+    ],
+    "Show": [
+      "solid-core.reference.components.suspense"
+    ],
+    "suspense": [
+      "solid-core.reference.components.suspense"
+    ],
+    "Suspense": [
+      "solid-core.reference.components.suspense"
+    ],
+    "revealOrder": [
+      "solid-core.reference.components.suspense-list"
+    ],
+    "suspense-list": [
+      "solid-core.reference.components.suspense-list"
+    ],
+    "suspenseList": [
+      "solid-core.reference.components.suspense-list"
+    ],
+    "tail": [
+      "solid-core.reference.components.suspense-list"
+    ],
+    "Match": [
+      "solid-core.reference.components.switch-and-match"
+    ],
+    "switch-and-match": [
+      "solid-core.reference.components.switch-and-match"
+    ],
+    "switchAndMatch": [
+      "solid-core.reference.components.switch-and-match"
+    ],
+    "attr": [
+      "solid-core.reference.jsx-attributes.attr"
+    ],
+    "attribute": [
+      "solid-core.reference.jsx-attributes.bool"
+    ],
+    "bool": [
+      "solid-core.reference.jsx-attributes.bool"
+    ],
+    "falsy": [
+      "solid-core.reference.jsx-attributes.bool"
+    ],
+    "truthy": [
+      "solid-core.reference.jsx-attributes.bool"
+    ],
+    "classlist": [
+      "solid-core.reference.jsx-attributes.classlist"
+    ],
+    "classList": [
+      "solid-core.reference.jsx-attributes.classlist"
+    ],
+    "innerhtml": [
+      "solid-core.reference.jsx-attributes.innerhtml"
+    ],
+    "innerHTML": [
+      "solid-core.reference.jsx-attributes.innerhtml",
+      "solid-start.solid-start.guides.security"
+    ],
+    "on-": [
+      "solid-core.reference.jsx-attributes.on-star"
+    ],
+    "onclick": [
+      "solid-core.reference.jsx-attributes.on-star"
+    ],
+    "onClick": [
+      "solid-core.reference.jsx-attributes.on-star"
+    ],
+    "once": [
+      "solid-core.reference.jsx-attributes.once"
+    ],
+    "prop": [
+      "solid-core.reference.jsx-attributes.prop",
+      "solid-core.reference.reactive-utilities.untrack"
+    ],
+    "ref": [
+      "solid-core.reference.jsx-attributes.ref",
+      "solid-core.reference.jsx-attributes.use"
+    ],
+    "textcontent": [
+      "solid-core.reference.jsx-attributes.textcontent"
+    ],
+    "textContent": [
+      "solid-core.reference.jsx-attributes.textcontent"
+    ],
+    "interface": [
+      "solid-core.reference.jsx-attributes.use"
+    ],
+    "use": [
+      "solid-core.reference.jsx-attributes.use"
+    ],
+    "createRoot": [
+      "solid-core.reference.lifecycle.on-cleanup",
+      "solid-core.reference.reactive-utilities.create-root"
+    ],
+    "on-cleanup": [
+      "solid-core.reference.lifecycle.on-cleanup"
+    ],
+    "onCleanup": [
+      "solid-core.reference.lifecycle.on-cleanup"
+    ],
+    "on-mount": [
+      "solid-core.reference.lifecycle.on-mount"
+    ],
+    "batch": [
+      "solid-core.reference.reactive-utilities.batch",
+      "solid-core.reference.store-utilities.modify-mutable"
+    ],
+    "catch-error": [
+      "solid-core.reference.reactive-utilities.catch-error"
+    ],
+    "catchError": [
+      "solid-core.reference.reactive-utilities.catch-error"
+    ],
+    "create-root": [
+      "solid-core.reference.reactive-utilities.create-root"
+    ],
+    "get-owner": [
+      "solid-core.reference.reactive-utilities.get-owner"
+    ],
+    "getOwner": [
+      "solid-core.reference.reactive-utilities.get-owner"
+    ],
+    "index-array": [
+      "solid-core.reference.reactive-utilities.index-array"
+    ],
+    "indexArray": [
+      "solid-core.reference.reactive-utilities.index-array"
+    ],
+    "map-array": [
+      "solid-core.reference.reactive-utilities.map-array"
+    ],
+    "mapArray": [
+      "solid-core.reference.reactive-utilities.map-array"
+    ],
+    "merge-props": [
+      "solid-core.reference.reactive-utilities.merge-props"
+    ],
+    "mergeProps": [
+      "solid-core.reference.reactive-utilities.merge-props"
+    ],
+    "observable": [
+      "solid-core.reference.reactive-utilities.observable"
+    ],
+    "on-util": [
+      "solid-core.reference.reactive-utilities.on-util"
+    ],
+    "onUtil": [
+      "solid-core.reference.reactive-utilities.on-util"
+    ],
+    "run-with-owner": [
+      "solid-core.reference.reactive-utilities.run-with-owner"
+    ],
+    "runWithOwner": [
+      "solid-core.reference.reactive-utilities.run-with-owner"
+    ],
+    "Because": [
+      "solid-core.reference.reactive-utilities.split-props"
+    ],
+    "split-props": [
+      "solid-core.reference.reactive-utilities.split-props"
+    ],
+    "splitProps": [
+      "solid-core.reference.reactive-utilities.split-props"
+    ],
+    "start-transition": [
+      "solid-core.reference.reactive-utilities.start-transition"
+    ],
+    "startTransition": [
+      "solid-core.reference.reactive-utilities.start-transition"
+    ],
+    "untrack": [
+      "solid-core.reference.reactive-utilities.untrack"
+    ],
+    "use-transition": [
+      "solid-core.reference.reactive-utilities.use-transition"
+    ],
+    "useTransition": [
+      "solid-core.reference.reactive-utilities.use-transition"
+    ],
+    "hydrate": [
+      "solid-core.reference.rendering.hydrate",
+      "solid-start.solid-start.reference.client.mount"
+    ],
+    "hydration-script": [
+      "solid-core.reference.rendering.hydration-script"
+    ],
+    "hydrationScript": [
+      "solid-core.reference.rendering.hydration-script"
+    ],
+    "is-server": [
+      "solid-core.reference.rendering.is-server"
+    ],
+    "render": [
+      "solid-core.reference.rendering.render",
+      "solid-start.solid-start.reference.client.mount"
+    ],
+    "render-to-stream": [
+      "solid-core.reference.rendering.render-to-stream"
+    ],
+    "renderToStream": [
+      "solid-core.reference.rendering.render-to-stream",
+      "solid-start.solid-start.reference.server.create-handler"
+    ],
+    "render-to-string": [
+      "solid-core.reference.rendering.render-to-string"
+    ],
+    "renderId": [
+      "solid-core.reference.rendering.render-to-string",
+      "solid-core.reference.rendering.render-to-string-async"
+    ],
+    "renderToString": [
+      "solid-core.reference.rendering.render-to-string",
+      "solid-start.solid-start.reference.server.create-handler"
+    ],
+    "nonce": [
+      "solid-core.reference.rendering.render-to-string-async"
+    ],
+    "number": [
+      "solid-core.reference.rendering.render-to-string-async"
+    ],
+    "render-to-string-async": [
+      "solid-core.reference.rendering.render-to-string-async"
+    ],
+    "renderToStringAsync": [
+      "solid-core.reference.rendering.render-to-string-async",
+      "solid-start.solid-start.reference.server.create-handler"
+    ],
+    "create-computed": [
+      "solid-core.reference.secondary-primitives.create-computed"
+    ],
+    "createComputed": [
+      "solid-core.reference.secondary-primitives.create-computed"
+    ],
+    "create-deferred": [
+      "solid-core.reference.secondary-primitives.create-deferred"
+    ],
+    "createDeferred": [
+      "solid-core.reference.secondary-primitives.create-deferred"
+    ],
+    "create-reaction": [
+      "solid-core.reference.secondary-primitives.create-reaction"
+    ],
+    "createReaction": [
+      "solid-core.reference.secondary-primitives.create-reaction"
+    ],
+    "create-render-effect": [
+      "solid-core.reference.secondary-primitives.create-render-effect"
+    ],
+    "createRenderEffect": [
+      "solid-core.reference.secondary-primitives.create-render-effect"
+    ],
+    "create-selector": [
+      "solid-core.reference.secondary-primitives.create-selector"
+    ],
+    "createSelector": [
+      "solid-core.reference.secondary-primitives.create-selector"
+    ],
+    "fn": [
+      "solid-core.reference.secondary-primitives.create-selector"
+    ],
+    "get-request-event": [
+      "solid-core.reference.server-utilities.get-request-event"
+    ],
+    "getRequestEvent": [
+      "solid-core.reference.server-utilities.get-request-event",
+      "solid-start.solid-start.advanced.request-events"
+    ],
+    "RequestEvent": [
+      "solid-core.reference.server-utilities.get-request-event"
+    ],
+    "create-mutable": [
+      "solid-core.reference.store-utilities.create-mutable"
+    ],
+    "createMutable": [
+      "solid-core.reference.store-utilities.create-mutable",
+      "solid-core.reference.store-utilities.modify-mutable"
+    ],
+    "create-store": [
+      "solid-core.reference.store-utilities.create-store"
+    ],
+    "createStore": [
+      "solid-core.reference.store-utilities.create-store"
+    ],
+    "modify-mutable": [
+      "solid-core.reference.store-utilities.modify-mutable"
+    ],
+    "modifyMutable": [
+      "solid-core.reference.store-utilities.modify-mutable"
+    ],
+    "produce": [
+      "solid-core.reference.store-utilities.produce"
+    ],
+    "reconcile": [
+      "solid-core.reference.store-utilities.reconcile"
+    ],
+    "unwrap": [
+      "solid-core.reference.store-utilities.unwrap"
+    ],
+    "client-setup": [
+      "solid-meta.solid-meta.getting-started.client-setup"
+    ],
+    "clientSetup": [
+      "solid-meta.solid-meta.getting-started.client-setup"
+    ],
+    "installation-and-setup": [
+      "solid-meta.solid-meta.getting-started.installation-and-setup",
+      "solid-router.solid-router.getting-started.installation-and-setup"
+    ],
+    "installationAndSetup": [
+      "solid-meta.solid-meta.getting-started.installation-and-setup",
+      "solid-router.solid-router.getting-started.installation-and-setup"
+    ],
+    "MetaProvider": [
+      "solid-meta.solid-meta.getting-started.server-setup",
+      "solid-meta.solid-meta.reference.meta.metaprovider",
+      "solid-meta.solid-meta.reference.meta.use-head"
+    ],
+    "server-setup": [
+      "solid-meta.solid-meta.getting-started.server-setup"
+    ],
+    "serverSetup": [
+      "solid-meta.solid-meta.getting-started.server-setup"
+    ],
+    "base": [
+      "solid-meta.solid-meta.reference.meta.base"
+    ],
+    "Base": [
+      "solid-meta.solid-meta.reference.meta.base"
+    ],
+    "head": [
+      "solid-meta.solid-meta.reference.meta.base",
+      "solid-meta.solid-meta.reference.meta.style",
+      "solid-start.solid-start.building-your-application.head-and-metadata"
+    ],
+    "tag": [
+      "solid-meta.solid-meta.reference.meta.base",
+      "solid-meta.solid-meta.reference.meta.meta"
+    ],
+    "link": [
+      "solid-meta.solid-meta.reference.meta.link"
+    ],
+    "meta": [
+      "solid-meta.solid-meta.reference.meta.meta"
+    ],
+    "metaprovider": [
+      "solid-meta.solid-meta.reference.meta.metaprovider"
+    ],
+    "Style": [
+      "solid-meta.solid-meta.reference.meta.style"
+    ],
+    "title": [
+      "solid-meta.solid-meta.reference.meta.title"
+    ],
+    "Title": [
+      "solid-meta.solid-meta.reference.meta.title"
+    ],
+    "use-head": [
+      "solid-meta.solid-meta.reference.meta.use-head"
+    ],
+    "useHead": [
+      "solid-meta.solid-meta.reference.meta.use-head"
+    ],
+    "lazy-loading": [
+      "solid-router.solid-router.advanced-concepts.lazy-loading"
+    ],
+    "lazyLoading": [
+      "solid-router.solid-router.advanced-concepts.lazy-loading"
+    ],
+    "preload": [
+      "solid-router.solid-router.advanced-concepts.preloading",
+      "solid-router.solid-router.data-fetching.how-to.preload-data",
+      "solid-router.solid-router.reference.preload-functions.preload"
+    ],
+    "preloading": [
+      "solid-router.solid-router.advanced-concepts.preloading"
+    ],
+    "usePreloadRoute": [
+      "solid-router.solid-router.advanced-concepts.preloading",
+      "solid-router.solid-router.reference.primitives.use-preload-route"
+    ],
+    "action": [
+      "solid-router.solid-router.concepts.actions",
+      "solid-router.solid-router.reference.data-apis.action",
+      "solid-start.solid-start.advanced.return-responses",
+      "solid-start.solid-start.guides.data-mutation"
+    ],
+    "actions": [
+      "solid-router.solid-router.concepts.actions"
+    ],
+    "queries": [
+      "solid-router.solid-router.concepts.actions",
+      "solid-router.solid-router.data-fetching.queries"
+    ],
+    "receives": [
+      "solid-router.solid-router.concepts.actions"
+    ],
+    "alternative-routers": [
+      "solid-router.solid-router.concepts.alternative-routers"
+    ],
+    "alternativeRouters": [
+      "solid-router.solid-router.concepts.alternative-routers"
+    ],
+    "catch-all": [
+      "solid-router.solid-router.concepts.catch-all"
+    ],
+    "catchAll": [
+      "solid-router.solid-router.concepts.catch-all"
+    ],
+    "layouts": [
+      "solid-router.solid-router.concepts.layouts"
+    ],
+    "root": [
+      "solid-router.solid-router.concepts.layouts",
+      "solid-router.solid-router.reference.components.hash-router",
+      "solid-router.solid-router.reference.components.router"
+    ],
+    "Router": [
+      "solid-router.solid-router.concepts.layouts",
+      "solid-router.solid-router.reference.components.hash-router",
+      "solid-router.solid-router.reference.components.router",
+      "solid-start.solid-start.building-your-application.routing"
+    ],
+    "navigation": [
+      "solid-router.solid-router.concepts.navigation"
+    ],
+    "redirect": [
+      "solid-router.solid-router.concepts.navigation",
+      "solid-router.solid-router.reference.response-helpers.redirect",
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "useNavigate": [
+      "solid-router.solid-router.concepts.navigation",
+      "solid-router.solid-router.reference.primitives.use-navigate"
+    ],
+    "nesting": [
+      "solid-router.solid-router.concepts.nesting"
+    ],
+    "path-parameters": [
+      "solid-router.solid-router.concepts.path-parameters"
+    ],
+    "pathParameters": [
+      "solid-router.solid-router.concepts.path-parameters"
+    ],
+    "search-parameters": [
+      "solid-router.solid-router.concepts.search-parameters"
+    ],
+    "searchParameters": [
+      "solid-router.solid-router.concepts.search-parameters"
+    ],
+    "useSearchParams": [
+      "solid-router.solid-router.concepts.search-parameters",
+      "solid-router.solid-router.reference.primitives.use-search-params"
+    ],
+    "createAsync": [
+      "solid-router.solid-router.data-fetching.how-to.handle-error-and-loading-states",
+      "solid-router.solid-router.data-fetching.how-to.preload-data",
+      "solid-router.solid-router.reference.data-apis.cache",
+      "solid-router.solid-router.reference.data-apis.create-async",
+      "solid-router.solid-router.reference.data-apis.query",
+      "solid-start.solid-start.guides.data-fetching"
+    ],
+    "handle-error-and-loading-states": [
+      "solid-router.solid-router.data-fetching.how-to.handle-error-and-loading-states"
+    ],
+    "handleErrorAndLoadingStates": [
+      "solid-router.solid-router.data-fetching.how-to.handle-error-and-loading-states"
+    ],
+    "preload-data": [
+      "solid-router.solid-router.data-fetching.how-to.preload-data"
+    ],
+    "preloadData": [
+      "solid-router.solid-router.data-fetching.how-to.preload-data"
+    ],
+    "Route": [
+      "solid-router.solid-router.data-fetching.how-to.preload-data",
+      "solid-router.solid-router.getting-started.component",
+      "solid-router.solid-router.guides.migration",
+      "solid-router.solid-router.reference.components.route",
+      "solid-start.solid-start.building-your-application.routing",
+      "solid-start.solid-start.reference.routing.file-routes"
+    ],
+    "triggers": [
+      "solid-router.solid-router.data-fetching.how-to.preload-data"
+    ],
+    "query": [
+      "solid-router.solid-router.data-fetching.queries",
+      "solid-router.solid-router.reference.data-apis.query",
+      "solid-start.solid-start.advanced.return-responses",
+      "solid-start.solid-start.guides.data-fetching"
+    ],
+    "key": [
+      "solid-router.solid-router.data-fetching.revalidation"
+    ],
+    "keyFor": [
+      "solid-router.solid-router.data-fetching.revalidation"
+    ],
+    "revalidate": [
+      "solid-router.solid-router.data-fetching.revalidation",
+      "solid-router.solid-router.reference.data-apis.revalidate"
+    ],
+    "revalidation": [
+      "solid-router.solid-router.data-fetching.revalidation"
+    ],
+    "streaming": [
+      "solid-router.solid-router.data-fetching.streaming"
+    ],
+    "component:": [
+      "solid-router.solid-router.getting-started.config"
+    ],
+    "config": [
+      "solid-router.solid-router.getting-started.config"
+    ],
+    "data": [
+      "solid-router.solid-router.guides.migration"
+    ],
+    "migration": [
+      "solid-router.solid-router.guides.migration"
+    ],
+    "typeof": [
+      "solid-router.solid-router.guides.migration"
+    ],
+    "useRouteData": [
+      "solid-router.solid-router.guides.migration"
+    ],
+    "useRoutes": [
+      "solid-router.solid-router.guides.migration"
+    ],
+    "a": [
+      "solid-router.solid-router.reference.components.a"
+    ],
+    "active": [
+      "solid-router.solid-router.reference.components.a"
+    ],
+    "end": [
+      "solid-router.solid-router.reference.components.a"
+    ],
+    "href": [
+      "solid-router.solid-router.reference.components.a",
+      "solid-router.solid-router.reference.components.navigate"
+    ],
+    "inactive": [
+      "solid-router.solid-router.reference.components.a"
+    ],
+    "hash-router": [
+      "solid-router.solid-router.reference.components.hash-router"
+    ],
+    "hashRouter": [
+      "solid-router.solid-router.reference.components.hash-router"
+    ],
+    "HashRouter": [
+      "solid-router.solid-router.reference.components.hash-router"
+    ],
+    "proptypedescriptionchildren": [
+      "solid-router.solid-router.reference.components.hash-router",
+      "solid-router.solid-router.reference.components.router"
+    ],
+    "back": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "forward": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "go": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "listen": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "memory-router": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "MemoryHistory": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "memoryRouter": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "MemoryRouter": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "MethodSignatureDescription": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "replace": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "RouteDefinition": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "scroll": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "set": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "value": [
+      "solid-router.solid-router.reference.components.memory-router"
+    ],
+    "navigate": [
+      "solid-router.solid-router.reference.components.navigate"
+    ],
+    "Navigate": [
+      "solid-router.solid-router.reference.components.navigate"
+    ],
+    "definitionspreload": [
+      "solid-router.solid-router.reference.components.route"
+    ],
+    "Nested": [
+      "solid-router.solid-router.reference.components.route"
+    ],
+    "route": [
+      "solid-router.solid-router.reference.components.route",
+      "solid-start.solid-start.reference.routing.file-routes"
+    ],
+    "router": [
+      "solid-router.solid-router.reference.components.router"
+    ],
+    "useSubmission": [
+      "solid-router.solid-router.reference.data-apis.action",
+      "solid-router.solid-router.reference.data-apis.use-submission"
+    ],
+    "useSubmissions": [
+      "solid-router.solid-router.reference.data-apis.action",
+      "solid-router.solid-router.reference.data-apis.use-submissions"
+    ],
+    "cache": [
+      "solid-router.solid-router.reference.data-apis.cache"
+    ],
+    "name": [
+      "solid-router.solid-router.reference.data-apis.cache"
+    ],
+    "create-async": [
+      "solid-router.solid-router.reference.data-apis.create-async"
+    ],
+    "create-async-store": [
+      "solid-router.solid-router.reference.data-apis.create-async-store"
+    ],
+    "createAsyncStore": [
+      "solid-router.solid-router.reference.data-apis.create-async-store"
+    ],
+    "When": [
+      "solid-router.solid-router.reference.data-apis.revalidate",
+      "solid-router.solid-router.reference.primitives.use-preload-route",
+      "solid-start.solid-start.reference.server.use-server"
+    ],
+    "use-action": [
+      "solid-router.solid-router.reference.data-apis.use-action"
+    ],
+    "useAction": [
+      "solid-router.solid-router.reference.data-apis.use-action"
+    ],
+    "use-submission": [
+      "solid-router.solid-router.reference.data-apis.use-submission"
+    ],
+    "use-submissions": [
+      "solid-router.solid-router.reference.data-apis.use-submissions"
+    ],
+    "use-before-leave": [
+      "solid-router.solid-router.reference.primitives.use-before-leave"
+    ],
+    "useBeforeLeave": [
+      "solid-router.solid-router.reference.primitives.use-before-leave"
+    ],
+    "use-current-matches": [
+      "solid-router.solid-router.reference.primitives.use-current-matches"
+    ],
+    "useCurrentMatches": [
+      "solid-router.solid-router.reference.primitives.use-current-matches"
+    ],
+    "use-is-routing": [
+      "solid-router.solid-router.reference.primitives.use-is-routing"
+    ],
+    "useIsRouting": [
+      "solid-router.solid-router.reference.primitives.use-is-routing"
+    ],
+    "use-location": [
+      "solid-router.solid-router.reference.primitives.use-location"
+    ],
+    "useLocation": [
+      "solid-router.solid-router.reference.primitives.use-location"
+    ],
+    "use-match": [
+      "solid-router.solid-router.reference.primitives.use-match"
+    ],
+    "useMatch": [
+      "solid-router.solid-router.reference.primitives.use-match"
+    ],
+    "use-navigate": [
+      "solid-router.solid-router.reference.primitives.use-navigate"
+    ],
+    "use-params": [
+      "solid-router.solid-router.reference.primitives.use-params"
+    ],
+    "useParams": [
+      "solid-router.solid-router.reference.primitives.use-params"
+    ],
+    "use-preload-route": [
+      "solid-router.solid-router.reference.primitives.use-preload-route"
+    ],
+    "use-search-params": [
+      "solid-router.solid-router.reference.primitives.use-search-params"
+    ],
+    "json": [
+      "solid-router.solid-router.reference.response-helpers.json",
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "Response": [
+      "solid-router.solid-router.reference.response-helpers.json",
+      "solid-router.solid-router.reference.response-helpers.redirect",
+      "solid-router.solid-router.reference.response-helpers.reload"
+    ],
+    "reload": [
+      "solid-router.solid-router.reference.response-helpers.reload",
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "spa": [
+      "solid-router.solid-router.rendering-modes.spa"
+    ],
+    "ssr": [
+      "solid-router.solid-router.rendering-modes.ssr"
+    ],
+    "auth": [
+      "solid-start.solid-start.advanced.auth"
+    ],
+    "Cache-Control": [
+      "solid-start.solid-start.advanced.middleware"
+    ],
+    "Content-Security-Policy": [
+      "solid-start.solid-start.advanced.middleware",
+      "solid-start.solid-start.guides.security"
+    ],
+    "createMiddleware": [
+      "solid-start.solid-start.advanced.middleware",
+      "solid-start.solid-start.reference.server.create-middleware"
+    ],
+    "middleware": [
+      "solid-start.solid-start.advanced.middleware",
+      "solid-start.solid-start.reference.server.create-middleware"
+    ],
+    "request-events": [
+      "solid-start.solid-start.advanced.request-events"
+    ],
+    "requestEvents": [
+      "solid-start.solid-start.advanced.request-events"
+    ],
+    "hello": [
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "return": [
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "return-responses": [
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "returnResponses": [
+      "solid-start.solid-start.advanced.return-responses"
+    ],
+    "solid-router": [
+      "solid-start.solid-start.advanced.return-responses",
+      "solid-start.solid-start.building-your-application.routing",
+      "solid-start.solid-start.reference.routing.file-routes"
+    ],
+    "clearSession": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "Cookie": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "getSession": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "Max-Age": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "session": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "Set-Cookie": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "updateSession": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "useSession": [
+      "solid-start.solid-start.advanced.session"
+    ],
+    "websocket": [
+      "solid-start.solid-start.advanced.websocket"
+    ],
+    "Accept": [
+      "solid-start.solid-start.building-your-application.api-routes"
+    ],
+    "api": [
+      "solid-start.solid-start.building-your-application.api-routes"
+    ],
+    "api-routes": [
+      "solid-start.solid-start.building-your-application.api-routes"
+    ],
+    "apiRoutes": [
+      "solid-start.solid-start.building-your-application.api-routes"
+    ],
+    "GET": [
+      "solid-start.solid-start.building-your-application.api-routes",
+      "solid-start.solid-start.reference.server.get"
+    ],
+    "css-and-styling": [
+      "solid-start.solid-start.building-your-application.css-and-styling"
+    ],
+    "cssAndStyling": [
+      "solid-start.solid-start.building-your-application.css-and-styling"
+    ],
+    "data-fetching": [
+      "solid-start.solid-start.building-your-application.data-fetching",
+      "solid-start.solid-start.guides.data-fetching"
+    ],
+    "dataFetching": [
+      "solid-start.solid-start.building-your-application.data-fetching",
+      "solid-start.solid-start.guides.data-fetching"
+    ],
+    "data-mutation": [
+      "solid-start.solid-start.building-your-application.data-mutation",
+      "solid-start.solid-start.guides.data-mutation"
+    ],
+    "dataMutation": [
+      "solid-start.solid-start.building-your-application.data-mutation",
+      "solid-start.solid-start.guides.data-mutation"
+    ],
+    "head-and-metadata": [
+      "solid-start.solid-start.building-your-application.head-and-metadata"
+    ],
+    "headAndMetadata": [
+      "solid-start.solid-start.building-your-application.head-and-metadata"
+    ],
+    "option": [
+      "solid-start.solid-start.building-your-application.route-prerendering"
+    ],
+    "route-prerendering": [
+      "solid-start.solid-start.building-your-application.route-prerendering"
+    ],
+    "routePrerendering": [
+      "solid-start.solid-start.building-your-application.route-prerendering"
+    ],
+    "routes": [
+      "solid-start.solid-start.building-your-application.route-prerendering",
+      "solid-start.solid-start.building-your-application.routing"
+    ],
+    "routing": [
+      "solid-start.solid-start.building-your-application.routing"
+    ],
+    "the": [
+      "solid-start.solid-start.building-your-application.routing"
+    ],
+    "static-assets": [
+      "solid-start.solid-start.building-your-application.static-assets"
+    ],
+    "staticAssets": [
+      "solid-start.solid-start.building-your-application.static-assets"
+    ],
+    "getting-started": [
+      "solid-start.solid-start.getting-started"
+    ],
+    "gettingStarted": [
+      "solid-start.solid-start.getting-started"
+    ],
+    "FormData": [
+      "solid-start.solid-start.guides.data-mutation"
+    ],
+    "method:": [
+      "solid-start.solid-start.guides.data-mutation"
+    ],
+    "post": [
+      "solid-start.solid-start.guides.data-mutation"
+    ],
+    "crypto": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "javascript:": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "locals": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "onRequest": [
+      "solid-start.solid-start.guides.security",
+      "solid-start.solid-start.reference.server.create-middleware"
+    ],
+    "origin": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "protocol": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "randomBytes": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "security": [
+      "solid-start.solid-start.guides.security"
+    ],
+    "public": [
+      "solid-start.solid-start.guides.service-workers"
+    ],
+    "service-workers": [
+      "solid-start.solid-start.guides.service-workers"
+    ],
+    "serviceWorkers": [
+      "solid-start.solid-start.guides.service-workers"
+    ],
+    "client-only": [
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "clientOnly": [
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "options": [
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "window": [
+      "solid-start.solid-start.reference.client.client-only"
+    ],
+    "mount": [
+      "solid-start.solid-start.reference.client.mount",
+      "solid-start.solid-start.reference.client.start-client",
+      "solid-start.solid-start.reference.entrypoints.entry-client"
+    ],
+    "start-client": [
+      "solid-start.solid-start.reference.client.start-client"
+    ],
+    "startClient": [
+      "solid-start.solid-start.reference.client.start-client"
+    ],
+    "StartClient": [
+      "solid-start.solid-start.reference.client.start-client"
+    ],
+    "define-config": [
+      "solid-start.solid-start.reference.config.define-config"
+    ],
+    "defineConfig": [
+      "solid-start.solid-start.reference.config.define-config",
+      "solid-start.solid-start.reference.entrypoints.app-config"
+    ],
+    "Within": [
+      "solid-start.solid-start.reference.config.define-config"
+    ],
+    "app": [
+      "solid-start.solid-start.reference.entrypoints.app"
+    ],
+    "App": [
+      "solid-start.solid-start.reference.entrypoints.app"
+    ],
+    "FileRouter": [
+      "solid-start.solid-start.reference.entrypoints.app"
+    ],
+    "app-config": [
+      "solid-start.solid-start.reference.entrypoints.app-config"
+    ],
+    "appConfig": [
+      "solid-start.solid-start.reference.entrypoints.app-config"
+    ],
+    "entry-client": [
+      "solid-start.solid-start.reference.entrypoints.entry-client"
+    ],
+    "entryClient": [
+      "solid-start.solid-start.reference.entrypoints.entry-client"
+    ],
+    "createHandler": [
+      "solid-start.solid-start.reference.entrypoints.entry-server",
+      "solid-start.solid-start.reference.server.create-handler",
+      "solid-start.solid-start.reference.server.start-server"
+    ],
+    "entry-server": [
+      "solid-start.solid-start.reference.entrypoints.entry-server"
+    ],
+    "entryServer": [
+      "solid-start.solid-start.reference.entrypoints.entry-server"
+    ],
+    "file-routes": [
+      "solid-start.solid-start.reference.routing.file-routes"
+    ],
+    "fileRoutes": [
+      "solid-start.solid-start.reference.routing.file-routes"
+    ],
+    "FileRoutes": [
+      "solid-start.solid-start.reference.routing.file-routes"
+    ],
+    "create-handler": [
+      "solid-start.solid-start.reference.server.create-handler"
+    ],
+    "mode": [
+      "solid-start.solid-start.reference.server.create-handler"
+    ],
+    "create-middleware": [
+      "solid-start.solid-start.reference.server.create-middleware"
+    ],
+    "onBeforeResponse": [
+      "solid-start.solid-start.reference.server.create-middleware"
+    ],
+    "get": [
+      "solid-start.solid-start.reference.server.get"
+    ],
+    "get-server-function-meta": [
+      "solid-start.solid-start.reference.server.get-server-function-meta"
+    ],
+    "getServerFunctionMeta": [
+      "solid-start.solid-start.reference.server.get-server-function-meta"
+    ],
+    "http-header": [
+      "solid-start.solid-start.reference.server.http-header"
+    ],
+    "httpHeader": [
+      "solid-start.solid-start.reference.server.http-header"
+    ],
+    "HttpHeader": [
+      "solid-start.solid-start.reference.server.http-header"
+    ],
+    "http-status-code": [
+      "solid-start.solid-start.reference.server.http-status-code"
+    ],
+    "httpStatusCode": [
+      "solid-start.solid-start.reference.server.http-status-code"
+    ],
+    "HttpStatusCode": [
+      "solid-start.solid-start.reference.server.http-status-code"
+    ],
+    "start-server": [
+      "solid-start.solid-start.reference.server.start-server"
+    ],
+    "startServer": [
+      "solid-start.solid-start.reference.server.start-server"
+    ],
+    "StartServer": [
+      "solid-start.solid-start.reference.server.start-server"
+    ],
+    "use-server": [
+      "solid-start.solid-start.reference.server.use-server"
+    ],
+    "useServer": [
+      "solid-start.solid-start.reference.server.use-server"
+    ]
+  }
+}

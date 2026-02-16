@@ -1,0 +1,100 @@
+# HttpStatusCode
+
+`HttpStatusCode` sets the HTTP status code for the page response while server-side rendering.
+
+```
+import { HttpStatusCode } from "@solidjs/start";
+
+<HttpStatusCode code={404} />;
+```
+* * *
+
+## Setting a 404 status code for the unmatched routes
+
+As a page is rendered, you may want to set the status code to the `Response` depending on what happens. The `HttpStatusCode` component does this for you by taking the `code` passed in and setting it to the `Response` status in the browser.
+
+Since `HttpStatusCode` is just a component, it can be used with [`ErrorBoundary`](../../../reference/components/error-boundary.md), [`Show`](../../../reference/components/show.md), [`Switch`](../../../reference/components/switch-and-match.md) or any of the other JSX control-flow components. This means the same logic used when deciding what to render can inform what status code you are setting, allowing that logic to sit together.
+
+Status codes are important tools for things like caching and SEO, so it is a good practice to send meaningful status codes. For example, for a `NotFound` page, you should send a `404` status code.
+
+```
+import { HttpStatusCode } from "@solidjs/start";
+
+export default function NotFound() {
+
+  return (
+
+    <div>
+
+      <HttpStatusCode code={404} />
+
+      <h1>Page not found</h1>
+
+    </div>
+
+  );
+
+}
+```
+* * *
+
+## Setting a 404 status code for missing pages for dynamic routes
+
+When using dynamic params in routes, setting a 404 status code if the given parameter for a segment points to a missing resource is important. Usually, the param is discovered to be missing when doing an async request with that parameter.
+
+Errors can be thrown from inside these fetchers and caught by the nearest [`<ErrorBoundary>`](../../../reference/components/error-boundary.md) component from where the data is accessed. `<HttpStatusCode>` pairs very well with error boundaries because you can inspect the error in the ErrorBoundary's fallback. If the fetcher throws an error indicating the data was not found, you can render `<HttpStatusCode code={404} />`.
+
+Note that when streaming responses [`renderStream`](../../../reference/rendering/render-to-stream.md), the HTTP Status can only be included if added *before* the stream first flushed. It is important to add `deferStream` to any resources calls that need to be loaded before responding.
+
+```
+import { Show, ErrorBoundary } from "solid-js";
+
+import { query, createAsync } from "@solidjs/router";
+
+import { HttpStatusCode } from "@solidjs/start";
+
+const getHouse = query(async (house: string) => {
+
+  if (house != "gryffindor") {
+
+    throw new Error("House not found");
+
+  }
+
+  return house;
+
+}, "house");
+
+export default function House(props: { name: string }) {
+
+  const house = createAsync(() => getHouse(props.name), { deferStream: true });
+
+  return (
+
+    <ErrorBoundary
+
+      fallback={(e) => (
+
+        <Show when={e.message === "House not found"}>
+
+          <HttpStatusCode code={404} />
+
+        </Show>
+
+      )}
+
+    >
+
+      <div>{house()}</div>
+
+    </ErrorBoundary>
+
+  );
+
+}
+```
+* * *
+
+## Parameters
+
+PropertyTypeDescriptioncodenumberThe HTTP status code

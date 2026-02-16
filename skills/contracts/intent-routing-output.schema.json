@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidjskills.dev/contracts/intent-routing-output.schema.json",
+  "title": "IntentRoutingOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary",
+    "primary_skill",
+    "secondary_skill",
+    "confidence",
+    "rationale",
+    "validation_commands",
+    "citations"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 15
+    },
+    "primary_skill": {
+      "type": "string",
+      "minLength": 3
+    },
+    "secondary_skill": {
+      "type": "string",
+      "minLength": 3
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "rationale": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/citation"
+      }
+    }
+  },
+  "definitions": {
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doc_id",
+        "claim"
+      ],
+      "properties": {
+        "doc_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    }
+  }
+}

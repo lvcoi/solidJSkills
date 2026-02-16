@@ -1,63 +1,77 @@
 # solidJSkills
 
-A SolidJS-first repository for **agent-ready skills, tools, guides, and standards** used to build, refactor, review, scaffold, and bootstrap SolidJS codebases.
+A SolidJS-first repository for deterministic agent skills, references, and tooling.
 
 ## Mission
 
-Provide a practical, reusable operating system for SolidJS engineering work:
+Provide a practical operating system for SolidJS engineering work with strict contracts:
 
-1. Build consistent, high-quality SolidJS components.
-2. Refactor safely with reactivity correctness and performance in mind.
-3. Review code against SolidJS-specific quality gates.
-4. Scaffold and bootstrap new SolidJS projects with predictable defaults.
-5. Keep an agent-facing workflow (`SKILL.md`) aligned with real SolidJS practices.
+1. Build high-quality SolidJS components.
+2. Refactor safely with explicit invariants.
+3. Review changes with prioritized findings.
+4. Scaffold projects with predictable defaults.
+5. Route intent consistently across Solid core, Router, SolidStart, and solid-meta.
 
-## v1 Repository Blueprint
+Blueprint:
 
-- Core blueprint: `guides/solidjs-v1-blueprint.md`
-- Agent standards: `AGENTS.md`
-- Shared SolidJS reference pack: `references/solidjs/`
-- SolidJS skills:
-  - `skills/solid-component-builder/`
-  - `skills/solid-refactor-assistant/`
-  - `skills/solid-reviewer/`
-  - `skills/solid-scaffold-bootstrap/`
-  - `skills/solid-design-patterns/`
+- `guides/solidjs-v2-blueprint.md`
 
-## Skill Map
+## v2 Architecture
 
-| Skill | Primary Outcome | Use Cases |
-|---|---|---|
-| `solid-component-builder` | Generate production-ready components | New UI components, feature modules, stateful UI flows |
-| `solid-refactor-assistant` | Reduce risk during structural changes | Prop/API rewrites, signal/store migrations, decomposition |
-| `solid-reviewer` | Enforce SolidJS quality standards | PR reviews, architecture sanity checks, performance audits |
-| `solid-scaffold-bootstrap` | Start projects and feature slices consistently | New app setup, package conventions, baseline tooling |
-| `solid-design-patterns` | Choose architecture patterns intentionally | State/data layer decisions, rendering strategy, composition |
+### Macro skills
 
-## Directory Pattern
+- `skills/solid-component-builder/`
+- `skills/solid-refactor-assistant/`
+- `skills/solid-reviewer/`
+- `skills/solid-scaffold-bootstrap/`
+- `skills/solid-design-patterns/`
 
-```text
-skills/<skill-name>/
-├── SKILL.md
-├── references/
-├── scripts/      (optional)
-└── assets/       (optional)
+### Router + domain subskills
+
+- `skills/solid-intent-router/`
+- `skills/solid-reactivity-core-expert/`
+- `skills/solid-control-flow-rendering/`
+- `skills/solid-state-architecture/`
+- `skills/solid-router-data-navigation/`
+- `skills/solid-start-server-runtime/`
+- `skills/solid-ssr-hydration-debugger/`
+- `skills/solid-meta-head-management/`
+- `skills/solid-testing-quality-gates/`
+
+### Contracts and validation
+
+- Skill contract schema: `tools/schemas/skill-contract.schema.json`
+- Output schemas: `skills/contracts/*.schema.json`
+- Skill validator: `tools/scripts/validate-skills.mjs`
+- Contract validator: `tools/scripts/validate-output-contracts.mjs`
+
+### Corpus pipeline
+
+- Raw source (immutable): `solidJSdocs/`
+- Normalized corpus: `references/solidjs-normalized/docs/`
+- Manifest: `references/solidjs-normalized/manifest.jsonl`
+- Taxonomy: `references/solidjs-normalized/taxonomy.json`
+- Normalizer: `tools/scripts/normalize-solid-docs.mjs`
+- Corpus validator: `tools/scripts/validate-solid-corpus.mjs`
+
+## Quality commands
+
+Run from repo root:
+
+```bash
+node tools/scripts/normalize-solid-docs.mjs --check
+node tools/scripts/validate-solid-corpus.mjs
+node tools/scripts/validate-skills.mjs
+node tools/scripts/validate-output-contracts.mjs
+node tools/scripts/run-smoke-evals.mjs
 ```
 
-## Who this is for
+## MCP alignment
 
-- SolidJS product teams shipping app features rapidly.
-- Design system maintainers building reusable component libraries.
-- Teams using agent-assisted workflows for implementation and review.
+- MCP server: `mcp-server/src/index.js`
+- Routing map: `tools/gemini-mcp-extension/skill-routing-map.md`
+- System prompt template: `tools/gemini-mcp-extension/prompts/solidjs-system-instructions.md`
 
-## Note on legacy content
+## Legacy note
 
-Some legacy generic skill-authoring guides remain in `guides/` and older starter skills in `skills/`. They can be retained for meta-work, but SolidJS-first materials are the default direction for this repo.
-
-## Gemini MCP / Extension Alignment
-
-A SolidJS-aligned Gemini MCP extension blueprint is available at:
-
-- `tools/gemini-mcp-extension/`
-
-Use it to keep intent routing, system instructions, and quality gates synchronized with the SolidJS skill set.
+Non-Solid meta skills remain in `skills/` for repository maintenance tasks, but SolidJS v2 skills and corpus tooling are the default operating path.

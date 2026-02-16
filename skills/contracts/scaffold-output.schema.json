@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidjskills.dev/contracts/scaffold-output.schema.json",
+  "title": "ScaffoldOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary",
+    "project_layout",
+    "baseline_conventions",
+    "bootstrap_steps",
+    "acceptance_checklist",
+    "validation_commands",
+    "citations"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 20
+    },
+    "project_layout": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "baseline_conventions": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "bootstrap_steps": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "acceptance_checklist": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/citation"
+      }
+    }
+  },
+  "definitions": {
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doc_id",
+        "claim"
+      ],
+      "properties": {
+        "doc_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    }
+  }
+}

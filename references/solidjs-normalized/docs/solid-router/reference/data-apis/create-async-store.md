@@ -1,0 +1,171 @@
+# createAsyncStore
+
+The `createAsyncStore` primitive manages asynchronous data fetching by tracking the result of a promise-returning function in a [store](../../../concepts/stores.md).
+
+The main difference from [createAsync](create-async.md) is its use of reconciliation: when new data arrives, it intelligently merges with the existing store, updating only changed fields while preserving unchanged state.
+
+* * *
+
+## Import
+
+```
+import { createAsyncStore } from "@solidjs/router";
+```
+* * *
+
+## Type
+
+```
+function createAsyncStore<T>(
+
+  fn: (prev: T) => Promise<T>,
+
+  options: {
+
+    name?: string;
+
+    initialValue: T;
+
+    deferStream?: boolean;
+
+    reconcile?: ReconcileOptions;
+
+  }
+
+): AccessorWithLatest<T>;
+
+function createAsyncStore<T>(
+
+  fn: (prev: T | undefined) => Promise<T>,
+
+  options?: {
+
+    name?: string;
+
+    initialValue?: T;
+
+    deferStream?: boolean;
+
+    reconcile?: ReconcileOptions;
+
+  }
+
+): AccessorWithLatest<T | undefined>;
+```
+* * *
+
+## Parameters
+
+### `fetcher`
+
+- **Type:** `(prev: T | undefined) => Promise<T>`
+- **Required:** Yes
+
+An asynchronous function or a function that returns a `Promise`. The resolved value of this `Promise` is what `createAsyncStore` tracks. This function is reactive and will automatically re-execute if any of its dependencies change.
+
+### `options`
+
+- **Type:** `{ name?: string; initialValue?: T; deferStream?: boolean; reconcile?: ReconcileOptions; }`
+- **Required:** No
+
+An object for configuring the primitive. It has the following properties.
+
+#### `name`
+
+- **Type:** `string`
+- **Required:** No
+
+A name for the resource, used for identification in debugging tools like [Solid Debugger](https://github.com/thetarnav/solid-devtools).
+
+#### `initialValue`
+
+- **Type:** `T`
+- **Required:** No
+
+The initial value of the returned store before the fetcher resolves.
+
+#### `deferStream`
+
+- **Type:** `boolean`
+- **Required:** No
+
+If `true`, [streaming](../../data-fetching/streaming.md) will be deferred until the resource has resolved.
+
+#### `reconcile`
+
+- **Type:** `ReconcileOptions`
+- **Required:** No
+
+[Options](../../../reference/store-utilities/reconcile.md#options) passed directly to the `reconcile` function. It controls how new data is merged with the existing store.
+
+* * *
+
+## Return value
+
+`createAsyncStore` returns a derived signal that contains the resolved value of the fetcher as a store.
+
+While the fetcher is executing for the first time, unless an `initialValue` is specified, the store's value is `undefined`.
+
+* * *
+
+## Examples
+
+### Basic usage
+
+```
+import { For, createSignal } from "solid-js";
+
+import { createAsyncStore, query } from "@solidjs/router";
+
+const getNotificationsQuery = query(async (unreadOnly: boolean) => {
+
+  // ... Fetches the list of notifications from the server.
+
+}, "notifications");
+
+function Notifications() {
+
+  const [unreadOnly, setUnreadOnly] = createSignal(false);
+
+  const notifications = createAsyncStore(() =>
+
+    getNotificationsQuery(unreadOnly())
+
+  );
+
+  return (
+
+    <div>
+
+      <button onClick={() => setUnreadOnly(!unreadOnly())}>
+
+        Toggle unread
+
+      </button>
+
+      <ul>
+
+        <For each={notifications()}>
+
+          {(notification) => (
+
+            <li>
+
+              <div>{notification.message}</div>
+
+              <div>{notification.user.name}</div>
+
+            </li>
+
+          )}
+
+        </For>
+
+      </ul>
+
+    </div>
+
+  );
+
+}
+```

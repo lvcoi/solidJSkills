@@ -1,0 +1,10 @@
+# attr:*
+
+Forces the prop to be treated as an attribute instead of a property. Useful for Web Components where you want to set attributes.
+
+```
+<my-element attr:status={props.status} />
+```
+Strong-Typing Custom Attributes
+
+Type definitions are required when using TypeScript. See the[TypeScript](../../configuration/typescript.md#forcing-properties-and-custom-attributes) page for examples.

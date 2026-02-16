@@ -1,0 +1,39 @@
+# useContext
+
+Used to grab context within a context provider scope to allow for deep passing of props without having to pass them through each Component function. It's therefore used in conjunction with [`createContext`](create-context.md) to consume the data from a Provider scope and thus avoid passing data through intermediate components (prop drilling).
+
+```
+const [state, { increment, decrement }] = useContext(CounterContext)
+```
+* * *
+
+## Recommended usage
+
+It is often a good idea to wrap `useContext` in a function like so:
+
+```
+function useCounterContext() {
+
+  const context = useContext(CounterContext)
+
+  if (!context) {
+
+    throw new Error("useCounterContext: cannot find a CounterContext")
+
+  }
+
+  return context
+
+}
+```
+See the API reference of [createContext](create-context.md) the API on how to generate a Provider scope. And check the [Context concepts](../../concepts/context.md) for more information on how to architecture your contexts.
+
+* * *
+
+## Type signature
+
+```
+import { type Context } from "solid-js"
+
+function useContext<T>(context: Context<T>): T
+```

@@ -31,6 +31,7 @@ When adding or updating a SolidJS skill:
 3. Define failure modes and fallback paths.
 4. Link to only relevant reference files.
 5. Include output format expectations (checklists, plans, patches, review notes).
+6. Require citation-backed claims using normalized corpus `doc_id` values.
 
 ## Required Review Checklist for SolidJS Artifacts
 
@@ -41,6 +42,7 @@ When adding or updating a SolidJS skill:
 - Accessibility and semantic markup considered.
 - SSR/hydration concerns addressed where relevant.
 - Tests/check commands listed for validation.
+- Citations include normalized `doc_id` references for non-trivial claims.
 
 ## Scaffolding and Bootstrap Expectations
 

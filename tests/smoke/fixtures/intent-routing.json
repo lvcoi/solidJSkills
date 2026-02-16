@@ -1,0 +1,56 @@
+[
+  {
+    "id": "core-component",
+    "prompt": "Build a new Solid component with createSignal and memoized derived state",
+    "expected_primary": "solid-component-builder",
+    "expected_secondary": "solid-reactivity-core-expert"
+  },
+  {
+    "id": "router-data",
+    "prompt": "Use solid-router query and action with params and revalidate after mutation",
+    "expected_primary": "solid-component-builder",
+    "expected_secondary": "solid-router-data-navigation"
+  },
+  {
+    "id": "solidstart-server",
+    "prompt": "Refactor SolidStart middleware and request event auth flow for use server functions",
+    "expected_primary": "solid-refactor-assistant",
+    "expected_secondary": "solid-start-server-runtime"
+  },
+  {
+    "id": "ssr-hydration",
+    "prompt": "Hydration mismatch in SSR route when renderToString output differs on client",
+    "expected_primary": "solid-reviewer",
+    "expected_secondary": "solid-ssr-hydration-debugger"
+  },
+  {
+    "id": "meta-management",
+    "prompt": "Design head metadata ownership with MetaProvider and Title in solid-meta",
+    "expected_primary": "solid-design-patterns",
+    "expected_secondary": "solid-meta-head-management"
+  },
+  {
+    "id": "state-architecture",
+    "prompt": "Choose between createStore and context provider for shared state architecture",
+    "expected_primary": "solid-design-patterns",
+    "expected_secondary": "solid-state-architecture"
+  },
+  {
+    "id": "control-flow",
+    "prompt": "Use Show For and Suspense for list rendering and conditional fallback behavior",
+    "expected_primary": "solid-component-builder",
+    "expected_secondary": "solid-control-flow-rendering"
+  },
+  {
+    "id": "testing-gates",
+    "prompt": "Review this SolidJS PR and define regression quality gates and validation checks",
+    "expected_primary": "solid-reviewer",
+    "expected_secondary": "solid-testing-quality-gates"
+  },
+  {
+    "id": "scaffold",
+    "prompt": "Scaffold a new Solid app with baseline testing and CI checks",
+    "expected_primary": "solid-scaffold-bootstrap",
+    "expected_secondary": "solid-testing-quality-gates"
+  }
+]

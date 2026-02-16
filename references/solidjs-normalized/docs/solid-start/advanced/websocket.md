@@ -1,0 +1,74 @@
+# WebSocket endpoint
+
+WebSocket endpoint may be included by passing the ws handler file you specify in your start config. Note that this feature is [experimental on the Nitro server](https://nitro.build/guide/websocket#opt-in-to-the-experimental-feature) and its config may change in future releases of SolidStart. Use it with caution.
+
+```
+import { defineConfig } from "@solidjs/start/config";
+
+export default defineConfig({
+
+  server: {
+
+    experimental: {
+
+      websocket: true,
+
+    },
+
+  },
+
+}).addRouter({
+
+  name: "ws",
+
+  type: "http",
+
+  handler: "./src/ws.ts",
+
+  target: "server",
+
+  base: "/ws",
+
+});
+```
+Inside the ws file, you can export an eventHandler function to manage WebSocket connections and events:
+
+```
+import { eventHandler } from "vinxi/http";
+
+export default eventHandler({
+
+  handler() {},
+
+  websocket: {
+
+    async open(peer) {
+
+      console.log("open", peer.id, peer.url);
+
+    },
+
+    async message(peer, msg) {
+
+      const message = msg.text();
+
+      console.log("msg", peer.id, peer.url, message);
+
+    },
+
+    async close(peer, details) {
+
+      console.log("close", peer.id, peer.url);
+
+    },
+
+    async error(peer, error) {
+
+      console.log("error", peer.id, peer.url, error);
+
+    },
+
+  },
+
+});
+```

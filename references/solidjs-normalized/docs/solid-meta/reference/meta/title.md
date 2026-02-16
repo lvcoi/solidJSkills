@@ -1,0 +1,32 @@
+# Title
+
+`Title` is a component that renders the [`title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) element. This will render the title of the page in the browser tab.
+
+```
+import { Title } from "@solidjs/meta";
+
+<Title>My Site</Title>;
+```
+* * *
+
+## Usage
+
+### Setting the title for your site
+
+```
+import { MetaProvider, Title } from "@solidjs/meta";
+
+export default function Root() {
+
+  return (
+
+    <MetaProvider>
+
+      <Title>Default Application Title</Title>
+
+    </MetaProvider>
+
+  );
+
+}
+```

@@ -1,0 +1,46 @@
+# createSelector
+
+```
+import { createSelector } from "solid-js"
+
+function createSelector<T, U>(
+
+  source: () => T,
+
+  fn?: (a: U, b: T) => boolean
+
+): (key: U) => boolean
+```
+Creates a parameterized derived boolean signal `selector(key)` that indicates whether `key` is equal to the current value of the `source` signal. These signals are optimized to notify each subscriber only when their `key` starts or stops matching the reactive `source` value (instead of every time `key` changes). If you have *n* different subscribers with different keys, and the `source` value changes from `a` to `b`, then instead of all *n* subscribers updating, at most two subscribers will update: the signal with key `a` will change to `false`, and the signal with key `b` will change to `true`. Thus it reduces from *n* updates to 2 updates.
+
+Useful for defining the selection state of several selectable elements. For example:
+
+```
+const [selectedId, setSelectedId] = createSignal()
+
+const isSelected = createSelector(selectedId)
+
+<For each={list()}>
+
+  {(item) => <li classList={{ active: isSelected(item.id) }}>{item.name}</li>}
+
+</For>
+```
+In the code above, each `li` element receives an `active` class exactly when the corresponding `item.id` is equal to `selectedId()`. When the `selectedId` signal changes, the `li` element(s) that previously had previously matching `id` get the `active` class removed, and the `li` element(s) that now have a matching `id` get the `active` class added. All other `li` elements get skipped, so if `id`s are distinct, only 2 DOM operations get performed.
+
+By contrast, the following code would perform `list().length` DOM operations every time the `selectedId` signal changes:
+
+```
+const [selectedId, setSelectedId] = createSignal()
+
+<For each={list()}>
+
+  {(item) => <li classList={{ active: selectedId() === item.id }}>{item.name}</li>}
+
+</For>
+```
+* * *
+
+## Arguments
+
+NameTypeDescription`source``() => T`The source signal to get the value from and compare with keys.`fn``(a: U, b: T) => boolean`A function to compare the key and the value, returning whether they should be treated as equal. Default: `===`

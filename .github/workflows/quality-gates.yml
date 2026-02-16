@@ -1,0 +1,37 @@
+name: solidjs-quality-gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Normalize corpus check
+        run: node tools/scripts/normalize-solid-docs.mjs --check
+
+      - name: Validate normalized corpus
+        run: node tools/scripts/validate-solid-corpus.mjs
+
+      - name: Validate skill contracts
+        run: node tools/scripts/validate-skills.mjs
+
+      - name: Validate output contracts
+        run: node tools/scripts/validate-output-contracts.mjs
+
+      - name: Run smoke evaluations
+        run: node tools/scripts/run-smoke-evals.mjs
+
+      - name: Syntax check MCP server
+        run: npm --prefix mcp-server test

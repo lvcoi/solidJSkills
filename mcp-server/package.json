@@ -1,7 +1,7 @@
 {
   "name": "solidjskills-mcp-server",
-  "version": "1.1.0",
-  "description": "MCP server for browsing the solidJSkills repository from Gemini CLI",
+  "version": "2.0.0",
+  "description": "MCP server for SolidJS skill and corpus retrieval in solidJSkills",
   "type": "module",
   "main": "src/index.js",
   "bin": {

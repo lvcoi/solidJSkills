@@ -1,0 +1,114 @@
+# &lt;Show&gt;
+
+The `<Show>` component is used for conditionally rendering UI elements. It takes a `when` prop that defines the condition for rendering. When the `when` prop is truthy, the children of the `<Show>` component are displayed. Additionally, an optional `fallback` prop can be provided to specify an element that is shown when the condition is falsy.
+
+```
+import { createSignal, Show } from "solid-js";
+
+function Example() {
+
+  const [value, setValue] = createSignal(true);
+
+  return (
+
+    <div>
+
+      <button onClick={() => setValue((prev) => !prev)}>Toggle Show</button>
+
+      <Show when={value()} fallback={<div>Fallback Element</div>}>
+
+        <div>Child Element</div>
+
+      </Show>
+
+    </div>
+
+  );
+
+}
+```
+* * *
+
+## Keyed rendering
+
+When the `keyed` is set to `true`, any change to the `when` prop — including changes in its reference — will cause the `<Show>` component to re-render its children.
+
+```
+import { createSignal, Show } from "solid-js";
+
+function KeyedExample() {
+
+  const [user, setUser] = createSignal({ name: "John Wick" });
+
+  function update() {
+
+    // This operation changes the reference of the user object.
+
+    setUser({ ...user() });
+
+  }
+
+  return (
+
+    <div>
+
+      <button onClick={update}>Update</button>
+
+      <Show when={user()} keyed>
+
+        <p>Name: {user().name}</p>
+
+        {/* Updates shown with each click */}
+
+        <p>Last updated: {Date.now()}</p>
+
+      </Show>
+
+    </div>
+
+  );
+
+}
+```
+* * *
+
+## Render function
+
+The `<Show>` component can also accept a render function as its child. In this case, the first argument of the render function is an *accessor* to the `when` prop. However, when the `keyed` prop is set to `true`, the argument is the `when` prop itself instead of an accessor.
+
+When a render function is used, it is internally wrapped with [`untrack`](../reactive-utilities/untrack.md). As a result, signals accessed directly within the render function's scope will not react to updates.
+
+For example, in the following code, the count displayed in the first `<Show>` component does not update when the `count` signal changes. However, the second `<Show>` component does update since the `count` signal is accessed within a JSX element, which creates a tracking scope.
+
+```
+import { createSignal, Show } from "solid-js";
+
+function RenderFunctionExample() {
+
+  const [count, setCount] = createSignal(0);
+
+  return (
+
+    <div>
+
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+
+      {/* This does not update. */}
+
+      <Show when={count()}>{(c) => count()}</Show>
+
+      {/* This will update. */}
+
+      <Show when={count()}>{(c) => <>{count()}</>}</Show>
+
+    </div>
+
+  );
+
+}
+```
+* * *
+
+## Props
+
+NameTypeDescription`when``T | undefined | null | false`The condition value.`keyed``boolean`Whether to key the block to the value of when.`fallback``JSX.Element`The fallback to render when the `when` prop is falsy.

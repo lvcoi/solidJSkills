@@ -1,0 +1,207 @@
+# createRenderEffect
+
+The `createRenderEffect` primitive creates a reactive computation that automatically tracks reactive values, such as [signals](../../concepts/signals.md), accessed within the provided function. This function re-runs whenever any of its dependencies change.
+
+* * *
+
+## Execution Timing
+
+### Initial Run
+
+- A render effect runs **synchronously during the current rendering phase**, while DOM elements are being created or updated.
+- It **runs before elements are mounted** to the DOM.
+- **[Refs](../../concepts/refs.md) are not set** during this initial run.
+
+### Subsequent Runs
+
+- After the initial render, the render effect **re-runs whenever any of its tracked dependencies change**.
+- Re-runs occur **after** all pure computations (such as [memos](../../concepts/derived-values/memos.md)) have completed within the same update cycle.
+- When multiple dependencies change within the same batch, the render effect **runs once per batch**.
+- The **order of re-runs** among multiple render effects is **not guaranteed**.
+
+### Server-Side Rendering
+
+- During SSR, render effects **run once on the server**, since they are part of the synchronous rendering phase.
+- On the client, an initial run still occurs during the client rendering phase to initialize the reactive system; that client initial run is separate from the server run.
+- After hydration, subsequent runs occur on the client when dependencies change.
+
+* * *
+
+## Import
+
+```
+import { createRenderEffect } from "solid-js";
+```
+* * *
+
+## Type
+
+```
+function createRenderEffect<Next>(
+
+  fn: EffectFunction<undefined | NoInfer<Next>, Next>
+
+): void;
+
+function createRenderEffect<Next, Init = Next>(
+
+  fn: EffectFunction<Init | Next, Next>,
+
+  value: Init,
+
+  options?: { name?: string }
+
+): void;
+
+function createRenderEffect<Next, Init>(
+
+  fn: EffectFunction<Init | Next, Next>,
+
+  value?: Init,
+
+  options?: { name?: string }
+
+): void;
+```
+* * *
+
+## Parameters
+
+### `fn`
+
+- **Type:** `EffectFunction<undefined | NoInfer<Next> | EffectFunction<Init | Next, Next>`
+- **Required:** Yes
+
+A function to be executed as the render effect.
+
+It receives the value returned from the previous run, or the initial `value` during the first run. The value returned by `fn` is passed to the next run.
+
+### `value`
+
+- **Type:** `Init`
+- **Required:** No
+
+The initial value passed to `fn` during its first run.
+
+### `options`
+
+- **Type:** `{ name?: string }`
+- **Required:** No
+
+An optional configuration object with the following properties:
+
+#### `name`
+
+- **Type:** `string`
+- **Required:** No
+
+A name for the render effect, which can be useful for identification in debugging tools like the [Solid Debugger](https://github.com/thetarnav/solid-devtools).
+
+* * *
+
+## Return value
+
+`createRenderEffect` does not return a value.
+
+* * *
+
+## Examples
+
+### Basic Usage
+
+```
+import { createSignal, createRenderEffect } from "solid-js";
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0);
+
+  // This runs immediately during render, and re-runs when the count changes.
+
+  createRenderEffect(() => {
+
+    console.log("Count: ", count());
+
+  });
+
+  return (
+
+    <div>
+
+      <p>Count: {count()}</p>
+
+      <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
+
+    </div>
+
+  );
+
+}
+```
+### Execution Timing
+
+```
+import { createSignal, createEffect, createRenderEffect } from "solid-js";
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0);
+
+  // This is part of the component's synchronous execution.
+
+  console.log("Hello from counter");
+
+  // This effect is scheduled to run after the initial render is complete.
+
+  createEffect(() => {
+
+    console.log("Effect:", count());
+
+  });
+
+  // By contrast, a render effect runs synchronously during the render phase.
+
+  createRenderEffect(() => {
+
+    console.log("Render effect:", count());
+
+  });
+
+  // Setting a signal during the render phase re-runs render effects, but not effects, which are
+
+  // still scheduled.
+
+  setCount(1);
+
+  // A microtask is scheduled to run after the current synchronous code (the render phase) finishes.
+
+  queueMicrotask(() => {
+
+    // Now that rendering is complete, signal updates will trigger effects immediately.
+
+    setCount(2);
+
+  });
+
+}
+
+// Output:
+
+// Hello from counter
+
+// Render effect: 0
+
+// Render effect: 1
+
+// Effect: 1
+
+// Render effect: 2
+
+// Effect: 2
+```
+* * *
+
+## Related
+
+- [`createEffect`](../basic-reactivity/create-effect.md)
+- [`onCleanup`](../lifecycle/on-cleanup.md)

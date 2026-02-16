@@ -1,0 +1,637 @@
+[**Solid**](../index.md)
+
+- [Core](../index.md)
+- [Router](../solid-router)
+- [SolidStart](../solid-start)
+- [Meta](../solid-meta)
+
+[](https://github.com/solidjs/solid)[](https://discord.com/invite/solidjs)
+
+LearnReference
+
+- [Quick start](../quick-start.md)
+- Concepts
+  
+  - [Intro to reactivity](../concepts/intro-to-reactivity.md)
+  - [Understanding JSX](../concepts/understanding-jsx.md)
+  - Components
+    
+    - [Basics](../concepts/components/basics.md)
+    - [Class and style](../concepts/components/class-style.md)
+    - [Event handlers](../concepts/components/event-handlers.md)
+    - [Props](../concepts/components/props.md)
+  - [Signals](../concepts/signals.md)
+  - Control flow
+    
+    - [Conditional rendering](../concepts/control-flow/conditional-rendering.md)
+    - [Dynamic](../concepts/control-flow/dynamic.md)
+    - [List rendering](../concepts/control-flow/list-rendering.md)
+    - [Portal](../concepts/control-flow/portal.md)
+    - [Error boundary](../concepts/control-flow/error-boundary.md)
+  - [Effects](../concepts/effects.md)
+  - Derived values
+    
+    - [Derived signals](../concepts/derived-values/derived-signals.md)
+    - [Memos](../concepts/derived-values/memos.md)
+  - [Context](../concepts/context.md)
+  - [Stores](../concepts/stores.md)
+  - [Refs](../concepts/refs.md)
+- Advanced concepts
+  
+  - [Fine-grained reactivity](../advanced-concepts/fine-grained-reactivity.md)
+- Guides
+  
+  - [Styling your components](styling-your-components.md)
+  - [State management](state-management.md)
+  - [Routing & navigation](routing-and-navigation.md)
+  - [Complex state management](complex-state-management.md)
+  - [Fetching data](fetching-data.md)
+  - [Testing](testing.md)
+  - [Deploy your app](deploying-your-app.md)
+- Configuration
+  
+  - [Environment variables](../configuration/environment-variables.md)
+  - [TypeScript](../configuration/typescript.md)
+
+Guides
+
+# State management
+
+[Edit this page](https://github.com/solidjs/solid-docs/edit/main/src/routes/guides/state-management.mdx)
+
+State management is the process of handling and manipulating data that affects the behavior and presentation of a web application. To build interactive and dynamic web applications, state management is a critical aspect of development. Within Solid, state management is facilitated through the use of reactive primitives.
+
+These state management concepts will be shown using a basic counter example:
+
+```
+
+
+import { createSignal } from "solid-js";
+
+
+
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0);
+
+
+
+
+  const increment = () => {
+
+    setCount((prev) => prev + 1);
+
+  };
+
+
+
+
+  return (
+
+    <>
+
+      <div>Current count: {count()}</div>
+
+      <button onClick={increment}>Increment</button>
+
+    </>
+
+  );
+
+}
+```
+
+There are 3 elements to state management:
+
+1. **State (`count`)**: The *data* that is used to determine what content to display to the user.
+2. **View (`<div>{count()}</div>`)**: The *visual representation* of the state to the user.
+3. **Actions (`increment`)**: Any event that *modifies* the state.
+
+These elements work together to create a "one way data flow". When actions modify the state, the view is updated to show the current state to the user. One way data flow simplifies the management of data and user interactions, which provides a more predictable and maintainable application.
+
+* * *
+
+## [Managing basic state](state-management.md#managing-basic-state)
+
+State is the source of truth for the application, and is used to determine what content to display to the user. State is represented by a [signal](../concepts/signals.md), which is a reactive primitive that manages state and notifies the UI of any changes.
+
+To create a piece of state, you use the [`createSignal`](../reference/basic-reactivity/create-signal.md) function and pass in the initial value of the state:
+
+```
+
+
+import { createSignal } from "solid-js";
+
+
+
+
+const [count, setCount] = createSignal(0);
+```
+
+To access the current value of the state, you call the signal's getter function:
+
+```
+
+
+console.log(count()); // 0
+```
+
+To update the state, you use the signal's setter function:
+
+```
+
+
+setCount((prev) => prev + 1);
+
+
+
+
+console.log(count()); // 1
+```
+
+With signals, you can create and manage state in a simple and straightforward manner. This allows you to focus on the logic of your application, rather than the complexities of state management. Additionally, signals are reactive, which means as long as it is accessed within a [tracking scope](../concepts/intro-to-reactivity.md#tracking-changes), it will always be up to date.
+
+* * *
+
+## [Rendering state in the UI](state-management.md#rendering-state-in-the-ui)
+
+To achieve a dynamic user interface, the UI must be able to reflect the current state of the data. The UI is the visual representation of the state to the user, and is rendered using JSX. JSX provides a tracking scope, which keeps the view in sync with the state.
+
+Revisiting the `Counter` component presented earlier, rendering the current state of `count` is done within the return body using JSX:
+
+```
+
+
+return (
+
+  <>
+
+    <div>Current count: {count()}</div>
+
+    <button onClick={increment}>Increment</button>
+
+  </>
+
+);
+```
+
+To render the current state of `count`, the JSX expression `{count()}` is used. The curly braces indicate that the expression is a JavaScript expression, and the parentheses indicate that it is a function call. This expression is representative of a getter function for `count` and will retrieve the current state value. When the state is updated, the UI will be re-rendered to reflect the new state value.
+
+Components in Solid only run once upon their initialization. After this initial render, if any changes are made to the state, only the portion of the DOM that is directly associated with the signal change will be updated.
+
+The ability to update only the relevant portions of the DOM is a key feature of Solid that allows for performant and efficient UI updates. This is known as [fine-grained reactivity](../advanced-concepts/fine-grained-reactivity.md). Through reducing the re-rendering of entire components or larger DOM segments, UI will remain more efficient and responsive for the user.
+
+* * *
+
+## [Reacting to changes](state-management.md#reacting-to-changes)
+
+When the state is updated, any updates are reflected in the UI. However, there may be times when you want to perform additional actions when the state changes.
+
+For example, in the `Counter` component, you may want to display the doubled value of `count` to the user. This can be achieved through the use of [effects](../concepts/effects.md), which are reactive primitives that perform side effects when the state changes:
+
+```
+
+
+import { createSignal, createEffect } from "solid-js";
+
+
+
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0);
+
+  const [doubleCount, setDoubleCount] = createSignal(0); // Initialize a new state for doubleCount
+
+
+
+
+  const increment = () => {
+
+    setCount((prev) => prev + 1);
+
+  };
+
+
+
+
+  createEffect(() => {
+
+    setDoubleCount(count() * 2); // Update doubleCount whenever count changes
+
+  });
+
+
+
+
+  return (
+
+    <>
+
+      <div>Current count: {count()}</div>
+
+      <div>Doubled count: {doubleCount()}</div> // Display the doubled count
+
+      <button onClick={increment}>Increment</button>
+
+    </>
+
+  );
+
+}
+```
+
+The [`createEffect`](../reference/basic-reactivity/create-effect.md) function sets up a function to perform side effects whenever the state is modified. Here, a side-effect refers to operations or updates that affect state outside of the local environment - like modifying a global variable or updating the DOM - triggered by those state changes.
+
+In the `Counter` component, a `createEffect` function can be used to update the `doubleCount` state whenever the `count` state changes. This keeps the `doubleCount` state in sync with the `count` state, and allows the UI to display the doubled value of `count` to the user.
+
+View this example of [`doubleCount` in a `createEffect` in the Solid Playground example](https://playground.solidjs.com/anonymous/b05dddaa-e62a-4c56-b745-5704f3a40194).
+
+First renderAfter increment
+
+```
+
+
+Current count: 0 Doubled count: 0
+```
+
+```
+
+
+Current count: 1 Doubled count: 2
+```
+
+* * *
+
+## [Derived state](state-management.md#derived-state)
+
+When you want to calculate new state values based on existing state values, you can use derived state. This is a useful pattern when you want to display a transformation of a state value to the user, but do not want to modify the original state value or create a new state value.
+
+Derived values can be created using a signal within a function, which can be referred to as a [derived signal](../concepts/derived-values/derived-signals.md).
+
+This approach can be used to simplify the `doubleCount` example above, where the additional signal and effect can be replaced with a derived signal:
+
+```
+
+
+import { createSignal } from "solid-js"
+
+
+
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0);
+
+  const [doubleCount, setDoubleCount] = createSignal(0);
+
+
+
+
+  const increment = () => {
+
+    setCount((prev) => prev + 1);
+
+  };
+
+
+
+
+  createEffect(() => {
+
+    setDoubleCount(count() * 2); // Update doubleCount whenever count changes
+
+  });
+
+
+
+
+  const doubleCount = () => count() * 2
+
+
+
+
+  return (
+
+    <>
+
+      <div>Current count: {count()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <button onClick={increment}>Increment</button>
+
+    </>
+
+  );
+
+}
+```
+
+While this approach works for simple use cases, if `doubleCount` is used several times within a component or contains a computationally expensive calculation, it can lead to performance issues.
+
+The derived signal would be re-evaluated not just each time `count` is changed, but also for each use of `doubleCount()`.
+
+```
+
+
+import { createSignal } from "solid-js"
+
+
+
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0)
+
+
+
+
+  const increment = () => {
+
+    setCount(count() + 1)
+
+  }
+
+
+
+
+  const doubleCount = () => count() * 2
+
+  const doubleCount = () => {
+
+    console.log('doubleCount called')
+
+    return count() * 2
+
+  }
+
+
+
+
+  return (
+
+    <>
+
+      <div>Current count: {count()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <button onClick={increment}>Increment</button>
+
+    </>
+
+  )
+
+}
+```
+
+```
+
+
+doubleCount called
+
+doubleCount called
+
+doubleCount called
+```
+
+For cases like this, you can use [Memos](../concepts/derived-values/memos.md) to store the value of `doubleCount`, which are also referred to as a memoized or cached value. When using a memo, the calculation will only run **once** when the value of `count` changes and can be accessed multiple times without re-evaluating for each additional use.
+
+Using the [`createMemo`](../reference/basic-reactivity/create-memo.md) function, you can create a memoized value:
+
+```
+
+
+import { createSignal, createMemo } from "solid-js"
+
+
+
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0)
+
+
+
+
+  const increment = () => {
+
+    setCount((prev) => prev + 1);
+
+  };
+
+
+
+
+  const doubleCount = () => {
+
+    console.log('doubleCount called')
+
+    return count() * 2
+
+  }
+
+
+
+
+  const doubleCountMemo = createMemo(() => {
+
+    console.log('doubleCountMemo called')
+
+    return count() * 2
+
+  })
+
+
+
+
+  return (
+
+    <>
+
+      <div>Current count: {count()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <div>Doubled count: {doubleCount()}</div>
+
+      <div>Doubled count: {doubleCountMemo()}</div>
+
+      <div>Doubled count: {doubleCountMemo()}</div>
+
+      <div>Doubled count: {doubleCountMemo()}</div>
+
+      <button onClick={increment}>Increment</button>
+
+    </>
+
+  );
+
+}
+```
+
+```
+
+
+doubleCountMemo called
+
+doubleCount called
+
+doubleCount called
+
+doubleCount called
+```
+
+While accessed multiple times, the `doubleCountMemo` will only re-evaluate and log once. This is different from the derived signal, `doubleCount`, which is re-evaluated for each time it is accessed.
+
+View a similar [example comparing a derived signal and a memo in the Solid Playground](https://playground.solidjs.com/anonymous/288736aa-d5ba-45f7-a01f-1ac3dcb1b479).
+
+* * *
+
+## [Lifting state](state-management.md#lifting-state)
+
+When you want to share state between components, you can lift state up to a common ancestor component. While state is not tied to components, you may want to link multiple components together in order to access and manipulate the same piece of state. This can keep things synchronized across the [component tree](../concepts/components/basics.md#component-trees) and allow for more predictable state management.
+
+For example, in the `Counter` component, you may want to display the doubled value of `count` to the user through a separate component:
+
+```
+
+
+import { createSignal, createEffect, createMemo } from "solid-js";
+
+
+
+
+function App() {
+
+  const [count, setCount] = createSignal(0);
+
+  const [doubleCount, setDoubleCount] = createSignal(0);
+
+  const squaredCount = createMemo(() => count() * count());
+
+
+
+
+  createEffect(() => {
+
+    setDoubleCount(count() * 2);
+
+  });
+
+
+
+
+  return (
+
+    <>
+
+      <Counter count={count()} setCount={setCount} />
+
+      <DisplayCounts
+
+        count={count()}
+
+        doubleCount={doubleCount()}
+
+        squaredCount={squaredCount()}
+
+      />
+
+    </>
+
+  );
+
+}
+
+
+
+
+function Counter(props) {
+
+  const increment = () => {
+
+    props.setCount((prev) => prev + 1);
+
+  };
+
+
+
+
+  return <button onClick={increment}>Increment</button>;
+
+}
+
+
+
+
+function DisplayCounts(props) {
+
+  return (
+
+    <div>
+
+      <div>Current count: {props.count}</div>
+
+      <div>Doubled count: {props.doubleCount}</div>
+
+      <div>Squared count: {props.squaredCount}</div>
+
+    </div>
+
+  );
+
+}
+
+
+
+
+export default App;
+```
+
+To share the `count` state between the `Counter` and `DisplayCounts` components, you can lift the state up to the `App` component. This allows the `Counter` and `DisplayCounts` functions to access the same piece of state, but also allows the `Counter` component to update the state through the `setCount` setter function.
+
+When sharing state between components, you can access the state through [`props`](../concepts/components/props.md). Props values that are passed down from the parent component are read-only, which means they cannot be directly modified by the child component. However, you can pass down setter functions from the parent component to allow the child component to indirectly modify the parent's state.
+
+note
+
+To encourage one-way data flow, props are passed as read-only or immutable values from the parent to child components.
+
+There are [specific utility functions for props](../concepts/components/props.md), however, that offer methods to modify props values.
+
+* * *
+
+## [Managing complex state](state-management.md#managing-complex-state)
+
+As applications grow in size and complexity, lifting state can become difficult to manage. To avoid the concept of prop drilling, which is the process of passing props through multiple components, Solid offers [stores](../concepts/stores.md) to manage state in a more scalable and maintainable manner.
+
+To learn more about managing complex state, navigate to the [complex state management page](complex-state-management.md).
+
+[Report an issue with this page](https://github.com/solidjs/solid-docs-next/issues/new?assignees=ladybluenotes&labels=improve%20documentation%2Cpending%20review&projects=&template=CONTENT.yml&title=%5BContent%5D%3A&subject=%2Fguides%2Fstate-management.mdx&page=https%3A%2F%2Fdocs.solidjs.com%2Fguides%2Fstate-management)
+
+Previous[← UnoCSS](styling-components/uno.md)
+
+Next[Routing & navigation →](routing-and-navigation.md)
+
+On this page
+
+1. [Overview](#_top)
+2. [Managing basic state](#managing-basic-state)
+3. [Rendering state in the UI](#rendering-state-in-the-ui)
+4. [Reacting to changes](#reacting-to-changes)
+5. [Derived state](#derived-state)
+6. [Lifting state](#lifting-state)
+7. [Managing complex state](#managing-complex-state)
+
+Contribute
+
+1. [Edit this page](https://github.com/solidjs/solid-docs/edit/main/src/routes/guides/state-management.mdx)
+2. [Report an issue with this page](https://github.com/solidjs/solid-docs-next/issues/new?assignees=ladybluenotes&labels=improve%20documentation%2Cpending%20review&projects=&template=CONTENT.yml&title=%5BContent%5D%3A&subject=%2Fguides%2Fstate-management.mdx&page=https%3A%2F%2Fdocs.solidjs.com%2Fguides%2Fstate-management)

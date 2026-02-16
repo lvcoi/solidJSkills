@@ -1,0 +1,133 @@
+# children
+
+`children` normalizes a component's `children` prop into a stable accessor that returns resolved JSX elements. It accepts functions, arrays, fragments, and nested structures.
+
+* * *
+
+## Import
+
+```
+import { children } from "solid-js";
+```
+* * *
+
+## Type
+
+```
+function children(fn: Accessor<JSX.Element>): ChildrenReturn;
+
+type ChildrenReturn = Accessor<ResolvedChildren> & {
+
+  toArray: () => ResolvedChildren[];
+
+};
+```
+* * *
+
+## Parameters
+
+### `fn`
+
+- **Type:** `() => JSX.Element`
+- **Required:** Yes
+
+An accessor that returns the `children` value (typically `props.children`).
+
+* * *
+
+## Return value
+
+- **Type:** `ChildrenReturn`
+
+The function returns a callable accessor. Calling it yields the resolved children, either a single element or an array.
+
+* * *
+
+## Helpers
+
+### `toArray()`
+
+- **Type:** `() => ResolvedChildren[]`
+- **Description:** Returns a flattened array of resolved child elements.
+
+This method is exposed on the returned accessor and is useful for iteration or index-based logic.
+
+* * *
+
+## Examples
+
+### Basic usage
+
+```
+function Wrapper(props) {
+
+  const resolved = children(() => props.children);
+
+  return <div>{resolved()}</div>;
+
+}
+
+// Usage
+
+<Wrapper>
+
+  <span>one</span>
+
+  <span>two</span>
+
+</Wrapper>;
+```
+### `.toArray()` example
+
+```
+function List(props) {
+
+  const resolved = children(() => props.children);
+
+  const items = resolved.toArray();
+
+  return (
+
+    <ul>
+
+      {items.map((child) => (
+
+        <li>{child}</li>
+
+      ))}
+
+    </ul>
+
+  );
+
+}
+
+// Usage
+
+<List>
+
+  <span>one</span>
+
+  <span>two</span>
+
+</List>;
+```
+`children` resolves the current value of `props.children`. If `props.children` is reactive, the resolved accessor reflects updates.
+
+### Working with function-as-children
+
+If `children` is a function, the helper evaluates it and returns its rendered result.
+
+```
+function Slot(props) {
+
+  const resolved = children(() => props.children);
+
+  return <div>{resolved()}</div>;
+
+}
+
+// Usage
+
+<Slot>{() => <span>dynamic</span>}</Slot>;
+```

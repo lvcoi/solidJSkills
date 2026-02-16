@@ -1,0 +1,32 @@
+# Base
+
+`Base` is a component that specifies the base URL for all relative URLs in the document. This provides a way to define the [`base`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) element of your document's `head`.
+
+```
+import { Base } from "@solidjs/meta";
+
+<Base target="_blank" href="https://docs.solidjs.com/" />;
+```
+* * *
+
+## Usage
+
+### Adding `base` tag
+
+```
+import { MetaProvider, Base } from "@solidjs/meta";
+
+export default function Root() {
+
+  return (
+
+    <MetaProvider>
+
+      <Base target="_blank" href="https://docs.solidjs.com/" />
+
+    </MetaProvider>
+
+  );
+
+}
+```

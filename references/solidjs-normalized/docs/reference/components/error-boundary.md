@@ -1,0 +1,65 @@
+# &lt;ErrorBoundary&gt;
+
+The `<ErrorBoundary>` component catches errors that occur during the rendering or updating of its children and shows a fallback UI instead. This includes:
+
+- Errors that occur while rendering JSX.
+- Errors that occur within `createEffect`, `createMemo`, and other state management primitives.
+- Errors that occur within `createResource` and other asynchronous state management or data-fetching primitives.
+
+However, errors occurring outside the rendering process are **not** captured by error boundaries. For instance:
+
+- Errors that occur inside event handlers.
+- Errors that occur after a `setTimeout`.
+
+* * *
+
+## Props
+
+### `fallback`
+
+**Type**: `JSX.Element | ((err: any, reset: () => void) => JSX.Element)`
+
+`fallback` provides content to display when an error occurs. If a function is passed, it receives two parameters:
+
+- `err`: The caught error object.
+- `reset`: A function that forces the `<ErrorBoundary>` to re-render its children and clear the error state.
+
+If there's an error within the `fallback` itself, however, it is not caught by the same `<ErrorBoundary>`. Instead, it will bubble up to any parent error boundaries.
+
+* * *
+
+## Example
+
+```
+import { ErrorBoundary } from "solid-js";
+
+import { ErrorProne } from "./components";
+
+function Example() {
+
+  return (
+
+    <ErrorBoundary
+
+      fallback={(error, reset) => (
+
+        <div>
+
+          <p>{error.message}</p>
+
+          <button onClick={reset}>Try Again</button>
+
+        </div>
+
+      )}
+
+    >
+
+      <ErrorProne />
+
+    </ErrorBoundary>
+
+  );
+
+}
+```

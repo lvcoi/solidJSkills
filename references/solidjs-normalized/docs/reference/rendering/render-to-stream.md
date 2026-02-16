@@ -1,0 +1,51 @@
+# renderToStream
+
+```
+import { renderToStream } from "solid-js/web"
+
+function renderToStream<T>(
+
+  fn: () => T,
+
+  options?: {
+
+    nonce?: string
+
+    renderId?: string
+
+    onCompleteShell?: () => void
+
+    onCompleteAll?: () => void
+
+  }
+
+): {
+
+  pipe: (writable: { write: (v: string) => void }) => void
+
+  pipeTo: (writable: WritableStream) => void
+
+}
+```
+This method renders to a stream. It renders the content synchronously including any Suspense fallback placeholders, and then continues to stream the data and HTML from any async resource as it completes.
+
+```
+// node
+
+renderToStream(App).pipe(res)
+
+// web stream
+
+const { readable, writable } = new TransformStream()
+
+renderToStream(App).pipeTo(writable)
+```
+`onCompleteShell` fires when synchronous rendering is complete before writing the first flush to the stream out to the browser. `onCompleteAll` is called when all server Suspense boundaries have settled. `renderId` is used to namespace renders when having multiple top level roots.
+
+This API replaces the previous pipeToWritable and pipeToNodeWritable APIs.
+
+* * *
+
+## Options
+
+NameTypeDescriptionnoncestringThe nonce to use for inline scripts.renderIdstringThe id to use for this render.onCompleteShell() =&gt; voidA callback that fires when the shell is complete.onCompleteAll() =&gt; voidA callback that fires when all Suspense boundaries have settled.

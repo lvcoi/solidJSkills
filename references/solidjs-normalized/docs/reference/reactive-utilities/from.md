@@ -1,0 +1,48 @@
+# from
+
+```
+import { from } from "solid-js"
+
+function from<T>(
+
+  producer:
+
+    | ((setter: (v: T) => T) => () => void)
+
+    | {
+
+        subscribe: (
+
+          fn: (v: T) => void
+
+        ) => (() => void) | { unsubscribe: () => void }
+
+      }
+
+): () => T | undefined
+```
+A helper to make it easier to interop with external producers like RxJS observables or with Svelte Stores. This basically turns any subscribable (object with a subscribe method) into a Signal and manages subscription and disposal.
+
+```
+const signal = from(obsv$)
+```
+It can also take a custom producer function where the function is passed a setter function that returns an unsubscribe function:
+
+```
+const clock = from((set) => {
+
+  const interval = setInterval(() => {
+
+    set((v) => v + 1)
+
+  }, 1000)
+
+  return () => clearInterval(interval)
+
+})
+```
+* * *
+
+## Arguments
+
+NameTypeDescriptionproducer`((setter: (v: T) => T) => () => void) | { subscribe: (fn: (v: T) => void) => (() => void) | { unsubscribe: () => void }; }`The producer function or subscribable object

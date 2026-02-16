@@ -1,0 +1,93 @@
+# query
+
+The `query` function wraps an asynchronous function (the fetcher) and returns a query.
+
+The primary purpose of a query is to prevent redundant data fetching. When a query is called, a key is generated from its name and arguments. This key is used to internally cache the result of the fetcher. If a query with the same key is called, the cached result is used in these scenarios:
+
+- **For preloading:** After a route's data is preloaded, a subsequent call to the same query within a 5-second window uses the preloaded data.
+- **For active subscriptions:** When a query is actively being used by a component (e.g., via [`createAsync`](create-async.md)), its data is reused without expiration.
+- **On native history navigation:** When navigating with the browser's back or forward buttons, the data is reused instead of being re-fetched.
+- **For server-side deduplication:** Within a single server-side rendering (SSR) request, repeated calls to the same query reuse the same value.
+- **During client hydration:** If SSR has provided data for a key, that data is used immediately on the client without a new network request.
+
+* * *
+
+## Import
+
+```
+import { query } from "@solidjs/router";
+```
+* * *
+
+## Type
+
+```
+function query<T extends (...args: any) => any>(
+
+  fn: T,
+
+  name: string
+
+): CachedFunction<T>;
+```
+* * *
+
+## Parameters
+
+### `fetcher`
+
+- **Type:** `T extends (...args: any) => any`
+- **Required:** Yes
+
+An asynchronous function that handles the logic for fetching data. All arguments passed to this function must be JSON-serializable.
+
+### `name`
+
+- **Type:** `string`
+- **Required:** Yes
+
+A string used as a namespace for the query. Solid Router combines this with the query's arguments to generate a unique key for deduplication.
+
+* * *
+
+## Return value
+
+`query` returns a new function with the same call signature as the fetcher. This returned function has the following properties attached to it:
+
+### `key`
+
+The base key for the query, derived from its name.
+
+### `keyFor`
+
+A function that takes the same arguments as the fetcher and returns a string representing a specific key for that set of arguments.
+
+* * *
+
+## Example
+
+### Basic usage
+
+```
+import { query } from "@solidjs/router";
+
+const getUserProfileQuery = query(async (userId: string) => {
+
+  const response = await fetch(
+
+    `https://api.example.com/users/${encodeURIComponent(userId)}`
+
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+
+    throw new Error(json?.message ?? "Failed to load user profile.");
+
+  }
+
+  return json;
+
+}, "userProfile");
+```

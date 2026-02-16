@@ -1,0 +1,49 @@
+# indexArray
+
+```
+import { indexArray } from "solid-js"
+
+function indexArray<T, U>(
+
+  list: () => readonly T[],
+
+  mapFn: (v: () => T, i: number) => U
+
+): () => U[]
+```
+Similar to `mapArray` except it maps by index. The item is a signal and the index is now the constant.
+
+Underlying helper for the `<Index>` control flow.
+
+```
+const mapped = indexArray(source, (model) => {
+
+  return {
+
+    get id() {
+
+      return model().id
+
+    }
+
+    get firstInitial() {
+
+      return model().firstName[0];
+
+    },
+
+    get fullName() {
+
+      return `${model().firstName} ${model().lastName}`;
+
+    },
+
+  }
+
+});
+```
+* * *
+
+## Arguments
+
+NameTypeDescriptionlist`() => readonly T[]`The list to map.mapFn`(v: () => T, i: number) => U`The mapping function.

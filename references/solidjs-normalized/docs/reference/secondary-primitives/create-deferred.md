@@ -1,0 +1,28 @@
+# createDeferred
+
+```
+import { createDeferred } from "solid-js"
+
+function createDeferred<T>(
+
+  source: () => T,
+
+  options?: {
+
+    timeoutMs?: number
+
+    equals?: false | ((prev: T, next: T) => boolean)
+
+    name?: string
+
+  }
+
+): () => T
+```
+Creates a readonly that only notifies downstream changes when the browser is idle. `timeoutMs` is the maximum time to wait before forcing the update.
+
+* * *
+
+## Options
+
+NameTypeDescriptiontimeoutMs`number`The maximum time to wait before forcing the update.equals`false or ((prev: T, next: T) => boolean)`A function that returns true if the value has changed.name`string`The name of the readonly.

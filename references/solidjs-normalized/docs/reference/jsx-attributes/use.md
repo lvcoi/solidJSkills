@@ -1,0 +1,115 @@
+# use:*
+
+Custom directives attach reusable behavior to DOM elements, acting as syntactic sugar over `ref`. They’re ideal for complex DOM interactions like scrolling, tooltips, or form handling, which are cumbersome to repeat in JSX.
+
+A directive is a function with the following signature
+
+```
+function directive(element: HTMLElement, accessor: Accessor<any>): void;
+```
+Directive functions are called at render time but before being added to the DOM. You can do whatever you'd like in them including create signals, effects, register clean-up etc.
+
+* * *
+
+## Example
+
+A `model` directive for two-way data binding
+
+```
+import type { Accessor, Signal } from "solid-js";
+
+function model(element: HTMLInputElement, value: Accessor<Signal<string>>) {
+
+  const [field, setField] = value();
+
+  createRenderEffect(() => (element.value = field()));
+
+  element.addEventListener("input", ({ target }) => setField(target.value));
+
+}
+
+const [name, setName] = createSignal("");
+
+<input type="text" use:model={[name, setName]} />;
+```
+* * *
+
+## TypeScript Support
+
+To type custom directives, extend the `DirectiveFunctions` interface
+
+```
+declare module "solid-js" {
+
+  namespace JSX {
+
+    interface DirectiveFunctions {
+
+      model: typeof model;
+
+    }
+
+  }
+
+}
+```
+If you just want to constrain the second argument to the directive function, you can extend the older `Directives` interface
+
+```
+declare module "solid-js" {
+
+  namespace JSX {
+
+    interface Directives {
+
+      model: Signal<string>;
+
+    }
+
+  }
+
+}
+```
+* * *
+
+## Avoiding Tree-Shaking
+
+When importing a directive `d` from another module and using it only as `use:d`, TypeScript (via [babel-preset-typescript](https://babeljs.io/docs/babel-preset-typescript)) may remove the import, as it doesn’t recognize `use:d` as a reference to `d`. To prevent this:
+
+1. Use the `onlyRemoveTypeImports: true` option in `babel-preset-typescript`. For `vite-plugin-solid`, add this to `vite.config.ts`
+   
+   ```
+   import solidPlugin from "vite-plugin-solid";
+   
+   
+   
+   
+   export default {
+   
+     plugins: [
+   
+       solidPlugin({
+   
+         typescript: { onlyRemoveTypeImports: true }
+   
+       })
+   
+     ],
+   
+   };
+   ```
+   Note: This requires consistent use of `export type` and `import type` in your codebase to avoid issues.
+2. Add a fake access like `false && d;` in the module
+   
+   ```
+   import { model } from "./directives";
+   
+   false && model; // Prevents tree-shaking
+   
+   <input type="text" use:model={[name, setName]} />;
+   ```
+   This is removed by bundlers like Terser, unlike a plain `model;` which may remain in the bundle.
+
+Limitations
+
+Directives only work with native HTML elements (HTML/SVG/MathML/Custom Elements). Directives are not forwarded and **won't work in user defined components**, such as `<MyComponent use:myinput={[..]}/>` [see also](https://github.com/solidjs/solid/discussions/722)

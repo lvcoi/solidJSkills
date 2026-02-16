@@ -1,0 +1,125 @@
+# createSignal
+
+Creates a reactive state primitive consisting of a getter (accessor) and a setter function that forms the foundation of Solid's reactivity system. Signals use a pull-based reactivity model where tracking subscriptions (reads) is lightweight, while updates (writes) trigger dependency tracking and effect re-execution, making them optimized for frequent reads and infrequent writes.
+
+* * *
+
+## Import
+
+```
+import { createSignal } from "solid-js";
+```
+* * *
+
+## Type signature
+
+```
+function createSignal<T>(): Signal<T | undefined>;
+
+function createSignal<T>(value: T, options?: SignalOptions<T>): Signal<T>;
+
+type Signal<T> = [get: Accessor<T>, set: Setter<T>];
+
+type Accessor<T> = () => T;
+
+type Setter<T> = {
+
+  <U extends T>(value: Exclude<U, Function> | ((prev: T) => U)): U;
+
+  <U extends T>(value: (prev: T) => U): U;
+
+  <U extends T>(value: Exclude<U, Function>): U;
+
+  <U extends T>(value: Exclude<U, Function> | ((prev: T) => U)): U;
+
+};
+
+interface SignalOptions<T> {
+
+  name?: string;
+
+  equals?: false | ((prev: T, next: T) => boolean);
+
+  internal?: boolean;
+
+}
+```
+* * *
+
+## Parameters
+
+### `value`
+
+- **Type:** `T`
+- **Default:** `undefined`
+
+The initial value for the signal. If no initial value is provided, the signal's type is automatically extended with `undefined`.
+
+### `options`
+
+- **Type:** `SignalOptions<T>`
+- **Default:** `undefined`
+
+Configuration object for the signal.
+
+#### `name`
+
+- **Type:** `string`
+- **Default:** `undefined`
+
+A name for the signal used by debugging tools like [Solid devtools](https://github.com/thetarnav/solid-devtools). It works only in development mode and is removed from the production bundle.
+
+#### `equals`
+
+- **Type:** `false | ((prev: T, next: T) => boolean)`
+- **Default:** `false`
+
+A custom comparison function to determine when the signal should update. By default, signals use reference equality (`===`) to compare previous and next values. When set to `false`, the signal will always update regardless of value equality, which is useful for creating signals that trigger manual updates in the reactive system.
+
+When providing a custom function, it should be pure and return `true` if the values are equal (no update needed) or `false` if they differ (trigger update). Impure functions can create unexpected side effects and performance issues.
+
+#### `internal`
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+Marks the signal as internal, preventing it from appearing in development tools. This is primarily used by Solid's internal systems.
+
+* * *
+
+## Return value
+
+- **Type:** `Signal<T>`
+
+Returns a tuple `[getter, setter]` where:
+
+- **getter**: An accessor function that returns the current value and tracks dependencies when called within a reactive context
+- **setter**: A function that updates the signal's value and notifies all dependent computations
+
+* * *
+
+## Examples
+
+### Basic usage
+
+```
+import { createSignal } from "solid-js";
+
+function Counter() {
+
+  const [count, setCount] = createSignal(0);
+
+  return (
+
+    <div>
+
+      <button onClick={() => setCount(count() + 1)}>+</button>
+
+      <span>{count()}</span>
+
+    </div>
+
+  );
+
+}
+```

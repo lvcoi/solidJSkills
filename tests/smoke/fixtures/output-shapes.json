@@ -1,0 +1,57 @@
+{
+  "skills/contracts/component-build-output.schema.json": {
+    "required": [
+      "summary",
+      "implementation_plan",
+      "component_contract",
+      "reactivity_decisions",
+      "acceptance_checklist",
+      "validation_commands",
+      "citations"
+    ]
+  },
+  "skills/contracts/refactor-plan-output.schema.json": {
+    "required": [
+      "summary",
+      "invariants",
+      "stepwise_plan",
+      "risk_controls",
+      "rollback_strategy",
+      "verification_checklist",
+      "validation_commands",
+      "citations"
+    ]
+  },
+  "skills/contracts/review-output.schema.json": {
+    "required": [
+      "summary",
+      "findings",
+      "open_questions",
+      "validation_commands",
+      "citations"
+    ]
+  },
+  "skills/contracts/scaffold-output.schema.json": {
+    "required": [
+      "summary",
+      "project_layout",
+      "baseline_conventions",
+      "bootstrap_steps",
+      "acceptance_checklist",
+      "validation_commands",
+      "citations"
+    ]
+  },
+  "skills/contracts/design-decision-output.schema.json": {
+    "required": [
+      "decision_statement",
+      "constraints",
+      "options",
+      "recommended_option",
+      "tradeoffs",
+      "adoption_plan",
+      "validation_commands",
+      "citations"
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidjskills.dev/schemas/skill-contract.schema.json",
+  "title": "SkillContract",
+  "description": "Normalized SKILL.md contract extracted by validators.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "file",
+    "frontmatter",
+    "sections"
+  ],
+  "properties": {
+    "file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frontmatter": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "name",
+        "description",
+        "outputs",
+        "requires_references",
+        "validation_commands"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]{3,63}$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 20
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "schema",
+            "format"
+          ],
+          "properties": {
+            "schema": {
+              "type": "string",
+              "pattern": "^\\.{1,2}/"
+            },
+            "format": {
+              "type": "string",
+              "minLength": 3
+            }
+          }
+        },
+        "requires_references": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "validation_commands": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "Ordered second-level headings in SKILL.md.",
+      "contains": {
+        "const": "Trigger"
+      },
+      "items": {
+        "type": "string"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "Required Inputs"
+          }
+        },
+        {
+          "contains": {
+            "const": "Workflow"
+          }
+        },
+        {
+          "contains": {
+            "const": "Failure Modes"
+          }
+        },
+        {
+          "contains": {
+            "const": "Output Contract"
+          }
+        },
+        {
+          "contains": {
+            "const": "Validation"
+          }
+        },
+        {
+          "contains": {
+            "const": "References"
+          }
+        }
+      ]
+    }
+  }
+}

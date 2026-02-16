@@ -1,0 +1,132 @@
+# Tailwind CSS v3
+
+[Tailwind CSS v3](https://v3.tailwindcss.com/) is an on-demand utility CSS library that integrates seamlessly with Solid as a built-in PostCSS plugin.
+
+* * *
+
+## Installation
+
+1. Install Tailwind CSS as a development dependency:
+
+```
+npm i tailwindcss@3 postcss autoprefixer -D
+```
+```
+pnpm i tailwindcss@3 postcss autoprefixer -D
+```
+```
+yarn add tailwindcss@3 postcss autoprefixer -D
+```
+```
+bun i tailwindcss@3 postcss autoprefixer -d
+```
+```
+deno add npm:tailwindcss@3 postcss autoprefixer -D
+```
+2. Next, run the init command to generate both `tailwind.config.js` and `postcss.config.js`.
+
+```
+npx tailwindcss init -p
+```
+```
+pnpx tailwindcss init -p
+```
+```
+yarn dlx tailwindcss init -p
+```
+```
+bunx tailwindcss init -p
+```
+```
+dpx tailwindcss init -p
+```
+3. Since Tailwind CSS is configuration-driven, after initializing, a `tailwind.config.js` file will be created at the root of your project directory:
+
+```
+/** @type {import('tailwindcss').Config} */
+
+module.exports = {
+
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  theme: {
+
+    extend: {},
+
+  },
+
+  plugins: [],
+
+};
+```
+For a deeper dive into configuration, you can check out the [Tailwind Official Documentation](https://tailwindcss.com/docs/configuration).
+
+* * *
+
+## Add Tailwind directives
+
+In your `src/index.css` file, add the following Tailwind directives:
+
+```
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+```
+These directives inform PostCSS that you're using Tailwind and establish the order of the directives. You can append custom CSS below these directives.
+
+* * *
+
+## Import Tailwind CSS
+
+Import your `index.css` file into the root `index.jsx` or `index.tsx` file:
+
+```
+import { render } from "solid-js/web"
+
+import App from "./App"
+
+import "./index.css"
+
+render(() => <App />, document.getElementById('root') as HTMLElement);
+```
+* * *
+
+## Usage
+
+With Tailwind CSS set up, you can now utilize its utility classes. For instance, if you previously had a `Card.css` file, you can replace or remove it:
+
+```
+/* src/components/Card.css */
+
+/* Remove or replace these styles with Tailwind utility classes */
+```
+Update your components to use Tailwind's utility classes:
+
+```
+/* src/components/Card.jsx */
+
+function Card() {
+
+  return (
+
+    <div class="grid place-items-center min-h-screen">
+
+      <div class="h-[160px] aspect aspect-[2] rounded-[16px] shadow-[0_0_0_4px_hsl(0_0%_0%_/_15%)]">
+
+        Hello, world!
+
+      </div>
+
+    </div>
+
+  );
+
+}
+```
+* * *
+
+## Support
+
+For additional assistance, refer to the [Tailwind CSS/Vite integration guide](https://tailwindcss.com/docs/guides/vite).

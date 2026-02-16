@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solidjskills.dev/contracts/design-decision-output.schema.json",
+  "title": "DesignDecisionOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_statement",
+    "constraints",
+    "options",
+    "recommended_option",
+    "tradeoffs",
+    "adoption_plan",
+    "validation_commands",
+    "citations"
+  ],
+  "properties": {
+    "decision_statement": {
+      "type": "string",
+      "minLength": 20
+    },
+    "constraints": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "fit",
+          "costs"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3
+          },
+          "fit": {
+            "type": "string",
+            "minLength": 10
+          },
+          "costs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 5
+            }
+          }
+        }
+      }
+    },
+    "recommended_option": {
+      "type": "string",
+      "minLength": 3
+    },
+    "tradeoffs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "adoption_plan": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/citation"
+      }
+    }
+  },
+  "definitions": {
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doc_id",
+        "claim"
+      ],
+      "properties": {
+        "doc_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    }
+  }
+}

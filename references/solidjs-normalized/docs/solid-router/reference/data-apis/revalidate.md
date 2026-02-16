@@ -1,0 +1,119 @@
+# revalidate
+
+The `revalidate` function triggers revalidation of [queries](../../data-fetching/queries.md) by their keys. Each query with active subscribers re-executes and updates its dependents; queries without subscribers are marked stale but don't execute until subscribed.
+
+* * *
+
+## Import
+
+```
+import { revalidate } from "@solidjs/router";
+```
+* * *
+
+## Type
+
+```
+function revalidate(
+
+  key?: string | string[] | void,
+
+  force?: boolean
+
+): Promise<void>;
+```
+* * *
+
+## Parameters
+
+### `key`
+
+- **Type:** `string | string[] | void`
+- **Required:** No
+
+The query key or array of query keys to revalidate. If not provided, all queries on the current page are revalidated.
+
+### `force`
+
+- **Type:** `boolean`
+- **Required:** No
+- **Default:** `true`
+
+When `true`, clears the internal cache used for deduplication. When `false`, allows cached data to be reused if available.
+
+* * *
+
+## Return value
+
+`revalidate` returns a `Promise` that resolves when the revalidation transition completes.
+
+* * *
+
+## Examples
+
+### Basic usage
+
+```
+import { query, createAsync, revalidate } from "@solidjs/router";
+
+const getUserQuery = query(async () => {
+
+  // ... Fetches user data.
+
+  return { name: "John" };
+
+}, "user");
+
+function UserProfile() {
+
+  const user = createAsync(() => getUserQuery());
+
+  function refreshUser() {
+
+    revalidate(getUserQuery.key);
+
+  }
+
+  return (
+
+    <div>
+
+      <button onClick={refreshUser}>Refresh</button>
+
+      <p>{user()?.name}</p>
+
+    </div>
+
+  );
+
+}
+```
+### Revalidating multiple queries
+
+```
+import { query, revalidate } from "@solidjs/router";
+
+const getUsersQuery = query(async () => {
+
+  // ... Fetches users.
+
+}, "users");
+
+const getPostsQuery = query(async () => {
+
+  // ... Fetches posts.
+
+}, "posts");
+
+function refreshAll() {
+
+  revalidate([getUsersQuery.key, getPostsQuery.key]);
+
+}
+```
+* * *
+
+## Related
+
+- [`query`](query.md)
+- [`createAsync`](create-async.md)

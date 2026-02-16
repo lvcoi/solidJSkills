@@ -1,0 +1,101 @@
+# lazy
+
+The `lazy` helper wraps a dynamic import and returns a component that loads on demand. Lazy components accept the same props as their eager counterparts and integrate with `<Suspense>` boundaries.
+
+* * *
+
+## Import
+
+```
+import { lazy } from "solid-js"
+```
+* * *
+
+## Type
+
+```
+function lazy<T extends Component<any>>(
+
+  fn: () => Promise<{ default: T }>
+
+): T & { preload: () => Promise<T> }
+```
+* * *
+
+## Parameters
+
+### `fn`
+
+- **Type:** `() => Promise<{ default: T }>`
+- **Required:** Yes
+
+Dynamic import that resolves to the component module, exposing the component as the `default` export.
+
+* * *
+
+## Return value
+
+`lazy` returns a renderable component compatible with `T`. The component exposes a `preload()` method that resolves the underlying module.
+
+PropertyTypeDescription`preload``() => Promise<T>`Loads the module without rendering and returns the resolved component.
+
+* * *
+
+## Examples
+
+### Basic usage
+
+```
+import { lazy } from "solid-js"
+
+const ComponentA = lazy(() => import("./ComponentA"))
+
+function App(props: { title: string }) {
+
+  return <ComponentA title={props.title} />
+
+}
+```
+### Preloading nested lazy components
+
+```
+import { lazy } from "solid-js"
+
+import type { Component } from "solid-js"
+
+const Nested = lazy(() => import("./Nested"))
+
+const ComponentWithPreload = () => {
+
+  const [showNested, setShowNested] = createSignal(false)
+
+  return (
+
+  <div>
+
+    <button
+
+        onMouseEnter={() => Nested.preload()}
+
+        onClick={() => setShowNested(true)}
+
+      >Preload Nested Component</button>
+
+      <Show when={showNested()}>
+
+      <Nested />
+
+      </Show>
+
+  </div>
+
+  )
+
+}
+```
+* * *
+
+## See also
+
+- [`Suspense`](https://docs.solidjs.com/reference/component-apis/suspense)
+- [Router preloading guide](../../solid-router/advanced-concepts/preloading.md)

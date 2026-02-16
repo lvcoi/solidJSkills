@@ -1,0 +1,141 @@
+# Navigation
+
+When using Solid Router, you can use the standard standard HTML [`<a>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a), which triggers [soft navigation](../reference/components/a.md#soft-navigation). In addition to using this, Solid Router offers other options for navigating between routes:
+
+- The [`<A>` component](../reference/components/a.md).
+- The [`useNavigate` primitive](../reference/primitives/use-navigate.md).
+- The [`redirect` function](../reference/response-helpers/redirect.md).
+
+* * *
+
+## `<A>` component
+
+The `<A>` component extends the native `<a>` element by automatically applying the base URL path and, additionally, supports relative paths.
+
+```
+import { A } from "@solidjs/router";
+
+function DashboardPage() {
+
+  return (
+
+    <main>
+
+      <nav>
+
+        <A href="/">Home</A>
+
+      </nav>
+
+      {/* This is a relative path that, from /dashboard, links to /dashboard/users */}
+
+      <A href="users">Users</A>
+
+    </main>
+
+  );
+
+}
+```
+See the [`<A>` API reference](../reference/components/a.md) for more information.
+
+### Styling
+
+The `<A>` component allows you to style links based on their active state using the `activeClass` and `inactiveClass` props. When provided, these props apply the corresponding CSS classes to the link. If omitted, the default classes `active` and `inactive` are used.
+
+By default, a link is considered active when the current route matches the link's `href` or any of its descendant routes. For example, a link with `href="/dashboard"` is active when the current route is `/dashboard`, `/dashboard/users`, or `/dashboard/users/1/profile`.
+
+To match an exact route, the prop `end` can be used. When `true`, it ensures that the link is only considered active if the `href` exactly matches the current route. This is useful for root route links (href="/"), which might otherwise match all routes.
+
+```
+import { A } from "@solidjs/router";
+
+function Navbar() {
+
+  return (
+
+    <nav>
+
+      <A href="/" end={true}>
+
+        Home
+
+      </A>
+
+      <A
+
+        href="/login"
+
+        activeClass="text-blue-900"
+
+        inactiveClass="text-blue-500"
+
+      >
+
+        Login
+
+      </A>
+
+    </nav>
+
+  );
+
+}
+```
+* * *
+
+## `useNavigate` primitive
+
+The `useNavigate` primitive allows for programmatically navigating to a specified route.
+
+```
+import { useNavigate } from "@solidjs/router";
+
+function LoginPage() {
+
+  const navigate = useNavigate();
+
+  return (
+
+    <button
+
+      onClick={() => {
+
+        // Login logic
+
+        navigate("/dashboard", { replace: true });
+
+      }}
+
+    >
+
+      Login
+
+    </button>
+
+  );
+
+}
+```
+This example redirects the user to `/dashboard` after login. By using `replace: true`, the login page is removed from the browser's history stack and replaced with the `/dashboard` route. This prevents the user from navigating back to the login page using the back button.
+
+See the [`useNavigate` API reference](../reference/primitives/use-navigate.md) for more information.
+
+* * *
+
+## `redirect` function
+
+The `redirect` function returns a [`Response` object](https://developer.mozilla.org/en-US/docs/Web/API/Response), which enables navigation to a specified route within [query](../reference/data-apis/query.md) or [action](../reference/data-apis/action.md).
+
+```
+import { action, redirect } from "@solidjs/router";
+
+const logout = action(async () => {
+
+  localStorage.remove("token");
+
+  throw redirect("/");
+
+});
+```
+See the [`redirect` API reference](../reference/response-helpers/redirect.md) for more information.

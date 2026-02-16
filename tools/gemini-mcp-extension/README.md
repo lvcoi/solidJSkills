@@ -1,21 +1,21 @@
 # Gemini MCP Extension (SolidJS Alignment)
 
-This directory provides a SolidJS-aligned blueprint for a Gemini MCP/extension layer.
+This directory defines the SolidJS v2 routing and quality contract for Gemini MCP integration.
 
 ## Goals
 
-- Keep Gemini-side routing aligned with the repository's SolidJS-first mission.
-- Route component/refactor/review/scaffold/design requests to the corresponding SolidJS skills.
-- Enforce consistent review and quality gate behavior across tool invocations.
+- Route requests through `solid-intent-router`.
+- Select one macro skill plus one domain subskill deterministically.
+- Enforce citation-backed outputs using normalized corpus `doc_id` references.
 
 ## Contents
 
-- `extension-blueprint.md` — architecture and integration model.
-- `skill-routing-map.md` — intent-to-skill routing table.
-- `prompts/solidjs-system-instructions.md` — baseline system instruction template for SolidJS tasks.
+- `extension-blueprint.md` — v2 routing and quality architecture.
+- `skill-routing-map.md` — deterministic precedence and intent map.
+- `prompts/solidjs-system-instructions.md` — baseline system instruction template.
 
-## v1 Implementation Notes
+## Maintenance
 
-- Treat this as a reference implementation contract.
-- Keep prompts concise and deterministic.
-- Update routing whenever new SolidJS skills are added.
+- Update routing map and smoke fixtures together.
+- Keep prompts aligned with skill contract section order.
+- Run `node tools/scripts/run-smoke-evals.mjs` after routing changes.

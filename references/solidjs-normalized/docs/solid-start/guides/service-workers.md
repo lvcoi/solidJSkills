@@ -1,0 +1,24 @@
+# Service workers
+
+To register a service worker:
+
+1. Place your service-worker file in the `public` directory (e.g., `public/sw.js`), making it available at the root URL (`/sw.js`).
+2. Add registration logic to the `entry-client.tsx` file.
+
+```
+// @refresh reload
+
+import { mount, StartClient } from "@solidjs/start/client";
+
+mount(() => <StartClient />, document.getElementById("app")!);
+
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
+
+  window.addEventListener("load", () => {
+
+    navigator.serviceWorker.register("/sw.js");
+
+  });
+
+}
+```

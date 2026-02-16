@@ -1,0 +1,105 @@
+# preload
+
+The `preload` function is a property on a route definition that initiates data fetching before a user navigates to the route.
+
+`preload` runs in two separate phases:
+
+- **Preload phase:** Triggered by user intent (e.g., hovering over a link), the function is called to initiate data fetching.
+- **Rendering phase:** Triggered by actual navigation, the function is called a second time to provide the fetched data to the component.
+
+* * *
+
+## Import
+
+```
+import { Route } from "@solidjs/router";
+```
+* * *
+
+## Type
+
+```
+type RoutePreloadFunc<T = unknown> = (args: RoutePreloadFuncArgs) => T;
+
+interface RoutePreloadFuncArgs {
+
+  params: Params;
+
+  location: Location;
+
+  intent: "initial" | "native" | "navigate" | "preload";
+
+}
+```
+* * *
+
+## Parameters
+
+### `params`
+
+- **Type:** `Params`
+
+An object containing the parameters for the matched route. It corresponds to the value returned by the [`useParams` primitive](../primitives/use-params.md).
+
+### `location`
+
+- **Type:** `Location`
+
+The router's location object for the destination URL. It corresponds to the value returned by the [`useLocation` primitive](../primitives/use-location.md).
+
+### `intent`
+
+- **Type:** `"initial" | "native" | "navigate" | "preload"`
+
+A string indicating the context in which the function is called.
+
+- `"preload"`: The function is running to initiate data fetching.
+- `"navigate"`: The function is running during navigation to the route.
+- `"initial"`: The function is running for the first route on page load.
+
+* * *
+
+## Return value
+
+The value returned by `preload` is passed to the route's component as the `data` prop.
+
+- In the **preload phase** (`intent: "preload"`), the return value is **ignored**.
+- In the **rendering phase** (`intent: "navigate"` or `"initial"`), the return value is **captured** and provided to the component.
+
+* * *
+
+## Examples
+
+```
+import { Route, query, createAsync } from "@solidjs/router";
+
+const getProductQuery = query(async (id: string) => {
+
+  // ... Fetches a product from the server.
+
+}, "product");
+
+function ProductPage(props) {
+
+  const product = createAsync(() => getProductQuery(props.params.id));
+
+  return <div>{product()?.title}</div>;
+
+}
+
+function preloadData({ params }) {
+
+  getProductQuery(params.id);
+
+}
+
+function ProductRoutes() {
+
+  return (
+
+    <Route path="/products/:id" component={ProductPage} preload={preloadData} />
+
+  );
+
+}
+```

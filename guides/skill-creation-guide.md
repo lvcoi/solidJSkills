@@ -30,10 +30,13 @@ Create a robust skill from a user prompt with minimal back-and-forth and predict
 ## SKILL.md standards
 
 - Keep frontmatter precise and trigger-oriented.
+- Include `outputs`, `requires_references`, and `validation_commands` in frontmatter.
 - Write body instructions in imperative style.
 - Include clear execution sequence and branching.
+- Use required sections: Trigger, Required Inputs, Workflow, Failure Modes, Output Contract, Validation, References.
 - Reference external docs instead of duplicating them.
 - Add a verification section with explicit commands.
+- Require citation-backed claims with normalized corpus `doc_id` values.
 
 ## Anti-patterns
 

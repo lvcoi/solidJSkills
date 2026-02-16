@@ -1,0 +1,105 @@
+# Tailwind CSS
+
+This guide is for Tailwind CSS v4. For **Tailwind CSS v3** refer to [Tailwind CSS v3](tailwind-v3.md).
+
+[Tailwind CSS](https://tailwindcss.com/) is an on-demand utility CSS library that integrates seamlessly with Solid as a built-in PostCSS plugin.
+
+* * *
+
+## Installation
+
+1. Install Tailwind CSS as a development dependency:
+
+```
+npm i tailwindcss @tailwindcss/postcss postcss -D
+```
+```
+pnpm i tailwindcss @tailwindcss/postcss postcss -D
+```
+```
+yarn add tailwindcss @tailwindcss/postcss postcss -D
+```
+```
+bun i tailwindcss @tailwindcss/postcss postcss -d
+```
+```
+deno add npm:tailwindcss @tailwindcss/postcss postcss -D
+```
+2. Add `@tailwind/postcss` to the `plugins` in your PostCSS configuration. If you do not have a PostCSS configuration file, create a new one called `postcss.config.mjs`.
+
+```
+export default {
+
+  plugins: {
+
+    "@tailwindcss/postcss": {},
+
+  }
+
+}
+```
+For a deeper dive into configuration, you can check out the [Tailwind Official Documentation](https://tailwindcss.com/docs/configuration).
+
+* * *
+
+## Import Tailwind CSS
+
+Add an `@import` to your `src/index.css` file that imports Tailwind CSS.
+
+```
+@import "tailwindcss";
+```
+* * *
+
+## Import your CSS file
+
+Import your `index.css` file into the root `index.jsx` or `index.tsx` file:
+
+```
+import { render } from "solid-js/web"
+
+import App from "./App"
+
+import "./index.css"
+
+render(() => <App />, document.getElementById('root') as HTMLElement);
+```
+* * *
+
+## Usage
+
+With Tailwind CSS set up, you can now utilize its utility classes. For instance, if you previously had a `Card.css` file, you can replace or remove it:
+
+```
+/* src/components/Card.css */
+
+/* Remove or replace these styles with Tailwind utility classes */
+```
+Update your components to use Tailwind's utility classes:
+
+```
+/* src/components/Card.jsx */
+
+function Card() {
+
+  return (
+
+    <div class="grid place-items-center min-h-screen">
+
+      <div class="h-[160px] aspect aspect-[2] rounded-[16px] shadow-[0_0_0_4px_hsl(0_0%_0%_/_15%)]">
+
+        Hello, world!
+
+      </div>
+
+    </div>
+
+  );
+
+}
+```
+* * *
+
+## Support
+
+For additional assistance, refer to the [Tailwind CSS/Vite integration guide](https://tailwindcss.com/docs/guides/vite).
