@@ -95,4 +95,4 @@ They can pin to a branch or tag with `--ref`:
 gemini extensions install <repo-uri> --ref=main
 ```
 
-See the [Gemini CLI extension docs](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) for more details on both release methods.
+See the [GitHub Releases documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) for more details on GitHub Releases.
