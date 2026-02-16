@@ -10,6 +10,7 @@ Generated, normalized SolidJS documentation for deterministic skill retrieval.
 
 ## Source of truth
 
-- Raw source remains in `solidJSdocs/`.
-- Regenerate with `node tools/scripts/normalize-solid-docs.mjs`.
+- **Normalized Docs**: `docs/` is the committed, usable documentation for agents.
+- **Raw Source**: `solidJSdocs/` (optional, local-only).
+- Regenerate with `node tools/scripts/normalize-solid-docs.mjs` (requires local `solidJSdocs/`).
 - Validate with `node tools/scripts/validate-solid-corpus.mjs`.

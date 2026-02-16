@@ -47,8 +47,8 @@ Blueprint:
 
 ### Corpus pipeline
 
-- Raw source (immutable): `solidJSdocs/`
-- Normalized corpus: `references/solidjs-normalized/docs/`
+- Raw source (optional local source): `solidJSdocs/` (not committed)
+- Normalized corpus (source of truth): `references/solidjs-normalized/docs/`
 - Manifest: `references/solidjs-normalized/manifest.jsonl`
 - Taxonomy: `references/solidjs-normalized/taxonomy.json`
 - Normalizer: `tools/scripts/normalize-solid-docs.mjs`
