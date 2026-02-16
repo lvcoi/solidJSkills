@@ -11,4 +11,10 @@ Routes support defining multiple paths using an array. This is useful for when y
 ```
 This would mean navigating from `/login` to `/register` would not cause the `Login` component to re-render.
 
-proptypedescriptionpath`string | string[]`Path partial for defining the route segmentcomponent`Component`Component that will be rendered for the matched segmentmatchFilters`MatchFilters`Additional constraints for matching against the routechildren`JSX.Element`Nested `<Route>` definitionspreload`RoutePreloadFunc`Function called during preload or when the route is navigated to.
+| prop         | type                      | description                                                                 |
+| ------------ | ------------------------- | --------------------------------------------------------------------------- |
+| path         | `string \| string[]`     | Path partial for defining the route segment                                 |
+| component    | `Component`              | Component that will be rendered for the matched segment                     |
+| matchFilters | `MatchFilters`           | Additional constraints for matching against the route                       |
+| children     | `JSX.Element`            | Nested `<Route>` definitions                                                |
+| preload      | `RoutePreloadFunc`       | Function called during preload or when the route is navigated to.          |
