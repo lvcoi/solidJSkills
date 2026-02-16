@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
           
       - name: Normalize corpus check
-        run: node tools/scripts/normalize-solid-docs.mjs
+        run: node tools/scripts/normalize-solid-docs.mjs --check
 
       - name: Validate normalized corpus
         run: node tools/scripts/validate-solid-corpus.mjs --check
