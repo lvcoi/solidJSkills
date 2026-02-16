@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with decisions, handoff steps, validation commands
 - `node tools/scripts/validate-skills.mjs --skill solid-reactivity-core-expert`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-core.reference.basic-reactivity.create-signal` — signal creation and update semantics
+- `solid-core.reference.basic-reactivity.create-memo` — derivation caching rules
+- `solid-core.reference.basic-reactivity.create-effect` — side-effect tracking and cleanup
+- `solid-core.reference.basic-reactivity.create-resource` — async reactive data loading
+- `solid-core.reference.reactive-utilities.batch` — grouped signal updates
+
 ## References
 
 - `../../references/solidjs/reactivity-core.md`

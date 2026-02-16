@@ -46,6 +46,15 @@ Return output matching `IntentRoutingOutput` schema with `primary_skill`, `secon
 - `node tools/scripts/validate-skills.mjs --skill solid-intent-router`
 - `node tools/scripts/run-smoke-evals.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-core.reference.basic-reactivity.create-signal` — core signal API (default fallback)
+- `solid-router.solid-router.index` — router package overview
+- `solid-start.solid-start.index` — SolidStart package overview
+- `solid-meta.solid-meta.index` — solid-meta package overview
+
 ## References
 
 - `../../tools/gemini-mcp-extension/skill-routing-map.md`

@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with primitive decisions, handoff steps, and citat
 - `node tools/scripts/validate-skills.mjs --skill solid-control-flow-rendering`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-core.reference.components.show` — conditional rendering semantics
+- `solid-core.reference.components.for` — keyed list rendering
+- `solid-core.reference.components.index-component` — index-based list rendering
+- `solid-core.reference.components.switch-and-match` — multi-branch conditional
+- `solid-core.reference.components.suspense` — async boundary with fallback
+
 ## References
 
 - `../../references/solidjs/control-flow.md`

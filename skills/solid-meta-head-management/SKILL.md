@@ -46,6 +46,16 @@ Return `DomainGuidanceOutput` with metadata decisions, handoff steps, and citati
 - `node tools/scripts/validate-skills.mjs --skill solid-meta-head-management`
 - `node tools/scripts/validate-solid-corpus.mjs`
 
+## Key Corpus References
+
+Use these `doc_id` values with the `read_corpus_doc` MCP tool:
+
+- `solid-meta.solid-meta.reference.meta.metaprovider` — metadata provider setup
+- `solid-meta.solid-meta.reference.meta.title` — document title management
+- `solid-meta.solid-meta.reference.meta.meta` — meta tag composition
+- `solid-meta.solid-meta.reference.meta.link` — link tag management
+- `solid-meta.solid-meta.getting-started.server-setup` — SSR metadata setup
+
 ## References
 
 - `../../references/solidjs-normalized/docs/solid-meta/reference/meta/metaprovider.md`
