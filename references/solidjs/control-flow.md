@@ -3,7 +3,7 @@
 ## Primitive decision table
 
 | Primitive | Use when | Key behavior |
-| --- | --- | --- |
+|---|---|---|
 | `<Show when={} fallback={}>` | Single boolean condition | Mounts/unmounts children; avoids falsy-path rendering |
 | `<For each={} fallback={}>` | List with stable identity per item | Keyed by reference — updates items in place |
 | `<Index each={} fallback={}>` | List keyed by index position | Recreates items when position changes; better for primitives |
