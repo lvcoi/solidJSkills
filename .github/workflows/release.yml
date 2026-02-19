@@ -38,7 +38,8 @@ jobs:
       - name: Create release archive
         run: |
           ARCHIVE_NAME="${{ steps.meta.outputs.name }}.tar.gz"
-          tar czf "$ARCHIVE_NAME" \
+            tar czf "$ARCHIVE_NAME" \
+            --ignore-failed-read \
             --exclude='.git' \
             --exclude='node_modules' \
             .
